@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+			<div id="main" class="col-xs-6 col-sm-6" style="height:700px;"></div>
+			<div id="main1" class="col-xs-6 col-sm-6" style="height:700px;"></div>
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button shiro:hasPermission="information:riliData:add" type="button" class="btn  btn-primary" onclick="add()">
+								<i class="fa fa-plus" aria-hidden="true"></i>添加
+							</button>
+							<button shiro:hasPermission="information:riliData:batchRemove" type="button" class="btn  btn-danger"
+								onclick="batchRemove()">
+								<i class="fa fa-trash" aria-hidden="true"></i>删除
+							</button>
+						</div>
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+						<div class="columns pull-right col-md-2 nopadding">
+							<input id="dataId" type="text" class="form-control"
+								placeholder="请输入序号 ">
+						</div>
+					</div>
+					<table id="exampleTable1" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:riliData:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:riliData:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:riliData:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/information/riliData/riliData.js"></script>
+	
+	<script src="/js/echarts/echarts-all.js"></script>
+	
+	<script type="text/javascript">
+	 	var barChart = echarts.init(document.getElementById("main"));
+	 	var barChart1 = echarts.init(document.getElementById("main1"));
+	 	
+	 	barChart.setOption( {
+	 		title: {
+	 	        text: 'CH1-CH11通道数据'
+	 	    },
+	 	   tooltip: {
+	 	        trigger: 'axis'
+	 	    },
+	 	    legend: {
+	 	        top:'5%',
+	 	        left:'3%',
+	 	        data: ['CH1','CH2','CH3','CH4','CH5','CH6','CH7','CH8','CH9',
+	 	        'CH10','CH11']
+	 	    },
+	 	    xAxis: {
+	 	        name:'采集时间',
+	 	        type: 'category',
+	 	        boundaryGap: false,
+	 	        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+	 	    },
+	 	    yAxis: {
+	 	        type: 'value'
+	 	    },
+	 	    series: [
+	 	        {
+	 	            name: 'CH1',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [120, 132, 101, 134, 90, 230, 210]
+	 	        },
+	 	        {
+	 	            name: 'CH2',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [220, 182, 191, 234, 290, 330, 310]
+	 	        },
+	 	        {
+	 	            name: 'CH3',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [150, 232, 201, 154, 190, 330, 410]
+	 	        },
+	 	        {
+	 	            name: 'CH4',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [320, 332, 301, 334, 390, 330, 320]
+	 	        },
+	 	        {
+	 	            name: 'CH5',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH6',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH7',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH8',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH9',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH10',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH11',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	    ]
+    	})
+    	
+    	barChart1.setOption( {
+	 		title: {
+	 	        text: 'CH12-CH22通道数据'
+	 	    },
+	 	   tooltip: {
+	 	        trigger: 'axis'
+	 	    },
+	 	    legend: {
+	 	        top:'5%',
+	 	        bottom:'5%',
+	 	        data: ['CH12','CH13','CH14','CH15','CH16','CH17','CH18','CH19',
+	 	        'CH20','CH21','CH22']
+	 	    },
+	 	    xAxis: {
+	 	        name:'采集时间',
+	 	        type: 'category',
+	 	        boundaryGap: false,
+	 	        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+	 	    },
+	 	    yAxis: {
+	 	        type: 'value'
+	 	    },
+	 	    series: [
+	 	        {
+	 	            name: 'CH12',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [120, 132, 101, 134, 90, 230, 210]
+	 	        },
+	 	        {
+	 	            name: 'CH13',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [150, 232, 201, 154, 190, 330, 410]
+	 	        },
+	 	        {
+	 	            name: 'CH14',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [320, 332, 301, 334, 390, 330, 320]
+	 	        },
+	 	        {
+	 	            name: 'CH15',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH16',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH17',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH18',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH19',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH20',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        }
+	 	        ,
+	 	        {
+	 	            name: 'CH21',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [820, 932, 901, 934, 1290, 1330, 1320]
+	 	        },
+	 	        {
+	 	            name: 'CH22',
+	 	            type: 'line',
+	 	            stack: '总量',
+	 	            data: [220, 182, 191, 234, 290, 330, 310]
+	 	        }
+	 	    ]
+    	})
+	</script>
+</body>
+</html>

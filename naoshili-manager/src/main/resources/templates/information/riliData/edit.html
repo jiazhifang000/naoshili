@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${riliData.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">单次数据序号：</label>
+								<div class="col-sm-8">
+									<input id="dataId" name="dataId" th:value="${riliData.dataId}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">采集时间（精确到秒）：</label>
+								<div class="col-sm-8">
+									<input id="time" name="time" th:value="${riliData.time}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">同步标记：</label>
+								<div class="col-sm-8">
+									<input id="synchronizationMark" name="synchronizationMark" th:value="${riliData.synchronizationMark}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">外部触发标记：</label>
+								<div class="col-sm-8">
+									<input id="externalTriggerMark" name="externalTriggerMark" th:value="${riliData.externalTriggerMark}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH1：</label>
+								<div class="col-sm-8">
+									<input id="ch1" name="ch1" th:value="${riliData.ch1}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH2：</label>
+								<div class="col-sm-8">
+									<input id="ch2" name="ch2" th:value="${riliData.ch2}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH3：</label>
+								<div class="col-sm-8">
+									<input id="ch3" name="ch3" th:value="${riliData.ch3}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH4：</label>
+								<div class="col-sm-8">
+									<input id="ch4" name="ch4" th:value="${riliData.ch4}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH5：</label>
+								<div class="col-sm-8">
+									<input id="ch5" name="ch5" th:value="${riliData.ch5}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH6：</label>
+								<div class="col-sm-8">
+									<input id="ch6" name="ch6" th:value="${riliData.ch6}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH7：</label>
+								<div class="col-sm-8">
+									<input id="ch7" name="ch7" th:value="${riliData.ch7}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH8：</label>
+								<div class="col-sm-8">
+									<input id="ch8" name="ch8" th:value="${riliData.ch8}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH9：</label>
+								<div class="col-sm-8">
+									<input id="ch9" name="ch9" th:value="${riliData.ch9}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH10：</label>
+								<div class="col-sm-8">
+									<input id="ch10" name="ch10" th:value="${riliData.ch10}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH11：</label>
+								<div class="col-sm-8">
+									<input id="ch11" name="ch11" th:value="${riliData.ch11}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH12：</label>
+								<div class="col-sm-8">
+									<input id="ch12" name="ch12" th:value="${riliData.ch12}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH13：</label>
+								<div class="col-sm-8">
+									<input id="ch13" name="ch13" th:value="${riliData.ch13}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH14：</label>
+								<div class="col-sm-8">
+									<input id="ch14" name="ch14" th:value="${riliData.ch14}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH15：</label>
+								<div class="col-sm-8">
+									<input id="ch15" name="ch15" th:value="${riliData.ch15}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH16：</label>
+								<div class="col-sm-8">
+									<input id="ch16" name="ch16" th:value="${riliData.ch16}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH17：</label>
+								<div class="col-sm-8">
+									<input id="ch17" name="ch17" th:value="${riliData.ch17}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH18：</label>
+								<div class="col-sm-8">
+									<input id="ch18" name="ch18" th:value="${riliData.ch18}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH19：</label>
+								<div class="col-sm-8">
+									<input id="ch19" name="ch19" th:value="${riliData.ch19}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH20：</label>
+								<div class="col-sm-8">
+									<input id="ch20" name="ch20" th:value="${riliData.ch20}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH21：</label>
+								<div class="col-sm-8">
+									<input id="ch21" name="ch21" th:value="${riliData.ch21}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">CH22：</label>
+								<div class="col-sm-8">
+									<input id="ch22" name="ch22" th:value="${riliData.ch22}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/information/riliData/edit.js">
+	</script>
+</body>
+</html>

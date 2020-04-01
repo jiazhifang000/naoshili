@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>欢迎页</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<script src="/js/jquery.peity.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.contextMenu.min.js"></script>
+<script type="text/javascript" src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/jquery.sparkline.min.js"></script>
+<script src="/js/echarts/echarts-all.js"></script>
+    <link href="/css/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+    
+    
+    
+	<link href="/css/animate.css" rel="stylesheet"/>
+	<link href="/css/style.css" rel="stylesheet"/>
+	<link href="/css/ry-ui.css" rel="stylesheet"/>
+<body>
+<div class="panel panel-default">
+    <div class="panel-heading"> <h1 style="color:#49A8FC;font-weight: bold">&nbsp;&nbsp;&nbsp;脑视力研究数据采集后台管理系统</h1></div>
+          <!--=============================平均调节刺激量===================================================-->
+	        	<div class="col-md-3" style="margin: 40px 20px 50px 100px;">
+	                <div class="ibox clear" >
+	                    <div class="ibox-content">
+		                    <div style="float: left; height: 100px;">
+		                    	<h3>平均调节刺激量</h3>
+		                    	<span style="font-size:35px; margin-left: 70%">100</span>
+		                    	
+		                    </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-3"  style="margin: 40px 20px 50px 20px;">
+	                <div class="ibox clear" >
+	                    <div class="ibox-content">
+		                    <div style="float: left; height: 100px;">
+		                    	<h3>平均调节反应量</h3>
+		                    	<span style="font-size:35px; margin-left: 70%">200</span>
+		                    	
+		                    </div>
+	                    </div>
+	                </div>
+               </div>
+                <div class="col-md-3"  style="margin: 40px 20px 50px 20px;">
+	                <div class="ibox clear" >
+	                    <div class="ibox-content">
+		                    <div style="float: left; height: 100px;">
+		                    	<h3>平均调节滞后量</h3>
+		                    	<span style="font-size:35px; margin-left: 70%">300</span>
+		                    	
+		                    </div>
+	                    </div>
+	                </div>
+            	</div>
+        
+        		<!--=============================综合调节刺激量===================================================-->
+        		<div class="col-md-5"  style="margin: 40px 20px 50px 100px;">
+        			<div class="echarts" id="echarts-bar-chart1" style="width: 700px;height: 500px;"></div>
+        		</div>
+	            
+	            
+	            <!--=============================综合调节反应量===================================================-->
+	           <div class="col-md-5"  style="margin: 40px 20px 50px 100px;">
+        			<div class="echarts" id="echarts-bar-chart2" style="width: 700px;height: 500px;"></div>
+        		</div>
+	            
+	            <!--=============================综合调节滞后量===================================================-->
+	           <div class="col-md-5"  style="margin: 40px 20px 50px 100px;">
+        			<div class="echarts" id="echarts-bar-chart3" style="width: 700px;height: 500px;"></div>
+        		</div>
+    </div> 
+</div>
+</body>
+<style>
+ .clear:after {
+2     clear: both;
+3     content: " ";
+4     display: block;
+5     height: 0;
+6     overflow: hidden;
+7     visibility: hidden;
+8 }
+</style>
+<script type="text/javascript">
+<!--=============================平均单次阅读时长柱形图===================================================-->
+			var barChart = echarts.init(document.getElementById("echarts-bar-chart1"));
+			var barChart2 = echarts.init(document.getElementById("echarts-bar-chart2"));
+			var barChart3 = echarts.init(document.getElementById("echarts-bar-chart3"));
+	
+    		barChart.setOption( {
+    			title: {
+    		        text: '综合调节刺激量',
+    		        left:'45%'
+    		    },
+    			xAxis: {
+    				name:'时间',
+    		        type: 'category',
+    		        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    		    },
+    		    yAxis: {
+    		    	name:'调节刺激量',
+    		        type: 'value'
+    		    },
+    		    series: [{
+    		        data: [820, 932, 901, 934, 1290, 1330, 1320],
+    		        type: 'line'
+    		    }]
+			
+			})
+			barChart2.setOption( {
+				title: {
+    		        text: '综合调节反应量',
+    		        left:'45%'
+    		    },
+    			xAxis: {
+    				name:'时间',
+    		        type: 'category',
+    		        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    		    },
+    		    yAxis: {
+    		    	name:'调节反应量',
+    		        type: 'value'
+    		    },
+    		    series: [{
+    		        data: [820, 932, 901, 934, 1290, 1330, 1320],
+    		        type: 'line'
+    		    }]
+			
+			})
+			barChart3.setOption( {
+				title: {
+    		        text: '综合调节滞后量',
+    		        left:'45%'
+    		    },
+    			xAxis: {
+    				name:'时间',
+    		        type: 'category',
+    		        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    		    },
+    		    yAxis: {
+    		    	name:'调节滞后量',
+    		        type: 'value'
+    		    },
+    		    series: [{
+    		        data: [820, 932, 901, 934, 1290, 1330, 1320],
+    		        type: 'line'
+    		    }]
+			
+			})
+</script>
+</html>

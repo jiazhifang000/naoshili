@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${userEyeData.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">用户id：</label>
+								<div class="col-sm-8">
+									<input id="uid" name="uid" th:value="${userEyeData.uid}" class="form-control" type="text" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">用户名：</label>
+								<div class="col-sm-8">
+									<input id="uname" name="uname" th:value="${userEyeData.uname}" class="form-control" type="text" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">视镜片到角膜的距离：</label>
+								<div class="col-sm-8">
+									<input id="glassToCornea" name="glassToCornea" th:value="${userEyeData.glassToCornea}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">视镜片屈光度：</label>
+								<div class="col-sm-8">
+									<input id="glassDiopter" name="glassDiopter" th:value="${userEyeData.glassDiopter}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">左眼球径：</label>
+								<div class="col-sm-8">
+									<input id="lEyeballDiameter" name="lEyeballDiameter" th:value="${userEyeData.lEyeballDiameter}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">右眼球径：</label>
+								<div class="col-sm-8">
+									<input id="rEyeballDiameter" name="rEyeballDiameter" th:value="${userEyeData.rEyeballDiameter}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">左眼柱径：</label>
+								<div class="col-sm-8">
+									<input id="lEyepillarDiameter" name="lEyepillarDiameter" th:value="${userEyeData.lEyepillarDiameter}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">右眼柱径：</label>
+								<div class="col-sm-8">
+									<input id="rEyepillarDiameter" name="rEyepillarDiameter" th:value="${userEyeData.rEyepillarDiameter}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">左眼轴：</label>
+								<div class="col-sm-8">
+									<input id="lEyeAxis" name="lEyeAxis" th:value="${userEyeData.lEyeAxis}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">右眼轴：</label>
+								<div class="col-sm-8">
+									<input id="rEyeAxis" name="rEyeAxis" th:value="${userEyeData.rEyeAxis}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">左眼验光：</label>
+								<div class="col-sm-8">
+									<input id="lEyeOptometry" name="lEyeOptometry" th:value="${userEyeData.lEyeOptometry}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">右眼验光：</label>
+								<div class="col-sm-8">
+									<input id="rEyeOptometry" name="rEyeOptometry" th:value="${userEyeData.rEyeOptometry}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">左眼裸眼视力：</label>
+								<div class="col-sm-8">
+									<input id="lEyeNakedVision" name="lEyeNakedVision" th:value="${userEyeData.lEyeNakedVision}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">右眼裸眼视力：</label>
+								<div class="col-sm-8">
+									<input id="rEyeNakedVision" name="rEyeNakedVision" th:value="${userEyeData.rEyeNakedVision}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">左眼戴镜视力：</label>
+								<div class="col-sm-8">
+									<input id="lEyeGlassesVision" name="lEyeGlassesVision" th:value="${userEyeData.lEyeGlassesVision}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">右眼戴镜视力：</label>
+								<div class="col-sm-8">
+									<input id="rEyeGlassesVision" name="rEyeGlassesVision" th:value="${userEyeData.rEyeGlassesVision}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/information/userEyeData/edit.js">
+	</script>
+</body>
+</html>

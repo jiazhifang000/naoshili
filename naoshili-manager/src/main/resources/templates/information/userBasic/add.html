@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">姓名：</label>
+                            <div class="col-sm-8">
+                                <input id="name" name="name" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">左眼球径：</label>
+                            <div class="col-sm-8">
+                                <input id="lEyeballDiameter1" name="lEyeballDiameter1" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">身份证：</label>
+                            <div class="col-sm-8">
+                                <input id="idCard" name="idCard" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">右眼球径：</label>
+                            <div class="col-sm-8">
+                                <input id="rEyeballDiameter1" name="rEyeballDiameter1" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">性别：</label>
+                            <div class="col-sm-8">
+                                <input id="gender" name="gender" class="form-control" type="text">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">左眼柱径：</label>
+                            <div class="col-sm-8">
+                                <input id="lEyepillarDiameter1" name="lEyepillarDiameter1" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">学校：</label>
+                            <div class="col-sm-8">
+                                <input id="school" name="school" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">右眼柱径：</label>
+                            <div class="col-sm-8">
+                                <input id="rEyepillarDiameter1" name="rEyepillarDiameter1" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">年级：</label>
+                            <div class="col-sm-8">
+                                <input id="grade" name="grade" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">左眼轴：</label>
+                            <div class="col-sm-8">
+                                <input id="lEyeAxis1" name="lEyeAxis1" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">班级：</label>
+                            <div class="col-sm-8">
+                                <input id="classname" name="classname" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">右眼轴：</label>
+                            <div class="col-sm-8">
+                                <input id="rEyeAxis1" name="rEyeAxis1" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">联系人：</label>
+                            <div class="col-sm-8">
+                                <input id="contacts" name="contacts" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">左眼验光：</label>
+                            <div class="col-sm-8">
+                                <input id="lEyeOptometry1" name="lEyeOptometry1" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">手机号：</label>
+                            <div class="col-sm-8">
+                                <input id="phone" name="phone" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">右眼验光：</label>
+                            <div class="col-sm-8">
+                                <input id="rEyeOptometry1" name="rEyeOptometry1" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">通常起床时间：</label>
+                            <div class="col-sm-8">
+                                <input id="getupTime" name="getupTime" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">左眼裸眼视力：</label>
+                            <div class="col-sm-8">
+                                <input id="lEyeNakedVision1" name="lEyeNakedVision1" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">通常睡觉时间：</label>
+                            <div class="col-sm-8">
+                                <input id="sleepTime" name="sleepTime" class="form-control" type="text">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">右眼裸眼视力：</label>
+                            <div class="col-sm-8">
+                                <input id="rEyeNakedVision1" name="rEyeNakedVision1" class="form-control" type="text">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">爱好：</label>
+                            <div class="col-sm-8">
+                                <input id="hobby" name="hobby" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">左眼戴镜视力：</label>
+                            <div class="col-sm-8">
+                                <input id="lEyeGlassesVision1" name="lEyeGlassesVision1" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">每天大约阅读时间（时）：</label>
+                            <div class="col-sm-8">
+                                <input id="readTime" name="readTime" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">右眼戴镜视力：</label>
+                            <div class="col-sm-8">
+                                <input id="rEyeGlassesVision1" name="rEyeGlassesVision1" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">父亲左视力：</label>
+                            <div class="col-sm-8">
+                                <input id="fatherLvision" name="fatherLvision" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-sm-2 control-label">父亲右视力：</label>
+                            <div class="col-sm-8">
+                                <input id="fatherRvision" name="fatherRvision" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-sm-2 control-label">母亲左视力：</label>
+                            <div class="col-sm-8">
+                                <input id="matherLvision" name="matherLvision" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-sm-2 control-label">母亲右视力：</label>
+                            <div class="col-sm-8">
+                                <input id="matherRvision" name="matherRvision" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-sm-2 control-label">视镜到角膜顶点距离（厘米）：</label>
+                            <div class="col-sm-8">
+                                <input id="glassToCornea1" name="glassToCornea1" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-sm-2 control-label">视镜屈光度：</label>
+                            <div class="col-sm-8">
+                                <input id="glassDiopter1" name="glassDiopter1" class="form-control" type="text">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-12 col-sm-offset-5">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/information/userBasic/add.js">
+</script>
+</body>
+</html>

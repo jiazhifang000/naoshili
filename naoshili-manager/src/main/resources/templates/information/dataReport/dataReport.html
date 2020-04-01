@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content " style="width: 1000px;float: left;background-color: white;margin: 10px 5px 100px 10px;">
+    <h1>裸眼数据分析</h1><br>
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div id="main" style="width: 700px;height:400px;margin: 0 auto;"></div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div id="main1" style="width: 700px;height:400px;margin: 0 auto;"></div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div id="main2" style="width: 700px;height:400px;margin: 0 auto;"></div>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content " style="width: 1000px;float: left;background-color: white;margin: 10px 5px 100px 10px;">
+    <h1>戴镜数据分析</h1><br>
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div id="main3" style="width: 700px;height:400px;margin: 0 auto;"></div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div id="main4" style="width: 700px;height:400px;margin: 0 auto;"></div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div id="main5" style="width: 700px;height:400px;margin: 0 auto;"></div>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script src="/js/echarts/echarts-all.js"></script>
+
+<script type="text/javascript">
+    var barChart = echarts.init(document.getElementById("main"));
+    var barChart1 = echarts.init(document.getElementById("main1"));
+    var barChart2 = echarts.init(document.getElementById("main2"));
+
+    var barChart3 = echarts.init(document.getElementById("main3"));
+    var barChart4 = echarts.init(document.getElementById("main4"));
+    var barChart5 = echarts.init(document.getElementById("main5"));
+
+    barChart.setOption({
+        title: {
+            text: '裸眼调节刺激量',
+            left:'center'
+        },
+        xAxis: {
+            name:'（时间）',
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            name:'（调节刺激量）',
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    })
+    barChart1.setOption({
+        title: {
+            text: '裸眼调节反应量',
+            left:'center'
+        },
+        xAxis: {
+            name:'（时间）',
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            name:'（调节刺激量）',
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    })
+    barChart2.setOption({
+        title: {
+            text: '裸眼调节滞后量',
+            left:'center'
+        },
+        xAxis: {
+            name:'（时间）',
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            name:'（调节刺激量）',
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    })
+    barChart3.setOption({
+        title: {
+            text: '戴镜调节刺激量',
+            left:'center'
+        },
+        xAxis: {
+            name:'（时间）',
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            name:'（调节刺激量）',
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    })
+    barChart4.setOption({
+        title: {
+            text: '戴镜调节刺激量',
+            left:'center'
+        },
+        xAxis: {
+            name:'（时间）',
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            name:'（调节刺激量）',
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    })
+    barChart5.setOption({
+        title: {
+            text: '戴镜调节刺激量',
+            left:'center'
+        },
+        xAxis: {
+            name:'（时间）',
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            name:'（调节刺激量）',
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line'
+        }]
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naoshili.information.dao.JinggongDataDao">
+
+	<select id="get" resultType="com.naoshili.information.domain.JinggongDataDO">
+		select `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance` from n_jinggong_data where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.naoshili.information.domain.JinggongDataDO">
+		select `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance` from n_jinggong_data
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
+		  		  <if test="samplingTime != null and samplingTime != ''"> and sampling_time = #{samplingTime} </if>
+		  		  <if test="eye != null and eye != ''"> and eye = #{eye} </if>
+		  		  <if test="diopter != null and diopter != ''"> and diopter = #{diopter} </if>
+		  		  <if test="pupilDistance != null and pupilDistance != ''"> and pupil_distance = #{pupilDistance} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from n_jinggong_data
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
+		  		  <if test="samplingTime != null and samplingTime != ''"> and sampling_time = #{samplingTime} </if>
+		  		  <if test="eye != null and eye != ''"> and eye = #{eye} </if>
+		  		  <if test="diopter != null and diopter != ''"> and diopter = #{diopter} </if>
+		  		  <if test="pupilDistance != null and pupilDistance != ''"> and pupil_distance = #{pupilDistance} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.naoshili.information.domain.JinggongDataDO" useGeneratedKeys="true" keyProperty="id">
+		insert into n_jinggong_data
+		(
+			`data_id`, 
+			`sampling_time`, 
+			`eye`, 
+			`diopter`, 
+			`pupil_distance`
+		)
+		values
+		(
+			#{dataId}, 
+			#{samplingTime}, 
+			#{eye}, 
+			#{diopter}, 
+			#{pupilDistance}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.naoshili.information.domain.JinggongDataDO">
+		update n_jinggong_data 
+		<set>
+			<if test="dataId != null">`data_id` = #{dataId}, </if>
+			<if test="samplingTime != null">`sampling_time` = #{samplingTime}, </if>
+			<if test="eye != null">`eye` = #{eye}, </if>
+			<if test="diopter != null">`diopter` = #{diopter}, </if>
+			<if test="pupilDistance != null">`pupil_distance` = #{pupilDistance}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from n_jinggong_data where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from n_jinggong_data where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

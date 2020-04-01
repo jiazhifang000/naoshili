@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${shibiaoData.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">单次数据序号：</label>
+								<div class="col-sm-8">
+									<input id="dataId" name="dataId" th:value="${shibiaoData.dataId}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">时间：</label>
+								<div class="col-sm-8">
+									<input id="time" name="time" th:value="${shibiaoData.time}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">位置（移动视标）：</label>
+								<div class="col-sm-8">
+									<input id="localtion" name="localtion" th:value="${shibiaoData.localtion}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">速度（移动视标）：</label>
+								<div class="col-sm-8">
+									<input id="speed" name="speed" th:value="${shibiaoData.speed}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">视标1（交替通断）：</label>
+								<div class="col-sm-8">
+									<input id="visualStandard1" name="visualStandard1" th:value="${shibiaoData.visualStandard1}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">视标2（交替通断）：</label>
+								<div class="col-sm-8">
+									<input id="visualStandard2" name="visualStandard2" th:value="${shibiaoData.visualStandard2}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">视标3（交替通断）：</label>
+								<div class="col-sm-8">
+									<input id="visualStandard3" name="visualStandard3" th:value="${shibiaoData.visualStandard3}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/information/shibiaoData/edit.js">
+	</script>
+</body>
+</html>

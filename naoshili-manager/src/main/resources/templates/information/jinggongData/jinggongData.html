@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+			<div id="main" style="width: 700px;height:400px;margin: 0 auto;"></div>
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button shiro:hasPermission="information:jinggongData:add" type="button" class="btn  btn-primary" onclick="add()">
+								<i class="fa fa-plus" aria-hidden="true"></i>添加
+							</button>
+							<button shiro:hasPermission="information:jinggongData:batchRemove" type="button" class="btn  btn-danger"
+								onclick="batchRemove()">
+								<i class="fa fa-trash" aria-hidden="true"></i>删除
+							</button>
+						</div>
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+						<div class="columns pull-right col-md-2 nopadding">
+							<input id="dataId" type="text" class="form-control"
+								placeholder="输入序号">
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:jinggongData:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:jinggongData:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="information:jinggongData:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/information/jinggongData/jinggongData.js"></script>
+	<script src="/js/echarts/echarts-all.js"></script>
+	
+	<script type="text/javascript">
+	 	var barChart = echarts.init(document.getElementById("main"));
+	 	
+	 	barChart.setOption( {
+	 		title: {
+	 	        text: '精工5500数据图表分析'
+	 	    },
+	 	    legend: {
+	 	        data: ['左眼', '右眼']
+	 	    },
+	 		xAxis: {
+	 			name: '(采集时间)',
+	 	        type: 'category',
+	 	        boundaryGap: false,
+	 	        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+	 	    },
+	 	    yAxis: {
+	 	    	name: '(屈光度)',
+	 	        type: 'value'
+	 	    },
+	 	    series: [{
+	 	    	name:'左眼',
+	 	        data: [820, 932, 901, 934, 1290, 1330, 1320],
+	 	        type: 'line',
+	 	        areaStyle: {}
+	 	    },{
+	 	    	name:'右眼',
+	 	        data: [500, 600, 1000, 300, 1000, 1500, 1320],
+	 	        type: 'line',
+	 	        areaStyle: {}
+	 	    }]
+    	})
+	</script>
+</body>
+</html>
