@@ -17,8 +17,8 @@ public class OBSUtils {
 		String url = "";
 		try {	
 			String endPoint = "https://obs.cn-north-4.myhuaweicloud.com";
-			String ak = "INH4CIS1OCNGSVVPF1F8";
-			String sk = "7Cqofwd0jrGyLI5GHmKHBtaIrUtERILD0bxPpcJ1";
+			String ak = "";
+			String sk = "";
 			String bucketname = "naoshili";
 			// 创建ObsClient实例
 			ObsClient obsClient = new ObsClient(ak, sk, endPoint);
