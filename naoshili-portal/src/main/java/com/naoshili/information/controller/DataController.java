@@ -1,24 +1,31 @@
 package com.naoshili.information.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.naoshili.common.annotation.Log;
+import com.naoshili.common.config.BootdoConfig;
 import com.naoshili.common.controller.BaseController;
+import com.naoshili.common.utils.FileUtil;
 import com.naoshili.common.utils.R;
-import com.naoshili.information.domain.CollectionInfoDO;
-import com.naoshili.information.domain.JinggongDataDO;
-import com.naoshili.information.domain.RiliDataDO;
-import com.naoshili.information.domain.ShibiaoDataDO;
+import com.naoshili.information.domain.AllDataDO;
 import com.naoshili.information.service.CollectionInfoService;
 import com.naoshili.information.service.JinggongDataService;
 import com.naoshili.information.service.RiliDataService;
 import com.naoshili.information.service.ShibiaoDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 @Controller
-@RequestMapping("/DataController")
+@RequestMapping("/dataController")
 public class DataController extends BaseController {
 
     @Autowired
@@ -29,98 +36,53 @@ public class DataController extends BaseController {
     JinggongDataService jinggongDataService;
     @Autowired
     RiliDataService riliDataService;
+    @Autowired
+    private BootdoConfig bootdoConfig;
 
     /**
-     *参数：保存采集信息
-     * */
-    @Log("保存采集信息")
-    @PostMapping("/saveCollectionInfo")
+     * 参数：精工数据集合
+     */
+    @Log("保存数据")
+    @PostMapping("/saveData")
     @ResponseBody
-    R saveCollectionInfo(CollectionInfoDO collectionInfoDO){
-       if(collectionInfoService.save(collectionInfoDO) >0) {
-           return R.ok("保存成功");
-       }else{
-           return R.error("保存失败");
-       }
-    }
+    R saveJinggongData(@RequestBody MultipartFile dataFile) {
 
-    /**
-     *参数：保存视标数据
-     * */
-    @Log("保存视标数据")
-    @PostMapping("/saveShiBiaoData")
-    @ResponseBody
-    R saveShiBiaoData(@RequestBody List<ShibiaoDataDO> shibiaoDataDOList){
-        System.out.println("==============shibiaoDataDOList=================="+shibiaoDataDOList);
-        boolean flag = true;
-        for (ShibiaoDataDO shibiaoDataDO : shibiaoDataDOList) {
-            if(shibiaoDataService.save(shibiaoDataDO)>0) {
-                continue;
-            }else{
-                flag = false;
+        try {
+            //获取文件
+            String filename = dataFile.getOriginalFilename();
+            FileUtil.uploadFile(dataFile.getBytes(), bootdoConfig.getUploadPath() + "/temporaryFiles/", filename);
+            File file = new File(bootdoConfig.getUploadPath() + "/temporaryFiles/" + filename);
+            FileReader in = new FileReader(file);
+            BufferedReader br = new BufferedReader(in);
+            //读取文件
+            String str = "";
+            String json = "";
+            while ((str = br.readLine()) != null) {
+                json += str;
             }
-        }
-        if(flag){
-            return R.ok("保存成功");
-        }else{
-            for (ShibiaoDataDO shibiaoDataDO : shibiaoDataDOList) {
-                shibiaoDataService.remove(shibiaoDataDO.getId());
-            }
-            return R.error("保存失败");
-        }
-    }
+            if (json != null) {
+                JSONObject data = JSONObject.parseObject(new String(json));
+                AllDataDO allDataDO = JSON.toJavaObject(data, AllDataDO.class);
+                //保存数据
+                if (allDataDO != null) {
+                    int result = collectionInfoService.saveData(allDataDO);
 
-
-    /**
-     *参数：精工数据集合
-     * */
-    @Log("保存精工数据")
-    @PostMapping("/saveJinggongData")
-    @ResponseBody
-    R saveJinggongData(@RequestBody List<JinggongDataDO> jinggongDataDOList){
-
-        boolean flag = true;
-        for (JinggongDataDO jinggongDataDO : jinggongDataDOList) {
-            if(jinggongDataService.save(jinggongDataDO)>0) {
-                continue;
-            }else{
-                flag = false;
+                    if (result > 0) {
+                        return R.ok();
+                    } else {
+                        return R.error(-1, "保存失败");
+                    }
+                } else {
+                    return R.error(-1, "无数据");
+                }
+            } else {
+                return R.error(-1, "无数据");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return R.error(500, e.toString());
         }
-        if(flag){
-            return R.ok("保存成功");
-        }else{
-            for (JinggongDataDO jinggongDataDO : jinggongDataDOList) {
-                jinggongDataService.remove(jinggongDataDO.getId());
-            }
-            return R.error("保存失败");
-        }
-    }
 
-    /**
-     *参数：日立数据集合
-     * */
-    @Log("日立精工数据")
-    @PostMapping("/saveRiLiData")
-    @ResponseBody
-    R saveRiLiData(@RequestBody List<RiliDataDO> riliDataDOList){
-        boolean flag = true;
-        for (RiliDataDO riliDataDO : riliDataDOList) {
-            if(riliDataService.save(riliDataDO)>0) {
-                continue;
-            }else{
-                flag = false;
-            }
-        }
-        if(flag){
-            return R.ok("保存成功");
-        }else{
-            for (RiliDataDO riliDataDO : riliDataDOList) {
-                riliDataService.remove(riliDataDO.getId());
-
-            }
-            return R.error("保存失败");
-        }
     }
 
 }

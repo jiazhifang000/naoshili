@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 用户基本数据表
+ *
  * @author wjl
  * @email bushuo@163.com
  * @date 2020-02-28 14:37:44
@@ -15,18 +16,19 @@ import java.util.Map;
 @Mapper
 public interface UserBasicDao {
 
-	UserBasicDO get(Long id);
-	
-	List<UserBasicDO> list(Map<String, Object> map);
+    UserBasicDO get(Long id);
 
-	int count(Map<String, Object> map);
-	
-	int save(UserBasicDO userBasic);
-	
-	int update(UserBasicDO userBasic);
-	
-	int remove(Long id);
-	
-	int batchRemove(Long[] ids);
+    List<UserBasicDO> list(Map<String, Object> map);
 
+    int count(Map<String, Object> map);
+
+    int save(UserBasicDO userBasic);
+
+    int update(UserBasicDO userBasic);
+
+    int remove(Long id);
+
+    int batchRemove(Long[] ids);
+
+    List<UserBasicDO> listLike(Map<String, Object> params);
 }

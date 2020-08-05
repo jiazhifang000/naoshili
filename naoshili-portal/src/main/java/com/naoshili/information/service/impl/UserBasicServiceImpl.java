@@ -5,8 +5,9 @@ import com.naoshili.information.domain.UserBasicDO;
 import com.naoshili.information.service.UserBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.*;
 
+import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -47,6 +48,11 @@ public class UserBasicServiceImpl implements UserBasicService {
     @Override
     public int batchRemove(Long[] ids) {
         return userBasicDao.batchRemove(ids);
+    }
+
+    @Override
+    public List<UserBasicDO> listLike(Map<String, Object> params) {
+        return userBasicDao.listLike(params);
     }
 
 

@@ -3,97 +3,115 @@
 
 <mapper namespace="com.naoshili.information.dao.CollectionInfoDao">
 
-	<select id="get" resultType="com.naoshili.information.domain.CollectionInfoDO">
-		select `id`,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter` from n_collection_info where id = #{value}
+    <select id="get" resultType="com.naoshili.information.domain.CollectionInfoDO">
+		select `id`,`user_id`,`login_id`,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter` from n_collection_info where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.naoshili.information.domain.CollectionInfoDO">
-		select `id`,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter` from n_collection_info
-        <where>  
-		  		  <if test="id != null and id != ''"> and id like CONCAT('%', #{id},'%') </if>
-		  		  <if test="idCard != null and idCard != ''"> and id_card like CONCAT('%', #{idCard},'%') </if>
-		  		  <if test="collectionDate != null and collectionDate != ''"> and collection_date = #{collectionDate} </if>
-		  		  <if test="collectionTime != null and collectionTime != ''"> and collection_time = #{collectionTime} </if>
-		  		  <if test="experimentalMode != null and experimentalMode != ''"> and experimental_mode = #{experimentalMode} </if>
-		  		  <if test="responsibleDoctor != null and responsibleDoctor != ''"> and responsible_doctor like CONCAT('%', #{responsibleDoctor},'%') </if>
-		  		  <if test="deviceName != null and deviceName != ''"> and device_name = #{deviceName} </if>
-		  		  <if test="avgDiopter != null and avgDiopter != ''"> and avg_diopter = #{avgDiopter} </if>
-		  		</where>
+    <select id="list" resultType="com.naoshili.information.domain.CollectionInfoDO">
+        select
+        `id`,`user_id`,`login_id`,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter`
+        from n_collection_info
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="loginId != null and loginId != ''">and login_id = #{loginId}</if>
+            <if test="idCard != null and idCard != ''">and id_card = #{idCard}</if>
+            <if test="collectionDate != null and collectionDate != ''">and collection_date = #{collectionDate}</if>
+            <if test="collectionTime != null and collectionTime != ''">and collection_time = #{collectionTime}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+            <if test="responsibleDoctor != null and responsibleDoctor != ''">and responsible_doctor =
+                #{responsibleDoctor}
+            </if>
+            <if test="deviceName != null and deviceName != ''">and device_name = #{deviceName}</if>
+            <if test="avgDiopter != null and avgDiopter != ''">and avg_diopter = #{avgDiopter}</if>
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 order by id desc
-			</otherwise>
+            </otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-	
- 	<select id="count" resultType="int">
-		select count(*) from n_collection_info
-		 <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="idCard != null and idCard != ''"> and id_card = #{idCard} </if>
-		  		  <if test="collectionDate != null and collectionDate != ''"> and collection_date = #{collectionDate} </if>
-		  		  <if test="collectionTime != null and collectionTime != ''"> and collection_time = #{collectionTime} </if>
-		  		  <if test="experimentalMode != null and experimentalMode != ''"> and experimental_mode = #{experimentalMode} </if>
-		  		  <if test="responsibleDoctor != null and responsibleDoctor != ''"> and responsible_doctor = #{responsibleDoctor} </if>
-		  		  <if test="deviceName != null and deviceName != ''"> and device_name = #{deviceName} </if>
-		  		  <if test="avgDiopter != null and avgDiopter != ''"> and avg_diopter = #{avgDiopter} </if>
-		  		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.naoshili.information.domain.CollectionInfoDO">
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from n_collection_info
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
+            <if test="loginId != null and loginId != ''">and login_id = #{loginId}</if>
+            <if test="idCard != null and idCard != ''">and id_card = #{idCard}</if>
+            <if test="collectionDate != null and collectionDate != ''">and collection_date = #{collectionDate}</if>
+            <if test="collectionTime != null and collectionTime != ''">and collection_time = #{collectionTime}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+            <if test="responsibleDoctor != null and responsibleDoctor != ''">and responsible_doctor =
+                #{responsibleDoctor}
+            </if>
+            <if test="deviceName != null and deviceName != ''">and device_name = #{deviceName}</if>
+            <if test="avgDiopter != null and avgDiopter != ''">and avg_diopter = #{avgDiopter}</if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.CollectionInfoDO">
 		insert into n_collection_info
 		(
-			`id`, 
-			`id_card`, 
-			`collection_date`, 
-			`collection_time`, 
-			`experimental_mode`, 
-			`responsible_doctor`, 
-			`device_name`, 
+			`id`,
+			`user_id`,
+			`login_id`,
+			`id_card`,
+			`collection_date`,
+			`collection_time`,
+			`experimental_mode`,
+			`responsible_doctor`,
+			`device_name`,
 			`avg_diopter`
 		)
 		values
 		(
-			#{id}, 
-			#{idCard}, 
-			#{collectionDate}, 
-			#{collectionTime}, 
-			#{experimentalMode}, 
-			#{responsibleDoctor}, 
-			#{deviceName}, 
+			#{id},
+			#{userId},
+			#{loginId},
+			#{idCard},
+			#{collectionDate},
+			#{collectionTime},
+			#{experimentalMode},
+			#{responsibleDoctor},
+			#{deviceName},
 			#{avgDiopter}
 		)
 	</insert>
-	 
-	<update id="update" parameterType="com.naoshili.information.domain.CollectionInfoDO">
-		update n_collection_info 
-		<set>
-			<if test="idCard != null">`id_card` = #{idCard}, </if>
-			<if test="collectionDate != null">`collection_date` = #{collectionDate}, </if>
-			<if test="collectionTime != null">`collection_time` = #{collectionTime}, </if>
-			<if test="experimentalMode != null">`experimental_mode` = #{experimentalMode}, </if>
-			<if test="responsibleDoctor != null">`responsible_doctor` = #{responsibleDoctor}, </if>
-			<if test="deviceName != null">`device_name` = #{deviceName}, </if>
-			<if test="avgDiopter != null">`avg_diopter` = #{avgDiopter}</if>
-		</set>
-		where id = #{id}
-	</update>
-	
-	<delete id="remove">
+
+    <update id="update" parameterType="com.naoshili.information.domain.CollectionInfoDO">
+        update n_collection_info
+        <set>
+            <if test="userId != null">`user_id` = #{userId},</if>
+            <if test="loginId != null">`login_id` = #{loginId},</if>
+            <if test="idCard != null">`id_card` = #{idCard},</if>
+            <if test="collectionDate != null">`collection_date` = #{collectionDate},</if>
+            <if test="collectionTime != null">`collection_time` = #{collectionTime},</if>
+            <if test="experimentalMode != null">`experimental_mode` = #{experimentalMode},</if>
+            <if test="responsibleDoctor != null">`responsible_doctor` = #{responsibleDoctor},</if>
+            <if test="deviceName != null">`device_name` = #{deviceName},</if>
+            <if test="avgDiopter != null">`avg_diopter` = #{avgDiopter}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
 		delete from n_collection_info where id = #{value}
 	</delete>
-	
-	<delete id="batchRemove">
-		delete from n_collection_info where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
+    <delete id="batchRemove">
+        delete from n_collection_info where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

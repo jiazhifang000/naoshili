@@ -45,6 +45,45 @@
         </if>
     </select>
 
+    <select id="listLike" resultType="com.naoshili.information.domain.UserBasicDO">
+        select
+        `id`,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision`
+        from n_user_basic
+        <where>
+            <if test="id != null and id != ''">and id like CONCAT('%',#{id},'%')</if>
+            <if test="name != null and name != ''">and name like CONCAT('%',#{name},'%')</if>
+            <if test="idCard != null and idCard != ''">and id_card like CONCAT('%',#{idCard},'%')</if>
+            <if test="birthday != null and birthday != ''">and birthday = #{birthday}</if>
+            <if test="age != null and age != ''">and age = #{age}</if>
+            <if test="gender != null and gender != ''">and gender = #{gender}</if>
+            <if test="school != null and school != ''">and school = #{school}</if>
+            <if test="grade != null and grade != ''">and grade = #{grade}</if>
+            <if test="classname != null and classname != ''">and classname = #{classname}</if>
+            <if test="contacts != null and contacts != ''">and contacts = #{contacts}</if>
+            <if test="phone != null and phone != ''">and phone = #{phone}</if>
+            <if test="getupTime != null and getupTime != ''">and getup_time = #{getupTime}</if>
+            <if test="sleepTime != null and sleepTime != ''">and sleep_time = #{sleepTime}</if>
+            <if test="hobby != null and hobby != ''">and hobby = #{hobby}</if>
+            <if test="readTime != null and readTime != ''">and read_time = #{readTime}</if>
+            <if test="fatherLvision != null and fatherLvision != ''">and father_Lvision = #{fatherLvision}</if>
+            <if test="fatherRvision != null and fatherRvision != ''">and father_Rvision = #{fatherRvision}</if>
+            <if test="matherLvision != null and matherLvision != ''">and mather_Lvision = #{matherLvision}</if>
+            <if test="matherRvision != null and matherRvision != ''">and mather_Rvision = #{matherRvision}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+
     <select id="count" resultType="int">
         select count(*) from n_user_basic
         <where>
@@ -63,10 +102,10 @@
             <if test="sleepTime != null and sleepTime != ''">and sleep_time = #{sleepTime}</if>
             <if test="hobby != null and hobby != ''">and hobby = #{hobby}</if>
             <if test="readTime != null and readTime != ''">and read_time = #{readTime}</if>
-            <if test="fatherLvision != null and fatherLvision != ''"> and father_Lvision = #{fatherLvision} </if>
-            <if test="fatherRvision != null and fatherRvision != ''"> and father_Rvision = #{fatherRvision} </if>
-            <if test="matherLvision != null and matherLvision != ''"> and mather_Lvision = #{matherLvision} </if>
-            <if test="matherRvision != null and matherRvision != ''"> and mather_Rvision = #{matherRvision} </if>
+            <if test="fatherLvision != null and fatherLvision != ''">and father_Lvision = #{fatherLvision}</if>
+            <if test="fatherRvision != null and fatherRvision != ''">and father_Rvision = #{fatherRvision}</if>
+            <if test="matherLvision != null and matherLvision != ''">and mather_Lvision = #{matherLvision}</if>
+            <if test="matherRvision != null and matherRvision != ''">and mather_Rvision = #{matherRvision}</if>
         </where>
     </select>
 
@@ -133,9 +172,9 @@
             <if test="sleepTime != null">`sleep_time` = #{sleepTime},</if>
             <if test="hobby != null">`hobby` = #{hobby},</if>
             <if test="readTime != null">`read_time` = #{readTime},</if>
-            <if test="fatherLvision != null">`father_Lvision` = #{fatherLvision}, </if>
-            <if test="fatherRvision != null">`father_Rvision` = #{fatherRvision}, </if>
-            <if test="matherLvision != null">`mather_Lvision` = #{matherLvision}, </if>
+            <if test="fatherLvision != null">`father_Lvision` = #{fatherLvision},</if>
+            <if test="fatherRvision != null">`father_Rvision` = #{fatherRvision},</if>
+            <if test="matherLvision != null">`mather_Lvision` = #{matherLvision},</if>
             <if test="matherRvision != null">`mather_Rvision` = #{matherRvision}</if>
         </set>
         where id = #{id}

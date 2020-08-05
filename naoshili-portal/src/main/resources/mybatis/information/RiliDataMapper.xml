@@ -2,191 +2,282 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.naoshili.information.dao.RiliDataDao">
-
-	<select id="get" resultType="com.naoshili.information.domain.RiliDataDO">
-		select `id`,`data_id`,`time`,`synchronization_mark`,`external_trigger_mark`,`CH1`,`CH2`,`CH3`,`CH4`,`CH5`,`CH6`,`CH7`,`CH8`,`CH9`,`CH10`,`CH11`,`CH12`,`CH13`,`CH14`,`CH15`,`CH16`,`CH17`,`CH18`,`CH19`,`CH20`,`CH21`,`CH22` from n_rili_data where id = #{value}
+    <select id="get" resultType="com.naoshili.information.domain.RiliDataDO">
+		select `id`,`data_id`,`time`,`experimental_mode`,`synchronization_mark`,`external_trigger_mark`,`type`,`CH1`,`CH2`,`CH3`,`CH4`,`CH5`,`CH6`,`CH7`,`CH8`,`CH9`,`CH10`,`CH11`,`CH12`,`CH13`,`CH14`,`CH15`,`CH16`,`CH17`,`CH18`,`CH19`,`CH20`,`CH21`,`CH22` from n_rili_data where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.naoshili.information.domain.RiliDataDO">
-		select `id`,`data_id`,`time`,`synchronization_mark`,`external_trigger_mark`,`CH1`,`CH2`,`CH3`,`CH4`,`CH5`,`CH6`,`CH7`,`CH8`,`CH9`,`CH10`,`CH11`,`CH12`,`CH13`,`CH14`,`CH15`,`CH16`,`CH17`,`CH18`,`CH19`,`CH20`,`CH21`,`CH22` from n_rili_data
-        <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
-		  		  <if test="time != null and time != ''"> and time = #{time} </if>
-		  		  <if test="synchronizationMark != null and synchronizationMark != ''"> and synchronization_mark = #{synchronizationMark} </if>
-		  		  <if test="externalTriggerMark != null and externalTriggerMark != ''"> and external_trigger_mark = #{externalTriggerMark} </if>
-		  		  <if test="ch1 != null and ch1 != ''"> and CH1 = #{ch1} </if>
-		  		  <if test="ch2 != null and ch2 != ''"> and CH2 = #{ch2} </if>
-		  		  <if test="ch3 != null and ch3 != ''"> and CH3 = #{ch3} </if>
-		  		  <if test="ch4 != null and ch4 != ''"> and CH4 = #{ch4} </if>
-		  		  <if test="ch5 != null and ch5 != ''"> and CH5 = #{ch5} </if>
-		  		  <if test="ch6 != null and ch6 != ''"> and CH6 = #{ch6} </if>
-		  		  <if test="ch7 != null and ch7 != ''"> and CH7 = #{ch7} </if>
-		  		  <if test="ch8 != null and ch8 != ''"> and CH8 = #{ch8} </if>
-		  		  <if test="ch9 != null and ch9 != ''"> and CH9 = #{ch9} </if>
-		  		  <if test="ch10 != null and ch10 != ''"> and CH10 = #{ch10} </if>
-		  		  <if test="ch11 != null and ch11 != ''"> and CH11 = #{ch11} </if>
-		  		  <if test="ch12 != null and ch12 != ''"> and CH12 = #{ch12} </if>
-		  		  <if test="ch13 != null and ch13 != ''"> and CH13 = #{ch13} </if>
-		  		  <if test="ch14 != null and ch14 != ''"> and CH14 = #{ch14} </if>
-		  		  <if test="ch15 != null and ch15 != ''"> and CH15 = #{ch15} </if>
-		  		  <if test="ch16 != null and ch16 != ''"> and CH16 = #{ch16} </if>
-		  		  <if test="ch17 != null and ch17 != ''"> and CH17 = #{ch17} </if>
-		  		  <if test="ch18 != null and ch18 != ''"> and CH18 = #{ch18} </if>
-		  		  <if test="ch19 != null and ch19 != ''"> and CH19 = #{ch19} </if>
-		  		  <if test="ch20 != null and ch20 != ''"> and CH20 = #{ch20} </if>
-		  		  <if test="ch21 != null and ch21 != ''"> and CH21 = #{ch21} </if>
-		  		  <if test="ch22 != null and ch22 != ''"> and CH22 = #{ch22} </if>
-		  		</where>
+    <select id="list" resultType="com.naoshili.information.domain.RiliDataDO">
+        select
+        `id`,`data_id`,`time`,`experimental_mode`,`synchronization_mark`,`external_trigger_mark`,`type`,`CH1`,`CH2`,`CH3`,`CH4`,`CH5`,`CH6`,`CH7`,`CH8`,`CH9`,`CH10`,`CH11`,`CH12`,`CH13`,`CH14`,`CH15`,`CH16`,`CH17`,`CH18`,`CH19`,`CH20`,`CH21`,`CH22`
+        from n_rili_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+            <if test="synchronizationMark != null and synchronizationMark != ''">and synchronization_mark =
+                #{synchronizationMark}
+            </if>
+            <if test="externalTriggerMark != null and externalTriggerMark != ''">and external_trigger_mark =
+                #{externalTriggerMark}
+            </if>
+            <if test="type != null and type != ''">and type = #{type}</if>
+            <if test="ch1 != null and ch1 != ''">and CH1 = #{ch1}</if>
+            <if test="ch2 != null and ch2 != ''">and CH2 = #{ch2}</if>
+            <if test="ch3 != null and ch3 != ''">and CH3 = #{ch3}</if>
+            <if test="ch4 != null and ch4 != ''">and CH4 = #{ch4}</if>
+            <if test="ch5 != null and ch5 != ''">and CH5 = #{ch5}</if>
+            <if test="ch6 != null and ch6 != ''">and CH6 = #{ch6}</if>
+            <if test="ch7 != null and ch7 != ''">and CH7 = #{ch7}</if>
+            <if test="ch8 != null and ch8 != ''">and CH8 = #{ch8}</if>
+            <if test="ch9 != null and ch9 != ''">and CH9 = #{ch9}</if>
+            <if test="ch10 != null and ch10 != ''">and CH10 = #{ch10}</if>
+            <if test="ch11 != null and ch11 != ''">and CH11 = #{ch11}</if>
+            <if test="ch12 != null and ch12 != ''">and CH12 = #{ch12}</if>
+            <if test="ch13 != null and ch13 != ''">and CH13 = #{ch13}</if>
+            <if test="ch14 != null and ch14 != ''">and CH14 = #{ch14}</if>
+            <if test="ch15 != null and ch15 != ''">and CH15 = #{ch15}</if>
+            <if test="ch16 != null and ch16 != ''">and CH16 = #{ch16}</if>
+            <if test="ch17 != null and ch17 != ''">and CH17 = #{ch17}</if>
+            <if test="ch18 != null and ch18 != ''">and CH18 = #{ch18}</if>
+            <if test="ch19 != null and ch19 != ''">and CH19 = #{ch19}</if>
+            <if test="ch20 != null and ch20 != ''">and CH20 = #{ch20}</if>
+            <if test="ch21 != null and ch21 != ''">and CH21 = #{ch21}</if>
+            <if test="ch22 != null and ch22 != ''">and CH22 = #{ch22}</if>
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 order by id desc
-			</otherwise>
+            </otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-	
- 	<select id="count" resultType="int">
-		select count(*) from n_rili_data
-		 <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
-		  		  <if test="time != null and time != ''"> and time = #{time} </if>
-		  		  <if test="synchronizationMark != null and synchronizationMark != ''"> and synchronization_mark = #{synchronizationMark} </if>
-		  		  <if test="externalTriggerMark != null and externalTriggerMark != ''"> and external_trigger_mark = #{externalTriggerMark} </if>
-		  		  <if test="ch1 != null and ch1 != ''"> and CH1 = #{ch1} </if>
-		  		  <if test="ch2 != null and ch2 != ''"> and CH2 = #{ch2} </if>
-		  		  <if test="ch3 != null and ch3 != ''"> and CH3 = #{ch3} </if>
-		  		  <if test="ch4 != null and ch4 != ''"> and CH4 = #{ch4} </if>
-		  		  <if test="ch5 != null and ch5 != ''"> and CH5 = #{ch5} </if>
-		  		  <if test="ch6 != null and ch6 != ''"> and CH6 = #{ch6} </if>
-		  		  <if test="ch7 != null and ch7 != ''"> and CH7 = #{ch7} </if>
-		  		  <if test="ch8 != null and ch8 != ''"> and CH8 = #{ch8} </if>
-		  		  <if test="ch9 != null and ch9 != ''"> and CH9 = #{ch9} </if>
-		  		  <if test="ch10 != null and ch10 != ''"> and CH10 = #{ch10} </if>
-		  		  <if test="ch11 != null and ch11 != ''"> and CH11 = #{ch11} </if>
-		  		  <if test="ch12 != null and ch12 != ''"> and CH12 = #{ch12} </if>
-		  		  <if test="ch13 != null and ch13 != ''"> and CH13 = #{ch13} </if>
-		  		  <if test="ch14 != null and ch14 != ''"> and CH14 = #{ch14} </if>
-		  		  <if test="ch15 != null and ch15 != ''"> and CH15 = #{ch15} </if>
-		  		  <if test="ch16 != null and ch16 != ''"> and CH16 = #{ch16} </if>
-		  		  <if test="ch17 != null and ch17 != ''"> and CH17 = #{ch17} </if>
-		  		  <if test="ch18 != null and ch18 != ''"> and CH18 = #{ch18} </if>
-		  		  <if test="ch19 != null and ch19 != ''"> and CH19 = #{ch19} </if>
-		  		  <if test="ch20 != null and ch20 != ''"> and CH20 = #{ch20} </if>
-		  		  <if test="ch21 != null and ch21 != ''"> and CH21 = #{ch21} </if>
-		  		  <if test="ch22 != null and ch22 != ''"> and CH22 = #{ch22} </if>
-		  		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.naoshili.information.domain.RiliDataDO" useGeneratedKeys="true" keyProperty="id">
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from n_rili_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+            <if test="synchronizationMark != null and synchronizationMark != ''">and synchronization_mark =
+                #{synchronizationMark}
+            </if>
+            <if test="externalTriggerMark != null and externalTriggerMark != ''">and external_trigger_mark =
+                #{externalTriggerMark}
+            </if>
+            <if test="type != null and type != ''">and type = #{type}</if>
+            <if test="ch1 != null and ch1 != ''">and CH1 = #{ch1}</if>
+            <if test="ch2 != null and ch2 != ''">and CH2 = #{ch2}</if>
+            <if test="ch3 != null and ch3 != ''">and CH3 = #{ch3}</if>
+            <if test="ch4 != null and ch4 != ''">and CH4 = #{ch4}</if>
+            <if test="ch5 != null and ch5 != ''">and CH5 = #{ch5}</if>
+            <if test="ch6 != null and ch6 != ''">and CH6 = #{ch6}</if>
+            <if test="ch7 != null and ch7 != ''">and CH7 = #{ch7}</if>
+            <if test="ch8 != null and ch8 != ''">and CH8 = #{ch8}</if>
+            <if test="ch9 != null and ch9 != ''">and CH9 = #{ch9}</if>
+            <if test="ch10 != null and ch10 != ''">and CH10 = #{ch10}</if>
+            <if test="ch11 != null and ch11 != ''">and CH11 = #{ch11}</if>
+            <if test="ch12 != null and ch12 != ''">and CH12 = #{ch12}</if>
+            <if test="ch13 != null and ch13 != ''">and CH13 = #{ch13}</if>
+            <if test="ch14 != null and ch14 != ''">and CH14 = #{ch14}</if>
+            <if test="ch15 != null and ch15 != ''">and CH15 = #{ch15}</if>
+            <if test="ch16 != null and ch16 != ''">and CH16 = #{ch16}</if>
+            <if test="ch17 != null and ch17 != ''">and CH17 = #{ch17}</if>
+            <if test="ch18 != null and ch18 != ''">and CH18 = #{ch18}</if>
+            <if test="ch19 != null and ch19 != ''">and CH19 = #{ch19}</if>
+            <if test="ch20 != null and ch20 != ''">and CH20 = #{ch20}</if>
+            <if test="ch21 != null and ch21 != ''">and CH21 = #{ch21}</if>
+            <if test="ch22 != null and ch22 != ''">and CH22 = #{ch22}</if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.RiliDataDO" useGeneratedKeys="true"
+            keyProperty="id">
 		insert into n_rili_data
 		(
-			`data_id`, 
-			`time`, 
-			`synchronization_mark`, 
-			`external_trigger_mark`, 
-			`CH1`, 
-			`CH2`, 
-			`CH3`, 
-			`CH4`, 
-			`CH5`, 
-			`CH6`, 
-			`CH7`, 
-			`CH8`, 
-			`CH9`, 
-			`CH10`, 
-			`CH11`, 
-			`CH12`, 
-			`CH13`, 
-			`CH14`, 
-			`CH15`, 
-			`CH16`, 
-			`CH17`, 
-			`CH18`, 
-			`CH19`, 
-			`CH20`, 
-			`CH21`, 
+			`data_id`,
+			`time`,
+			`experimental_mode`,
+			`synchronization_mark`,
+			`external_trigger_mark`,
+			`type`,
+			`CH1`,
+			`CH2`,
+			`CH3`,
+			`CH4`,
+			`CH5`,
+			`CH6`,
+			`CH7`,
+			`CH8`,
+			`CH9`,
+			`CH10`,
+			`CH11`,
+			`CH12`,
+			`CH13`,
+			`CH14`,
+			`CH15`,
+			`CH16`,
+			`CH17`,
+			`CH18`,
+			`CH19`,
+			`CH20`,
+			`CH21`,
 			`CH22`
 		)
 		values
 		(
-			#{dataId}, 
-			#{time}, 
-			#{synchronizationMark}, 
-			#{externalTriggerMark}, 
-			#{ch1}, 
-			#{ch2}, 
-			#{ch3}, 
-			#{ch4}, 
-			#{ch5}, 
-			#{ch6}, 
-			#{ch7}, 
-			#{ch8}, 
-			#{ch9}, 
-			#{ch10}, 
-			#{ch11}, 
-			#{ch12}, 
-			#{ch13}, 
-			#{ch14}, 
-			#{ch15}, 
-			#{ch16}, 
-			#{ch17}, 
-			#{ch18}, 
-			#{ch19}, 
-			#{ch20}, 
-			#{ch21}, 
+			#{dataId},
+			#{time},
+			#{experimentalMode},
+			#{synchronizationMark},
+			#{externalTriggerMark},
+			#{type},
+			#{ch1},
+			#{ch2},
+			#{ch3},
+			#{ch4},
+			#{ch5},
+			#{ch6},
+			#{ch7},
+			#{ch8},
+			#{ch9},
+			#{ch10},
+			#{ch11},
+			#{ch12},
+			#{ch13},
+			#{ch14},
+			#{ch15},
+			#{ch16},
+			#{ch17},
+			#{ch18},
+			#{ch19},
+			#{ch20},
+			#{ch21},
 			#{ch22}
 		)
 	</insert>
-	 
-	<update id="update" parameterType="com.naoshili.information.domain.RiliDataDO">
-		update n_rili_data 
-		<set>
-			<if test="dataId != null">`data_id` = #{dataId}, </if>
-			<if test="time != null">`time` = #{time}, </if>
-			<if test="synchronizationMark != null">`synchronization_mark` = #{synchronizationMark}, </if>
-			<if test="externalTriggerMark != null">`external_trigger_mark` = #{externalTriggerMark}, </if>
-			<if test="ch1 != null">`CH1` = #{ch1}, </if>
-			<if test="ch2 != null">`CH2` = #{ch2}, </if>
-			<if test="ch3 != null">`CH3` = #{ch3}, </if>
-			<if test="ch4 != null">`CH4` = #{ch4}, </if>
-			<if test="ch5 != null">`CH5` = #{ch5}, </if>
-			<if test="ch6 != null">`CH6` = #{ch6}, </if>
-			<if test="ch7 != null">`CH7` = #{ch7}, </if>
-			<if test="ch8 != null">`CH8` = #{ch8}, </if>
-			<if test="ch9 != null">`CH9` = #{ch9}, </if>
-			<if test="ch10 != null">`CH10` = #{ch10}, </if>
-			<if test="ch11 != null">`CH11` = #{ch11}, </if>
-			<if test="ch12 != null">`CH12` = #{ch12}, </if>
-			<if test="ch13 != null">`CH13` = #{ch13}, </if>
-			<if test="ch14 != null">`CH14` = #{ch14}, </if>
-			<if test="ch15 != null">`CH15` = #{ch15}, </if>
-			<if test="ch16 != null">`CH16` = #{ch16}, </if>
-			<if test="ch17 != null">`CH17` = #{ch17}, </if>
-			<if test="ch18 != null">`CH18` = #{ch18}, </if>
-			<if test="ch19 != null">`CH19` = #{ch19}, </if>
-			<if test="ch20 != null">`CH20` = #{ch20}, </if>
-			<if test="ch21 != null">`CH21` = #{ch21}, </if>
-			<if test="ch22 != null">`CH22` = #{ch22}</if>
-		</set>
-		where id = #{id}
-	</update>
-	
-	<delete id="remove">
+
+    <update id="update" parameterType="com.naoshili.information.domain.RiliDataDO">
+        update n_rili_data
+        <set>
+            <if test="dataId != null">`data_id` = #{dataId},</if>
+            <if test="time != null">`time` = #{time},</if>
+            <if test="experimentalMode != null">`experimental_mode` = #{experimentalMode},</if>
+            <if test="synchronizationMark != null">`synchronization_mark` = #{synchronizationMark},</if>
+            <if test="externalTriggerMark != null">`external_trigger_mark` = #{externalTriggerMark},</if>
+            <if test="type != null">`type` = #{type},</if>
+            <if test="ch1 != null">`CH1` = #{ch1},</if>
+            <if test="ch2 != null">`CH2` = #{ch2},</if>
+            <if test="ch3 != null">`CH3` = #{ch3},</if>
+            <if test="ch4 != null">`CH4` = #{ch4},</if>
+            <if test="ch5 != null">`CH5` = #{ch5},</if>
+            <if test="ch6 != null">`CH6` = #{ch6},</if>
+            <if test="ch7 != null">`CH7` = #{ch7},</if>
+            <if test="ch8 != null">`CH8` = #{ch8},</if>
+            <if test="ch9 != null">`CH9` = #{ch9},</if>
+            <if test="ch10 != null">`CH10` = #{ch10},</if>
+            <if test="ch11 != null">`CH11` = #{ch11},</if>
+            <if test="ch12 != null">`CH12` = #{ch12},</if>
+            <if test="ch13 != null">`CH13` = #{ch13},</if>
+            <if test="ch14 != null">`CH14` = #{ch14},</if>
+            <if test="ch15 != null">`CH15` = #{ch15},</if>
+            <if test="ch16 != null">`CH16` = #{ch16},</if>
+            <if test="ch17 != null">`CH17` = #{ch17},</if>
+            <if test="ch18 != null">`CH18` = #{ch18},</if>
+            <if test="ch19 != null">`CH19` = #{ch19},</if>
+            <if test="ch20 != null">`CH20` = #{ch20},</if>
+            <if test="ch21 != null">`CH21` = #{ch21},</if>
+            <if test="ch22 != null">`CH22` = #{ch22}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
 		delete from n_rili_data where id = #{value}
 	</delete>
-	
-	<delete id="batchRemove">
-		delete from n_rili_data where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
+    <delete id="batchRemove">
+        delete from n_rili_data where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <insert id="insertList">
+        insert into n_rili_data
+        (
+        `data_id`,
+        `time`,
+        `synchronization_mark`,
+        `external_trigger_mark`,
+        `type`,
+        `CH1`,
+        `CH2`,
+        `CH3`,
+        `CH4`,
+        `CH5`,
+        `CH6`,
+        `CH7`,
+        `CH8`,
+        `CH9`,
+        `CH10`,
+        `CH11`,
+        `CH12`,
+        `CH13`,
+        `CH14`,
+        `CH15`,
+        `CH16`,
+        `CH17`,
+        `CH18`,
+        `CH19`,
+        `CH20`,
+        `CH21`,
+        `CH22`
+        )
+        values
+        <foreach collection="riliDataDOList" item="item" separator=",">
+            (
+            #{item.dataId},
+            #{item.time},
+            #{item.synchronizationMark},
+            #{item.externalTriggerMark},
+            #{item.type},
+            #{item.ch1},
+            #{item.ch2},
+            #{item.ch3},
+            #{item.ch4},
+            #{item.ch5},
+            #{item.ch6},
+            #{item.ch7},
+            #{item.ch8},
+            #{item.ch9},
+            #{item.ch10},
+            #{item.ch11},
+            #{item.ch12},
+            #{item.ch13},
+            #{item.ch14},
+            #{item.ch15},
+            #{item.ch16},
+            #{item.ch17},
+            #{item.ch18},
+            #{item.ch19},
+            #{item.ch20},
+            #{item.ch21},
+            #{item.ch22}
+            )
+
+        </foreach>
+
+    </insert>
+
 
 </mapper>

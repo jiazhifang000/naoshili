@@ -6,7 +6,6 @@ import com.naoshili.common.utils.MD5Utils;
 import com.naoshili.common.utils.R;
 import com.naoshili.common.utils.ShiroUtils;
 import com.naoshili.information.domain.UserBasicDO;
-import com.naoshili.information.domain.UserEyeDataDO;
 import com.naoshili.information.service.UserBasicService;
 import com.naoshili.information.service.UserEyeDataService;
 import org.apache.shiro.SecurityUtils;
@@ -43,7 +42,7 @@ public class LoginController extends BaseController {
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
-            return R.ok("登录成功");
+            return R.data(getUser());
         } catch (AuthenticationException e) {
             return R.error("用户或密码错误");
         }
@@ -60,43 +59,18 @@ public class LoginController extends BaseController {
     @Log("获取用户信息")
     @GetMapping("/getUserInfo")
     @ResponseBody
-    R getUserInfo(String name) {
-        Map<String,Object> params  = new HashMap<>();
-        params.put("name",name);
-        List<UserBasicDO> userBasicDOList = userBasicService.list(params);
-
-        for (UserBasicDO userBasicDO : userBasicDOList) {
-            if(userBasicDO != null){
-                params.remove("name");
-                params.put("uid",userBasicDO.getId());
-                List<UserEyeDataDO> userEyeDataDOList = userEyeDataService.list(params);
-                for (UserEyeDataDO userEyeDataDO : userEyeDataDOList) {
-                    //左、右眼球径
-                    userBasicDO.setlEyeballDiameter1(userEyeDataDO.getlEyeballDiameter());
-                    userBasicDO.setrEyeballDiameter1(userEyeDataDO.getrEyeballDiameter());
-                    //左、右眼柱径
-                    userBasicDO.setlEyepillarDiameter1(userEyeDataDO.getlEyepillarDiameter());
-                    userBasicDO.setrEyepillarDiameter1(userEyeDataDO.getrEyepillarDiameter());
-                    //左、右眼眼轴
-                    userBasicDO.setlEyeAxis1(userEyeDataDO.getlEyeAxis());
-                    userBasicDO.setrEyeAxis1(userEyeDataDO.getrEyeAxis());
-                    //左、右眼验光
-                    userBasicDO.setlEyeOptometry1(userEyeDataDO.getlEyeOptometry());
-                    userBasicDO.setrEyeOptometry1(userEyeDataDO.getrEyeOptometry());
-                    //左、右眼裸眼视力
-                    userBasicDO.setlEyeNakedVision1(userEyeDataDO.getlEyeNakedVision());
-                    userBasicDO.setrEyeNakedVision1(userEyeDataDO.getrEyeNakedVision());
-                    //左、右眼戴镜视力
-                    userBasicDO.setlEyeGlassesVision1(userEyeDataDO.getLEyeGlassesVision());
-                    userBasicDO.setrEyeGlassesVision1(userEyeDataDO.getrEyeGlassesVision());
-                    //视镜片到角膜距离
-                    userBasicDO.setGlassToCornea1(userEyeDataDO.getGlassToCornea());
-                    //视镜片屈光度
-                    userBasicDO.setGlassDiopter1(userEyeDataDO.getGlassDiopter());
-                }
-
-            }
+    R getUserInfo(String name, String id, String idCard) {
+        Map<String, Object> params = new HashMap<>();
+        if (name != null) {
+            params.put("name", name);
         }
+        if (id != null) {
+            params.put("id", id);
+        }
+        if (idCard != null) {
+            params.put("idCard", idCard);
+        }
+        List<UserBasicDO> userBasicDOList = userBasicService.listLike(params);
 
         return R.data(userBasicDOList);
     }
