@@ -49,8 +49,8 @@ function load() {
                         checkbox: true
                     },*/
                     {
-                        field: 'id',
-                        title: '序号',
+                        field: 'userId',
+                        title: 'userId',
                         align: 'center'
                     },
                     {
@@ -69,7 +69,7 @@ function load() {
                         align: 'center',
                         formatter: function (value, row, index) {
                             var e = '<a class="btn btn-primary btn-lg" href="#" mce_href="#" title="数据记录" onclick="detail(\''
-                                + row.id
+                                + row.userId
                                 + '\')"><i class="fa fa-database"></i></a> ';
                             return e;
                         }

@@ -40,6 +40,9 @@ function validateRule() {
 
     $("#signupForm").validate({
         rules: {
+        	userId: {
+                required: true
+            },
             name: {
                 required: true
             },
@@ -63,6 +66,9 @@ function validateRule() {
             }
         },
         messages: {
+        	userId: {
+                required: icon + "请输入userId"
+            },
             name: {
                 required: icon + "请输入姓名"
             },

@@ -34,7 +34,8 @@ function load() {
                         //说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
                         limit: params.limit,
                         offset: params.offset,
-                        idCard:$('#idCard').val(),
+                        //idCard:$('#idCard').val(),
+                        userId:$("#userId").val(),
                         id:$("#id").val()
                         // name:$('#searchName').val(),
                         // username:$('#searchName').val()
@@ -54,16 +55,16 @@ function load() {
                         field : 'id',
                         title : '单次序号'
                     },
-                    {
+                    /*{
                         field : 'idCard',
                         title : '身份证'
                     },
-                    /*						{
+                   						{
                 field : 'collectionDate',
                 title : '采集日期'
             },
                 */							{
-                        field : 'collectionTime',
+                        field : 'collectionDate',
                         title : '采集时间'
                     },
                    /* {

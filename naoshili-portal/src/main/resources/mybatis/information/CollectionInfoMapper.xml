@@ -74,7 +74,7 @@
 		)
 		values
 		(
-			#{id},
+			#{id,jdbcType=VARCHAR},
 			#{userId},
 			#{loginId},
 			#{idCard},

@@ -15,6 +15,7 @@ public class CollectionInfoDO implements Serializable {
 
 	// id
 	private Long id;
+	private Long userId;
 	// 身份证
 	private String idCard;
 	// 采集日期
@@ -29,6 +30,17 @@ public class CollectionInfoDO implements Serializable {
 	private String deviceName;
 	// 精工平均屈光度
 	private Double avgDiopter;
+	
+	
+	
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
 	/**
 	 * 设置：id

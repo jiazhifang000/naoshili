@@ -17,6 +17,8 @@ public interface UserBasicDao {
 
 	UserBasicDO get(Long id);
 	
+	UserBasicDO getUserId(Long userId);
+	
 	List<UserBasicDO> list(Map<String,Object> map);
 	
 	int count(Map<String,Object> map);

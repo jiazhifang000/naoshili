@@ -92,7 +92,7 @@
     </delete>
 
 
-    <insert id="insertList">
+    <insert id="insertList" parameterType="java.util.List" >
         insert into n_jinggong_data
         (
         `data_id`,

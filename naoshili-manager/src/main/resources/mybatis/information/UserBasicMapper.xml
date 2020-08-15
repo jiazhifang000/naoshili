@@ -4,15 +4,20 @@
 <mapper namespace="com.naoshili.information.dao.UserBasicDao">
 
     <select id="get" resultType="com.naoshili.information.domain.UserBasicDO">
-		select `id`,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision` from n_user_basic where id = #{value}
+		select `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision` from n_user_basic where id = #{value}
+	</select>
+	
+	<select id="getUserId" resultType="com.naoshili.information.domain.UserBasicDO">
+		select `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision` from n_user_basic where user_id = #{value}
 	</select>
 
     <select id="list" resultType="com.naoshili.information.domain.UserBasicDO">
         select
-        `id`,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision`
+        `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision`
         from n_user_basic
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
             <if test="name != null and name != ''">and name = #{name}</if>
             <if test="idCard != null and idCard != ''">and id_card = #{idCard}</if>
             <if test="birthday != null and birthday != ''">and birthday = #{birthday}</if>
@@ -74,6 +79,7 @@
             keyProperty="id">
 		insert into n_user_basic
 		(
+			user_id,
 			`name`, 
 			`id_card`, 
 			`birthday`, 
@@ -95,6 +101,7 @@
 		)
 		values
 		(
+			#{userId},
 			#{name}, 
 			#{idCard}, 
 			#{birthday}, 

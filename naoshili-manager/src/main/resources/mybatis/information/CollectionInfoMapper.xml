@@ -4,13 +4,14 @@
 <mapper namespace="com.naoshili.information.dao.CollectionInfoDao">
 
 	<select id="get" resultType="com.naoshili.information.domain.CollectionInfoDO">
-		select `id`,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter` from n_collection_info where id = #{value}
+		select `id`,user_id,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter` from n_collection_info where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.naoshili.information.domain.CollectionInfoDO">
-		select `id`,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter` from n_collection_info
+		select `id`,user_id,`id_card`,`collection_date`,`collection_time`,`experimental_mode`,`responsible_doctor`,`device_name`,`avg_diopter` from n_collection_info
         <where>  
 		  		  <if test="id != null and id != ''"> and id like CONCAT('%', #{id},'%') </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
 		  		  <if test="idCard != null and idCard != ''"> and id_card like CONCAT('%', #{idCard},'%') </if>
 		  		  <if test="collectionDate != null and collectionDate != ''"> and collection_date = #{collectionDate} </if>
 		  		  <if test="collectionTime != null and collectionTime != ''"> and collection_time = #{collectionTime} </if>
@@ -36,6 +37,7 @@
 		select count(*) from n_collection_info
 		 <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
 		  		  <if test="idCard != null and idCard != ''"> and id_card = #{idCard} </if>
 		  		  <if test="collectionDate != null and collectionDate != ''"> and collection_date = #{collectionDate} </if>
 		  		  <if test="collectionTime != null and collectionTime != ''"> and collection_time = #{collectionTime} </if>

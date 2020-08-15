@@ -14,6 +14,8 @@ public class UserBasicDO implements Serializable {
 
     // id
     private Long id;
+    
+    private Long userId;
     //
     private String name;
     // 身份证
@@ -80,8 +82,19 @@ public class UserBasicDO implements Serializable {
     private Double lEyeGlassesVision1;
     // 右眼戴镜视力
     private Double rEyeGlassesVision1;
+    
+    
+    
 
-    public Double getGlassToCornea1() {
+    public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Double getGlassToCornea1() {
         return glassToCornea1;
     }
 

@@ -46,7 +46,7 @@ public class UserEyeDataController {
 		Query query = new Query(params);
 		List<UserEyeDataDO> userEyeDataList = userEyeDataService.list(query);
 		for (UserEyeDataDO userEyeDataDO : userEyeDataList) {
-			userEyeDataDO.setUname(userBasicService.get(userEyeDataDO.getUid()).getName());
+			userEyeDataDO.setUname(userBasicService.getUserId(userEyeDataDO.getUid()).getName());
 		}
 		int total = userEyeDataService.count(query);
 		PageUtils pageUtils = new PageUtils(userEyeDataList, total);
@@ -62,7 +62,7 @@ public class UserEyeDataController {
 	@GetMapping("/edit/{id}")
 	String edit(@PathVariable("id") Long id, Model model) {
 		UserEyeDataDO userEyeData = userEyeDataService.get(id);
-		userEyeData.setUname(userBasicService.get(userEyeData.getUid()).getName());
+		userEyeData.setUname(userBasicService.getUserId(userEyeData.getUid()).getName());
 		model.addAttribute("userEyeData", userEyeData);
 		return "information/userEyeData/edit";
 	}

@@ -105,6 +105,10 @@ public class UserBasicController {
 	@PostMapping("/save")
 	@RequiresPermissions("information:userBasic:add")
 	public R save(UserBasicDO userBasic) {
+		UserBasicDO userBasicDO = userBasicService.getUserId(userBasic.getUserId());
+		if(userBasicDO!=null){
+			return R.error("userId已存在");
+		}
 		System.out.println("====userBasic=============" + userBasic);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
@@ -122,7 +126,7 @@ public class UserBasicController {
 		}
 
 		if (userBasicService.save(userBasic) > 0) {
-			userEyeDataDO.setUid(userBasic.getId());
+			userEyeDataDO.setUid(userBasic.getUserId());
 			userEyeDataDO.setGlassToCornea(userBasic.getGlassToCornea1());
 			userEyeDataDO.setGlassDiopter(userBasic.getGlassDiopter1());
 			userEyeDataDO.setLEyeballDiameter(userBasic.getlEyeballDiameter1());
@@ -204,10 +208,11 @@ public class UserBasicController {
 
 	@GetMapping("/detail/{id}")
 	String detail(@PathVariable("id") Long id, Model model) {
-		UserBasicDO userBasic = userBasicService.get(id);
+		UserBasicDO userBasic = userBasicService.getUserId(id);
 
 		session.setAttribute("id",id);
-		model.addAttribute("idCard", userBasic.getIdCard());
+		model.addAttribute("id", id);
+		//model.addAttribute("idCard", userBasic.getIdCard());
 		return "information/userBasic/detail";
 	}
 
@@ -215,14 +220,14 @@ public class UserBasicController {
 	String allData(@PathVariable("id") Long id, Model model) {
 		System.out.println("========id============="+id);
 		Map<String,Object> params = new HashMap<>();
-		UserBasicDO userBasic = userBasicService.get(Long.parseLong(session.getAttribute("id").toString()));
+		UserBasicDO userBasic = userBasicService.getUserId(Long.parseLong(session.getAttribute("id").toString()));
 		//UserBasicDO userBasic = userBasicService.get(60L);
 		System.out.println("========userBasic============="+userBasic);
-		params.put("userId",Long.parseLong(session.getAttribute("id").toString()));
+		params.put("uid",Long.parseLong(session.getAttribute("id").toString()));
 		//params.put("userId",60);
 		List<UserEyeDataDO> userEyeDataDOList = userEyeDataService.list(params);
 
-		params.remove("userId");
+		params.remove("uid");
 		params.put("dataId",id);
 		List<JinggongDataDO> jinggongDataDOList = jinggongDataService.list(params);
 		List<RiliDataDO> riliDataDOList  = riliDataService.list(params);

@@ -19,7 +19,7 @@ public class ShibiaoDataDO implements Serializable {
 	// id
 	private Long id;
 	// 单次数据序号
-	private Long dataId;
+	private String dataId;
 	// 时间
 	private Date time;
 
@@ -51,14 +51,14 @@ public class ShibiaoDataDO implements Serializable {
 	/**
 	 * 设置：单次数据序号
 	 */
-	public void setDataId(Long dataId) {
+	public void setDataId(String dataId) {
 		this.dataId = dataId;
 	}
 
 	/**
 	 * 获取：单次数据序号
 	 */
-	public Long getDataId() {
+	public String getDataId() {
 		return dataId;
 	}
 

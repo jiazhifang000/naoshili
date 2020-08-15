@@ -77,40 +77,50 @@ public class UserBasicServiceImpl implements UserBasicService {
                 for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
                     try {
                         row = sheet.getRow(rowNum);
-                        String phone = ExcelUtils.getCellFormatValue(row.getCell((short) 0));            //手机号
-                        String name = ExcelUtils.getCellFormatValue(row.getCell((short) 1));        //姓名
-                        String idCard = ExcelUtils.getCellFormatValue(row.getCell((short) 2));        //身份证号
-                        String gender = ExcelUtils.getCellFormatValue(row.getCell((short) 3));            //性别
-                        String school = ExcelUtils.getCellFormatValue(row.getCell((short) 4));            //学校
-                        String grade = ExcelUtils.getCellFormatValue(row.getCell((short) 5));        //年级
-                        String classname = ExcelUtils.getCellFormatValue(row.getCell((short) 6));        //班级
-                        String contacts = ExcelUtils.getCellFormatValue(row.getCell((short) 7));        //联系人
-                        String getupTime = ExcelUtils.getCellFormatValue(row.getCell((short) 8));        //起床时间
-                        String sleepTime = ExcelUtils.getCellFormatValue(row.getCell((short) 9));        //睡觉时间
-                        String hobby = ExcelUtils.getCellFormatValue(row.getCell((short) 10));        //爱好
-                        String readTime = ExcelUtils.getCellFormatValue(row.getCell((short) 11));        //每天大约阅读时间
-                        String fatherLvision = ExcelUtils.getCellFormatValue(row.getCell((short) 12));        //父亲左眼视力
-                        String fatherRvision = ExcelUtils.getCellFormatValue(row.getCell((short) 13));        //父亲右眼视力
-                        String matherLvision = ExcelUtils.getCellFormatValue(row.getCell((short) 14));        //母亲左眼视力
-                        String matherRvision = ExcelUtils.getCellFormatValue(row.getCell((short) 15));        //母亲右眼视力
-                        String lEyeballDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 16));        //左眼球径
-                        String rEyeballDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 17));        //右眼球径
-                        String lEyepillarDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 18));        //左眼柱径
-                        String rEyepillarDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 19));        //右眼柱径
-                        String lEyeAxis = ExcelUtils.getCellFormatValue(row.getCell((short) 20));        //左眼轴
-                        String rEyeAxis = ExcelUtils.getCellFormatValue(row.getCell((short) 21));        //右眼轴
-                        String lEyeOptometry = ExcelUtils.getCellFormatValue(row.getCell((short) 22));        //左眼验光
-                        String rEyeOptometry = ExcelUtils.getCellFormatValue(row.getCell((short) 23));        //右眼验光
-                        String lEyeNakedVision = ExcelUtils.getCellFormatValue(row.getCell((short) 24));        //左眼裸眼视力
-                        String rEyeNakedVision = ExcelUtils.getCellFormatValue(row.getCell((short) 25));        //右眼裸眼视力
-                        String lEyeGlassesVision = ExcelUtils.getCellFormatValue(row.getCell((short) 26));        //左眼戴镜视力
-                        String rEyeGlassesVision = ExcelUtils.getCellFormatValue(row.getCell((short) 27));        //右眼戴镜视力
-                        String glassToCornea = ExcelUtils.getCellFormatValue(row.getCell((short) 28));        //视镜到角膜的距离（厘米）
-                        String glassDiopter = ExcelUtils.getCellFormatValue(row.getCell((short) 29));        //视镜屈光度
+                        String userId = ExcelUtils.getCellFormatValue(row.getCell((short) 0)); 
+                        String phone = ExcelUtils.getCellFormatValue(row.getCell((short) 1));            //手机号
+                        String name = ExcelUtils.getCellFormatValue(row.getCell((short) 2));        //姓名
+                        String idCard = ExcelUtils.getCellFormatValue(row.getCell((short) 3));        //身份证号
+                        String gender = ExcelUtils.getCellFormatValue(row.getCell((short) 4));            //性别
+                        String school = ExcelUtils.getCellFormatValue(row.getCell((short) 5));            //学校
+                        String grade = ExcelUtils.getCellFormatValue(row.getCell((short) 6));        //年级
+                        String classname = ExcelUtils.getCellFormatValue(row.getCell((short) 7));        //班级
+                        String contacts = ExcelUtils.getCellFormatValue(row.getCell((short) 8));        //联系人
+                        String getupTime = ExcelUtils.getCellFormatValue(row.getCell((short) 9));        //起床时间
+                        String sleepTime = ExcelUtils.getCellFormatValue(row.getCell((short) 10));        //睡觉时间
+                        String hobby = ExcelUtils.getCellFormatValue(row.getCell((short) 11));        //爱好
+                        String readTime = ExcelUtils.getCellFormatValue(row.getCell((short) 12));        //每天大约阅读时间
+                        String fatherLvision = ExcelUtils.getCellFormatValue(row.getCell((short) 13));        //父亲左眼视力
+                        String fatherRvision = ExcelUtils.getCellFormatValue(row.getCell((short) 14));        //父亲右眼视力
+                        String matherLvision = ExcelUtils.getCellFormatValue(row.getCell((short) 15));        //母亲左眼视力
+                        String matherRvision = ExcelUtils.getCellFormatValue(row.getCell((short) 16));        //母亲右眼视力
+                        String lEyeballDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 17));        //左眼球径
+                        String rEyeballDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 18));        //右眼球径
+                        String lEyepillarDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 19));        //左眼柱径
+                        String rEyepillarDiameter = ExcelUtils.getCellFormatValue(row.getCell((short) 20));        //右眼柱径
+                        String lEyeAxis = ExcelUtils.getCellFormatValue(row.getCell((short) 21));        //左眼轴
+                        String rEyeAxis = ExcelUtils.getCellFormatValue(row.getCell((short) 22));        //右眼轴
+                        String lEyeOptometry = ExcelUtils.getCellFormatValue(row.getCell((short) 23));        //左眼验光
+                        String rEyeOptometry = ExcelUtils.getCellFormatValue(row.getCell((short) 24));        //右眼验光
+                        String lEyeNakedVision = ExcelUtils.getCellFormatValue(row.getCell((short) 25));        //左眼裸眼视力
+                        String rEyeNakedVision = ExcelUtils.getCellFormatValue(row.getCell((short) 26));        //右眼裸眼视力
+                        String lEyeGlassesVision = ExcelUtils.getCellFormatValue(row.getCell((short) 27));        //左眼戴镜视力
+                        String rEyeGlassesVision = ExcelUtils.getCellFormatValue(row.getCell((short) 28));        //右眼戴镜视力
+                        String glassToCornea = ExcelUtils.getCellFormatValue(row.getCell((short) 29));        //视镜到角膜的距离（厘米）
+                        String glassDiopter = ExcelUtils.getCellFormatValue(row.getCell((short) 30));        //视镜屈光度
 
                         UserBasicDO userBasicDO = new UserBasicDO();
                         UserEyeDataDO userEyeDataDO = new UserEyeDataDO();
 
+                        Map<String,Object> mapp = new HashMap<String, Object>();
+                        mapp.put("userId", Long.parseLong(userId));
+                        
+                        if(userId != null && userId != null && userBasicDao.list(mapp).size()<=0){
+                        	userBasicDO.setUserId(Long.parseLong(userId));
+                        }else{
+                        	errnum.add(rowNum);
+                            continue;
+                        }
                         if (phone != null && phone != "") {
                             userBasicDO.setPhone(phone);
                         } else {
@@ -233,7 +243,7 @@ public class UserBasicServiceImpl implements UserBasicService {
                             params.put("phone", phone);
                             if (!exit(params)) {
                                 if(userBasicDao.save(userBasicDO)>0){
-                                    userEyeDataDO.setUid(userBasicDO.getId());
+                                    userEyeDataDO.setUid(Long.parseLong(userId));
                                     userEyeDataDao.save(userEyeDataDO);
                                 }
                             }
@@ -245,7 +255,7 @@ public class UserBasicServiceImpl implements UserBasicService {
                     }
                 }
                 if (errnum.size() > 0) {
-                    return R.ok("上传成功,共增加[" + num + "]条,第" + errnum + "条上传失败，手机号或身份证号已存在");
+                    return R.ok("上传成功,共增加[" + num + "]条,第" + errnum + "条上传失败，userId,手机号或身份证号已存在");
                 } else {
                     return R.ok("上传成功,共增加[" + num + "]条");
                 }
@@ -286,4 +296,9 @@ public class UserBasicServiceImpl implements UserBasicService {
         Integer yyyy = Integer.parseInt(day.substring(0, 4));
         return yyyy;
     }
+
+	@Override
+	public UserBasicDO getUserId(Long userId) {
+		return userBasicDao.getUserId(userId);
+	}
 }
