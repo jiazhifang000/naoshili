@@ -25,7 +25,7 @@ public class CollectionInfoDO implements Serializable {
     private Date collectionDate;
     // 采集时间
     private Date collectionTime;
-    // 实验方式
+    // 实验方式 1=运动静止 2=运动实时 3=交替闪烁
     private Long experimentalMode;
     // 负责医生
     private String responsibleDoctor;
