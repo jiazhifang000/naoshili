@@ -105,22 +105,26 @@
         (
         `data_id`,
         `time`,
+        `experimental_mode`,
         `localtion`,
         `speed`,
         `visual_standard1`,
         `visual_standard2`,
-        `visual_standard3`
+        `visual_standard3`,
+        add_time
         )
         values
         <foreach collection="shibiaoDataDOList" item="item" separator=",">
             (
             #{item.dataId},
             #{item.time},
+            #{item.experimentalMode},
             #{item.localtion},
             #{item.speed},
             #{item.visualStandard1},
             #{item.visualStandard2},
-            #{item.visualStandard3}
+            #{item.visualStandard3},
+            #{item.addTime}
             )
         </foreach>
     </insert>

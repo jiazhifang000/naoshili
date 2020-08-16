@@ -219,6 +219,7 @@
         (
         `data_id`,
         `time`,
+        `experimental_mode`,
         `synchronization_mark`,
         `external_trigger_mark`,
         `type`,
@@ -243,13 +244,15 @@
         `CH19`,
         `CH20`,
         `CH21`,
-        `CH22`
+        `CH22`,
+        add_time
         )
         values
         <foreach collection="riliDataDOList" item="item" separator=",">
             (
             #{item.dataId},
             #{item.time},
+            #{item.experimentalMode},
             #{item.synchronizationMark},
             #{item.externalTriggerMark},
             #{item.type},
@@ -274,7 +277,8 @@
             #{item.ch19},
             #{item.ch20},
             #{item.ch21},
-            #{item.ch22}
+            #{item.ch22},
+            #{item.addTime}
             )
 
         </foreach>
