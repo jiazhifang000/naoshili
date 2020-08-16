@@ -13,6 +13,9 @@ import com.naoshili.information.domain.ShibiaoDataDO;
 import com.naoshili.information.domain.UserBasicDO;
 import com.naoshili.information.domain.UserEyeDataDO;
 import com.naoshili.information.service.CollectionInfoService;
+
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -38,9 +41,11 @@ public class CollectionInfoServiceImpl implements CollectionInfoService {
     @Transactional
     @Override
     public int saveData(AllDataDO allDataDO) {
+    	Date date = new Date();
         int result1 = 0;
         if (allDataDO != null) {
             if (allDataDO.getInfo() != null) {
+            	allDataDO.getInfo().setAddTime(date);
                 result1 += collectionInfoDao.save(allDataDO.getInfo());
                 UserBasicDO userBasicDO = userBasicDao.get(allDataDO.getInfo().getUserId());
                 if(userBasicDO==null){
@@ -56,6 +61,8 @@ public class CollectionInfoServiceImpl implements CollectionInfoService {
             if (allDataDO.getJinggongDataDOList() != null && allDataDO.getJinggongDataDOList().size()>0) {
                 for (JinggongDataDO jinggongDataDO : allDataDO.getJinggongDataDOList()) {
                     if (allDataDO.getInfo() != null) {
+                    	jinggongDataDO.setAddTime(date);
+                    	jinggongDataDO.setExperimentalMode(allDataDO.getInfo().getExperimentalMode());
                         jinggongDataDO.setDataId(allDataDO.getInfo().getId());
                     }
                 }
@@ -64,6 +71,8 @@ public class CollectionInfoServiceImpl implements CollectionInfoService {
             if (allDataDO.getRiliDataDOList() != null && allDataDO.getRiliDataDOList().size()>0) {
                 for (RiliDataDO riliDataDO : allDataDO.getRiliDataDOList()) {
                     if (allDataDO.getInfo() != null) {
+                    	riliDataDO.setAddTime(date);
+                    	riliDataDO.setExperimentalMode(allDataDO.getInfo().getExperimentalMode());
                         riliDataDO.setDataId(allDataDO.getInfo().getId());
                     }
                 }
@@ -72,6 +81,8 @@ public class CollectionInfoServiceImpl implements CollectionInfoService {
             if (allDataDO.getShibiaoDataDOList() != null && allDataDO.getShibiaoDataDOList().size()>0) {
                 for (ShibiaoDataDO shibiaoDataDO : allDataDO.getShibiaoDataDOList()) {
                     if (allDataDO.getInfo() != null) {
+                    	shibiaoDataDO.setAddTime(date);
+                    	shibiaoDataDO.setExperimentalMode(allDataDO.getInfo().getExperimentalMode());
                         shibiaoDataDO.setDataId(allDataDO.getInfo().getId());
                     }
                 }

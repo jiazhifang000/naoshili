@@ -23,7 +23,7 @@ public class CollectionInfoDO implements Serializable {
 	// 采集时间
 	private Date collectionTime;
 	// 实验方式
-	private String experimentalMode;
+	private Integer experimentalMode;
 	// 负责医生
 	private String responsibleDoctor;
 	// 设备名称
@@ -91,7 +91,7 @@ public class CollectionInfoDO implements Serializable {
 	/**
 	 * 设置：实验方式
 	 */
-	public void setExperimentalMode(String experimentalMode) {
+	public void setExperimentalMode(Integer experimentalMode) {
 		this.experimentalMode = experimentalMode;
 	}
 
@@ -106,7 +106,7 @@ public class CollectionInfoDO implements Serializable {
 	/**
 	 * 获取：实验方式
 	 */
-	public String getExperimentalMode() {
+	public Integer getExperimentalMode() {
 		return experimentalMode;
 	}
 

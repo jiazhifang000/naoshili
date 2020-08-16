@@ -57,6 +57,10 @@ function load() {
 									title : '单次数据序号' 
 								},
 																{
+									field : 'experimentalMode',
+									title : '采集方式'
+                               },
+																{
 									field : 'time', 
 									title : '时间' 
 								},

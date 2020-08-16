@@ -130,7 +130,8 @@
 			`CH19`,
 			`CH20`,
 			`CH21`,
-			`CH22`
+			`CH22`,
+			add_time
 		)
 		values
 		(
@@ -161,7 +162,8 @@
 			#{ch19},
 			#{ch20},
 			#{ch21},
-			#{ch22}
+			#{ch22},
+			#{addTime}
 		)
 	</insert>
 

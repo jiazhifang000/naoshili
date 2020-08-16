@@ -51,22 +51,26 @@
 		insert into n_shibiao_data
 		(
 			`data_id`,
+			`experimental_mode`,
 			`time`,
 			`localtion`,
 			`speed`,
 			`visual_standard1`,
 			`visual_standard2`,
-			`visual_standard3`
+			`visual_standard3`,
+			add_time
 		)
 		values
 		(
 			#{dataId},
+			#{experimentalMode},
 			#{time},
 			#{localtion},
 			#{speed},
 			#{visualStandard1},
 			#{visualStandard2},
-			#{visualStandard3}
+			#{visualStandard3},
+			#{addTime}
 		)
 	</insert>
 

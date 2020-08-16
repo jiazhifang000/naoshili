@@ -21,7 +21,7 @@ public class ShibiaoDataDO implements Serializable {
 	// 单次数据序号
 	private String dataId;
 	// 时间
-	private Date time;
+	private String time;
 
 	// 位置（移动视标）
 	private Integer localtion;
@@ -33,6 +33,17 @@ public class ShibiaoDataDO implements Serializable {
 	private Double visualStandard2;
 	// 视标3（交替通断）
 	private Double visualStandard3;
+	// 实验方式
+	private Integer experimentalMode;
+	
+	
+	public Integer getExperimentalMode() {
+		return experimentalMode;
+	}
+
+	public void setExperimentalMode(Integer experimentalMode) {
+		this.experimentalMode = experimentalMode;
+	}
 
 	/**
 	 * 设置：id
@@ -73,11 +84,11 @@ public class ShibiaoDataDO implements Serializable {
 		this.localtion = localtion;
 	}
 
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

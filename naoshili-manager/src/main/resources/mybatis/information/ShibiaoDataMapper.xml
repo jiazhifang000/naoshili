@@ -4,11 +4,11 @@
 <mapper namespace="com.naoshili.information.dao.ShibiaoDataDao">
 
 	<select id="get" resultType="com.naoshili.information.domain.ShibiaoDataDO">
-		select `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3` from n_shibiao_data where id = #{value}
+		select `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3`,`experimental_mode` from n_shibiao_data where id = #{value}
 	</select>
 
 	<select id="list" resultType="com.naoshili.information.domain.ShibiaoDataDO">
-		select `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3` from n_shibiao_data
+		select `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3`,`experimental_mode` from n_shibiao_data
         <where>  
 		  		  <if test="id != null and id != ''"> and id = #{id} </if>
 		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
@@ -18,6 +18,7 @@
 		  		  <if test="visualStandard1 != null and visualStandard1 != ''"> and visual_standard1 = #{visualStandard1} </if>
 		  		  <if test="visualStandard2 != null and visualStandard2 != ''"> and visual_standard2 = #{visualStandard2} </if>
 		  		  <if test="visualStandard3 != null and visualStandard3 != ''"> and visual_standard3 = #{visualStandard3} </if>
+		  		  <if test="experimentalMode != null and experimentalMode != ''"> and experimental_mode = #{experimentalMode} </if>
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">

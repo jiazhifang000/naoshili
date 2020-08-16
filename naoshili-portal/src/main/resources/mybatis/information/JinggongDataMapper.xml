@@ -54,7 +54,8 @@
 			`experimental_mode`,
 			`eye`,
 			`diopter`,
-			`pupil_distance`
+			`pupil_distance`,
+			add_time
 		)
 		values
 		(
@@ -63,7 +64,8 @@
 			#{experimentalMode},
 			#{eye},
 			#{diopter},
-			#{pupilDistance}
+			#{pupilDistance},
+			#{addTime}
 		)
 	</insert>
 

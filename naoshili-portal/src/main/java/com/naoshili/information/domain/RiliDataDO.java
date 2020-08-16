@@ -1,6 +1,7 @@
 package com.naoshili.information.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -19,6 +20,8 @@ public class RiliDataDO implements Serializable {
     private String dataId;
     //采集时间（精确到秒）
     private String time;
+    //采集方式（1 静止视标 2 运动静止视标 3 运动实时视标 4 交替视标）
+    private Integer experimentalMode;
     //同步标记
     private String synchronizationMark;
     //外部触发标记
@@ -69,9 +72,30 @@ public class RiliDataDO implements Serializable {
     private Double ch21;
     //CH22
     private Double ch22;
+    
+    private Date addTime;
+    
+    
 
 
-    public String getType() {
+    public Date getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
+	}
+
+
+    public Integer getExperimentalMode() {
+		return experimentalMode;
+	}
+
+	public void setExperimentalMode(Integer experimentalMode) {
+		this.experimentalMode = experimentalMode;
+	}
+
+	public String getType() {
         return type;
     }
 

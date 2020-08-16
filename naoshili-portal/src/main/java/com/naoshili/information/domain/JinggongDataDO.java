@@ -1,6 +1,7 @@
 package com.naoshili.information.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -21,13 +22,26 @@ public class JinggongDataDO implements Serializable {
     //采样时间间隔
     private String samplingTime;
     //采集方式（1 静止视标 2 运动静止视标 3 运动实时视标 4 交替视标）
-    private String experimentalMode;
+    private Integer experimentalMode;
     //R 右眼  L左眼
     private String eye;
     //屈光度
     private Double diopter;
     //瞳距
     private Double pupilDistance;
+    
+    private Date addTime;
+    
+    
+
+
+    public Date getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
+	}
 
     /**
      * 设置：id
@@ -74,14 +88,14 @@ public class JinggongDataDO implements Serializable {
     /**
      * 设置：采集方式（1 静止视标 2 运动静止视标 3 运动实时视标 4 交替视标）
      */
-    public void setExperimentalMode(String experimentalMode) {
+    public void setExperimentalMode(Integer experimentalMode) {
         this.experimentalMode = experimentalMode;
     }
 
     /**
      * 获取：采集方式（1 静止视标 2 运动静止视标 3 运动实时视标 4 交替视标）
      */
-    public String getExperimentalMode() {
+    public Integer getExperimentalMode() {
         return experimentalMode;
     }
 

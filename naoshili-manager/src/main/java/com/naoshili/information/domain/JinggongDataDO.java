@@ -21,7 +21,7 @@ public class JinggongDataDO implements Serializable {
 	//采样时间间隔
 	private String samplingTime;
 	// 实验方式
-	private String experimentalMode;
+	private Integer experimentalMode;
 	//R 右眼  L左眼
 	private String eye;
 	//屈光度
@@ -29,11 +29,11 @@ public class JinggongDataDO implements Serializable {
 	//瞳距
 	private Double pupilDistance;
 
-	public String getExperimentalMode() {
+	public Integer getExperimentalMode() {
 		return experimentalMode;
 	}
 
-	public void setExperimentalMode(String experimentalMode) {
+	public void setExperimentalMode(Integer experimentalMode) {
 		this.experimentalMode = experimentalMode;
 	}
 

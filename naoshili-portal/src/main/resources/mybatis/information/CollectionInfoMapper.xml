@@ -70,7 +70,8 @@
 			`experimental_mode`,
 			`responsible_doctor`,
 			`device_name`,
-			`avg_diopter`
+			`avg_diopter`,
+			add_time
 		)
 		values
 		(
@@ -83,7 +84,8 @@
 			#{experimentalMode},
 			#{responsibleDoctor},
 			#{deviceName},
-			#{avgDiopter}
+			#{avgDiopter},
+			#{addTime}
 		)
 	</insert>
 

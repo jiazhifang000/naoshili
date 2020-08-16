@@ -21,7 +21,7 @@ public class RiliDataDO implements Serializable {
 	//采集时间（精确到秒）
 	private String time;
 	// 实验方式
-	private String experimentalMode;
+	private Integer experimentalMode;
 	//同步标记
 	private String synchronizationMark;
 	//外部触发标记
@@ -71,11 +71,11 @@ public class RiliDataDO implements Serializable {
 	//CH22
 	private Double ch22;
 
-	public String getExperimentalMode() {
+	public Integer getExperimentalMode() {
 		return experimentalMode;
 	}
 
-	public void setExperimentalMode(String experimentalMode) {
+	public void setExperimentalMode(Integer experimentalMode) {
 		this.experimentalMode = experimentalMode;
 	}
 

@@ -26,16 +26,28 @@ public class CollectionInfoDO implements Serializable {
     // 采集时间
     private Date collectionTime;
     // 实验方式 1=运动静止 2=运动实时 3=交替闪烁
-    private Long experimentalMode;
+    private Integer experimentalMode;
     // 负责医生
     private String responsibleDoctor;
     // 设备名称
     private String deviceName;
     // 精工平均屈光度
     private Double avgDiopter;
+    
+    private Date addTime;
+    
+    
 
 
-    public Long getUserId() {
+    public Date getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
+	}
+
+	public Long getUserId() {
         return userId;
     }
 
@@ -51,7 +63,11 @@ public class CollectionInfoDO implements Serializable {
         this.loginId = loginId;
     }
 
-    public void setExperimentalMode(Long experimentalMode) {
+    public Integer getExperimentalMode() {
+		return experimentalMode;
+	}
+
+	public void setExperimentalMode(Integer experimentalMode) {
         this.experimentalMode = experimentalMode;
     }
 
