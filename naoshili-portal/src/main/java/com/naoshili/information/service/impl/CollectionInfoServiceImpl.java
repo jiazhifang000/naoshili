@@ -35,12 +35,12 @@ public class CollectionInfoServiceImpl implements CollectionInfoService {
     public int saveData(AllDataDO allDataDO) {
     	Date date = new Date();
         int result1 = 0;
+        SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date dt = new Date();
+		String dataid = simpledateformat.format(dt);
         if (allDataDO != null) {
             if (allDataDO.getInfo() != null) {
             	allDataDO.getInfo().setAddTime(date);
-				SimpleDateFormat simpledateformat = new SimpleDateFormat("yyyyMMddHHmmss");
-				Date dt = new Date();
-				String dataid = simpledateformat.format(dt);
                 allDataDO.getInfo().setId(dataid);
                 result1 += collectionInfoDao.save(allDataDO.getInfo());
                 UserBasicDO userBasicDO = userBasicDao.get(allDataDO.getInfo().getUserId());
