@@ -10,22 +10,31 @@
                 <div class="ibox-content">
                     <div style="height: 50px;" id="title">
                         <span class="col-sm-1"></span>
-                        <span id="xinxi" class="col-sm-2" style="text-align: center;cursor: pointer;border-bottom:5px solid #63BEFE" onclick="info()">基本信息</span>
-                        <span id="jinggong5500" class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="jinggong()">精工5500</span>
-                        <span id="rili4000" class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="rili()">日立4000</span>
-                        <span id="shibiaoData" class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="shibiao()">视标数据</span>
-                        <span id="report" class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="fenxi()" >分析报告</span>
+                        <span id="xinxi" class="col-sm-2"
+                              style="text-align: center;cursor: pointer;border-bottom:5px solid #63BEFE"
+                              onclick="info()">基本信息</span>
+                        <span id="jinggong5500" class="col-sm-2" style=" text-align: center;cursor: pointer"
+                              onclick="jinggong()">精工5500</span>
+                        <span id="rili4000" class="col-sm-2" style=" text-align: center;cursor: pointer"
+                              onclick="rili()">日立4000</span>
+                        <span id="shibiaoData" class="col-sm-2" style=" text-align: center;cursor: pointer"
+                              onclick="shibiao()">视标数据</span>
+                        <span id="report" class="col-sm-2" style=" text-align: center;cursor: pointer"
+                              onclick="fenxi()">分析报告</span>
                     </div>
 
                     <div style="height: 50px;margin-top: 10px;display: none;" id="fenlei">
                         <span class="col-sm-2" style="text-align: center;cursor: pointer;" onclick="quanbu()">全部</span>
-                        <span class="col-sm-2" style="text-align: center;cursor: pointer;"  onclick="jingzhi()">静止视标</span>
+                        <span class="col-sm-2" style="text-align: center;cursor: pointer;"
+                              onclick="jingzhi()">静止视标</span>
                         <span class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="sportStatic()">运动静止视标</span>
-                        <span class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="sportReal()">运动实时视标</span>
+                        <span class="col-sm-2" style=" text-align: center;cursor: pointer"
+                              onclick="sportReal()">运动实时视标</span>
                         <span class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="changeShibiao()">交替视标</span>
                     </div>
                     <div id="info" style="">
-                        <div id="userInfo" style="margin-top: 20px;height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
+                        <div id="userInfo"
+                             style="margin-top: 20px;height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
                             <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">基本信息</p>
                             <p style="margin-left: 50px;margin-top: 20px;" th:text="序号：+${userBasic.userId}"></p><br>
                             <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;">
@@ -33,60 +42,69 @@
                                     <div class="form-group col-md-3">
                                         <label class="col-sm-3 control-label">姓名：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.name}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.name}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-3 control-label">身份证：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.idCard}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.idCard}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-sm-3 control-label">出生日期：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.birthday}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.birthday}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-3">
                                         <label class="col-sm-3 control-label">年龄：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.age}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.age}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-3 control-label">性别：</label>
                                         <div class="col-sm-3">
-                                            <input class="form-control" type="text" th:value="${userBasic.gender}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.gender}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-4">
                                         <label class="col-sm-3 control-label">学校：</label>
                                         <div class="col-sm-8">
-                                            <input class="form-control" type="text" th:value="${userBasic.school}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.school}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-3">
                                         <label class="col-sm-3 control-label">班级：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.classname}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.classname}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-3 control-label">联系人：</label>
                                         <div class="col-sm-3">
-                                            <input class="form-control" type="text" th:value="${userBasic.contacts}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.contacts}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-sm-3 control-label">电话：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.phone}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.phone}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
 
@@ -98,7 +116,8 @@
                             <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">眼检查数据</p><br>
                             <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;">
                                 <div class="col-sm-3" style="margin-left: 40px;">
-                                    <table border=3 width="200" height="80" align="center" bordercolor="black" style="text-align: center;line-height: 34px">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
                                         <caption>球径</caption>
                                         <tr>
                                             <td>左</td>
@@ -112,7 +131,8 @@
                                 </div>
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-4">
-                                    <table border=3 width="200" height="80" align="center" bordercolor="black" style="text-align: center;line-height: 34px">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
                                         <caption>柱径</caption>
                                         <tr>
                                             <td>左</td>
@@ -126,7 +146,8 @@
                                 </div>
 
                                 <div class="col-sm-3">
-                                    <table border=3 width="200" height="80" align="center" bordercolor="black" style="text-align: center;line-height: 34px">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
                                         <caption>眼轴</caption>
                                         <tr>
                                             <td>左</td>
@@ -140,7 +161,8 @@
                                 </div>
 
                                 <div class="col-sm-3" style="margin-left: 40px;margin-top: 80px;">
-                                    <table border=3 width="200" height="80" align="center" bordercolor="black" style="text-align: center;line-height: 34px">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
                                         <caption>验光</caption>
                                         <tr>
                                             <td>左</td>
@@ -154,7 +176,8 @@
                                 </div>
                                 <div class="col-sm-1"></div>
                                 <div class="col-sm-4" style="margin-top: 80px;">
-                                    <table border=3 width="200" height="80" align="center" bordercolor="black" style="text-align: center;line-height: 34px">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
                                         <caption>裸眼视力</caption>
                                         <tr>
                                             <td>左</td>
@@ -167,7 +190,8 @@
                                     </table>
                                 </div>
                                 <div class="col-sm-3" style="margin-top: 80px;">
-                                    <table border=3 width="200" height="80" align="center" bordercolor="black" style="text-align: center;line-height: 34px">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
                                         <caption>戴镜视力</caption>
                                         <tr>
                                             <td>左</td>
@@ -191,51 +215,59 @@
                                     <div class="form-group col-md-3">
                                         <label class="col-sm-5 control-label">通常起床时间：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.getupTime}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.getupTime}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-3 control-label">通常睡觉时间：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.sleepTime}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.sleepTime}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-sm-4 control-label">每天大约阅读时间：</label>
                                         <div class="col-sm-6">
-                                            <input class="form-control" type="text" th:value="${userBasic.readTime}" disabled="disabled">
+                                            <input class="form-control" type="text" th:value="${userBasic.readTime}"
+                                                   disabled="disabled">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-3 control-label">父亲左眼视力：</label>
                                         <div class="col-sm-8">
-                                            <input class="form-control" type="text" th:value="${userBasic.fatherLvision}" disabled="disabled">
+                                            <input class="form-control" type="text"
+                                                   th:value="${userBasic.fatherLvision}" disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-4 control-label">父亲右眼视力：</label>
                                         <div class="col-sm-8">
-                                            <input class="form-control" type="text" th:value="${userBasic.fatherRvision}" disabled="disabled">
+                                            <input class="form-control" type="text"
+                                                   th:value="${userBasic.fatherRvision}" disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-3 control-label">母亲左眼视力：</label>
                                         <div class="col-sm-8">
-                                            <input class="form-control" type="text" th:value="${userBasic.matherLvision}" disabled="disabled">
+                                            <input class="form-control" type="text"
+                                                   th:value="${userBasic.matherLvision}" disabled="disabled">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label class="col-sm-4 control-label">母亲右眼视力：</label>
                                         <div class="col-sm-8">
-                                            <input class="form-control" type="text" th:value="${userBasic.matherRvision}" disabled="disabled">
+                                            <input class="form-control" type="text"
+                                                   th:value="${userBasic.matherRvision}" disabled="disabled">
                                         </div>
                                     </div>
                                     <br>
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-1 control-label">爱好：</label>
                                         <div class="col-sm-5">
-                                            <textarea class="form-control" type="text" th:text="${userBasic.hobby}" disabled="disabled"></textarea>
+                                            <textarea class="form-control" type="text" th:text="${userBasic.hobby}"
+                                                      disabled="disabled"></textarea>
                                         </div>
                                     </div>
 
@@ -248,8 +280,8 @@
                     <div id="jinggong" class="ibox" style="margin-top: 10px;display: none;padding-top: 50px;">
                         <div id="main" style="width: 700px;height:400px;margin: 0 auto;"></div>
                         <div class="ibox-body">
-                             <input id="dataId" style="display: none" class="form-control" th:value="${dataId}"
-                                           placeholder="">
+                            <input id="dataId" style="display: none" class="form-control" th:value="${dataId}"
+                                   placeholder="">
 
                             <div class="columns pull-right">
                                 <button class="btn btn-success" onclick="reLoad()">查询</button>
@@ -304,198 +336,201 @@
                             </table>
                         </div>
                     </div>
-                    <div id="fenxi"  style="margin-top: 20px;display: none;height: 3500px">
-                            <div id="jingzhi" style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
-                                <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">静止视标</p>
-                                <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节微波动平均值</span>
+                    <div id="fenxi" style="margin-top: 20px;display: none;height: 3500px">
+                        <div id="jingzhi"
+                             style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">静止视标</p>
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
+                                        2.5
                                     </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节刺激平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节反应量平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>脑氧合血红蛋白平均值</span>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <br>
-
-                            <div id="yundong" style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
-                                <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">运动静止视标</p><br>
-                                <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节微波动平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节刺激平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节反应量平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>脑氧合血红蛋白平均值</span>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <br>
-                            <div id="shishi" style="height: 1300px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
-                                <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">运动实时视标</p><br>
-                                <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节微波动平均值</span><br>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节刺激平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节反应量平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>脑氧合血红蛋白平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="shishiData" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="shishiData1" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="shishiData2" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="shishiData3" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-
+                                    <br>
+                                    <span>调节微波动平均值</span>
                                 </div>
 
-
-
-                            </div>
-
-                            <br>
-                            <div id="jiaoti" style="height: 1300px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
-                                <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">交替视标</p><br>
-                                <div style="margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节微波动平均值</span><br>
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+                                        2.5
                                     </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节刺激平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>调节反应量平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-3" style="padding-left: 100px;">
-                                        <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                            2.5
-                                        </div>
-                                        <br>
-                                        <span>脑氧合血红蛋白平均值</span>
-                                    </div>
-
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="naoyang1" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="naoyang2" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="naoyang3" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                        <div id="naoyang4" style="width: 500px;height: 400px;">
-                                        </div>
-                                    </div>
-
+                                    <br>
+                                    <span>调节刺激平均值</span>
                                 </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节反应量平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>脑氧合血红蛋白平均值</span>
+                                </div>
+
                             </div>
+                        </div>
+                        <br>
+
+                        <div id="yundong"
+                             style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">运动静止视标</p><br>
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节微波动平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节刺激平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节反应量平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>脑氧合血红蛋白平均值</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <br>
+                        <div id="shishi"
+                             style="height: 1300px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">运动实时视标</p><br>
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节微波动平均值</span><br>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节刺激平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节反应量平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>脑氧合血红蛋白平均值</span>
+                                </div>
+
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="shishiData" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="shishiData1" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="shishiData2" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="shishiData3" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <br>
+                        <div id="jiaoti"
+                             style="height: 1300px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">交替视标</p><br>
+                            <div style="margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节微波动平均值</span><br>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节刺激平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>调节反应量平均值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
+                                        2.5
+                                    </div>
+                                    <br>
+                                    <span>脑氧合血红蛋白平均值</span>
+                                </div>
+
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="naoyang1" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="naoyang2" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="naoyang3" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
+                                    <div id="naoyang4" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -505,699 +540,711 @@
 <div th:include="include::footer"></div>
 <script src="/js/echarts/echarts-all.js"></script>
 <script>
-    function quanbu(){
-        $('#experimentalMode').val("")
-        $('#experimentalMode1').val("")
+   /*精工-全部*/
+   function quanbu() {
+      $('#experimentalMode').val("")
+      $('#experimentalMode1').val("")
 
-        reLoad();
+      reLoad();
 
-    }
-    function jingzhi(){
-        $('#experimentalMode').val("静止视标")
-        $('#experimentalMode1').val("静止视标")
+   }
 
-        reLoad();
-    }
-    function sportStatic(){
-        $('#experimentalMode').val("运动静止视标")
-        $('#experimentalMode1').val("运动静止视标")
+   /*精工-静止视标*/
+   function jingzhi() {
+      $('#experimentalMode').val("静止视标")
+      $('#experimentalMode1').val("静止视标")
 
-        reLoad();
-    }
-    function sportReal(){
-        $('#experimentalMode').val("运动实时视标")
-        $('#experimentalMode1').val("运动实时视标")
+      reLoad();
+   }
 
-        reLoad();
-    }
-    function changeShibiao(){
-        $('#experimentalMode').val("交替视标")
-        $('#experimentalMode1').val("交替视标")
+   /*运动静止视标*/
+   function sportStatic() {
+      $('#experimentalMode').val("运动静止视标")
+      $('#experimentalMode1').val("运动静止视标")
 
-        reLoad();
-    }
+      reLoad();
+   }
+
+   /*运动实时视标*/
+   function sportReal() {
+      $('#experimentalMode').val("运动实时视标")
+      $('#experimentalMode1').val("运动实时视标")
+
+      reLoad();
+   }
+
+   /*交替视标*/
+   function changeShibiao() {
+      $('#experimentalMode').val("交替视标")
+      $('#experimentalMode1').val("交替视标")
+
+      reLoad();
+   }
 
 </script>
-
+<!--折线图-->
 <script type="text/javascript">
-    var barChart = echarts.init(document.getElementById("main"));
-    var barChart2 = echarts.init(document.getElementById("main2"));
-    var barChart3 = echarts.init(document.getElementById("main3"));
+   /*var barChart = echarts.init(document.getElementById("main"));
+   var barChart2 = echarts.init(document.getElementById("main2"));
+   var barChart3 = echarts.init(document.getElementById("main3"));*/
 
-    barChart.setOption( {
-        title: {
-            text: '精工5500数据图表分析'
-        },
-        legend: {
-            data: ['左眼', '右眼']
-        },
-        xAxis: {
-            name: '(采集时间)',
-            type: 'category',
-            boundaryGap: false,
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            name: '(屈光度)',
-            type: 'value'
-        },
-        series: [{
-            name:'左眼',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+   barChart.setOption({
+      title: {
+         text: '精工5500数据图表分析'
+      },
+      legend: {
+         data: ['左眼', '右眼']
+      },
+      xAxis: {
+         name: '(采集时间)',
+         type: 'category',
+         boundaryGap: false,
+         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+         name: '(屈光度)',
+         type: 'value'
+      },
+      series: [{
+         name: '左眼',
+         data: [820, 932, 901, 934, 1290, 1330, 1320],
+         type: 'line',
+         areaStyle: {}
+      }, {
+         name: '右眼',
+         data: [500, 600, 1000, 300, 1000, 1500, 1320],
+         type: 'line',
+         areaStyle: {}
+      }]
+   })
+   barChart2.setOption({
+      title: {
+         text: 'CH12-CH22通道数据'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         top: '5%',
+         bottom: '5%',
+         data: ['CH12', 'CH13', 'CH14', 'CH15', 'CH16', 'CH17', 'CH18', 'CH19',
+            'CH20', 'CH21', 'CH22']
+      },
+      xAxis: {
+         name: '采集时间',
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      },
+      yAxis: {
+         type: 'value'
+      },
+      series: [
+         {
+            name: 'CH12',
             type: 'line',
-            areaStyle: {}
-        },{
-            name:'右眼',
-            data: [500, 600, 1000, 300, 1000, 1500, 1320],
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: 'CH13',
             type: 'line',
-            areaStyle: {}
-        }]
-    })
-    barChart2.setOption( {
-        title: {
-            text: 'CH12-CH22通道数据'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            top:'5%',
-            bottom:'5%',
-            data: ['CH12','CH13','CH14','CH15','CH16','CH17','CH18','CH19',
-                'CH20','CH21','CH22']
-        },
-        xAxis: {
-            name:'采集时间',
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [
-            {
-                name: 'CH12',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: 'CH13',
-                type: 'line',
-                stack: '总量',
-                data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-                name: 'CH14',
-                type: 'line',
-                stack: '总量',
-                data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-                name: 'CH15',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH16',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH17',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH18',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH19',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH20',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH21',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            },
-            {
-                name: 'CH22',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
-    })
+            stack: '总量',
+            data: [150, 232, 201, 154, 190, 330, 410]
+         },
+         {
+            name: 'CH14',
+            type: 'line',
+            stack: '总量',
+            data: [320, 332, 301, 334, 390, 330, 320]
+         },
+         {
+            name: 'CH15',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH16',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH17',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH18',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH19',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH20',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH21',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         },
+         {
+            name: 'CH22',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
+   })
 
-    barChart3.setOption( {
-        title: {
-            text: 'CH12-CH22通道数据'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            top:'5%',
-            bottom:'5%',
-            data: ['CH12','CH13','CH14','CH15','CH16','CH17','CH18','CH19',
-                'CH20','CH21','CH22']
-        },
-        xAxis: {
-            name:'采集时间',
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [
-            {
-                name: 'CH12',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: 'CH13',
-                type: 'line',
-                stack: '总量',
-                data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-                name: 'CH14',
-                type: 'line',
-                stack: '总量',
-                data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-                name: 'CH15',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH16',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH17',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH18',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH19',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH20',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-            ,
-            {
-                name: 'CH21',
-                type: 'line',
-                stack: '总量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            },
-            {
-                name: 'CH22',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
-    })
+   barChart3.setOption({
+      title: {
+         text: 'CH12-CH22通道数据'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         top: '5%',
+         bottom: '5%',
+         data: ['CH12', 'CH13', 'CH14', 'CH15', 'CH16', 'CH17', 'CH18', 'CH19',
+            'CH20', 'CH21', 'CH22']
+      },
+      xAxis: {
+         name: '采集时间',
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      },
+      yAxis: {
+         type: 'value'
+      },
+      series: [
+         {
+            name: 'CH12',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: 'CH13',
+            type: 'line',
+            stack: '总量',
+            data: [150, 232, 201, 154, 190, 330, 410]
+         },
+         {
+            name: 'CH14',
+            type: 'line',
+            stack: '总量',
+            data: [320, 332, 301, 334, 390, 330, 320]
+         },
+         {
+            name: 'CH15',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH16',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH17',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH18',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH19',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH20',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         }
+         ,
+         {
+            name: 'CH21',
+            type: 'line',
+            stack: '总量',
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+         },
+         {
+            name: 'CH22',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
+   })
 </script>
 
-<script >
-    var barChart = echarts.init(document.getElementById("shishiData"));
-    var barChart1 = echarts.init(document.getElementById("shishiData1"));
-    var barChart2 = echarts.init(document.getElementById("shishiData2"));
-    var barChart3 = echarts.init(document.getElementById("shishiData3"));
+<!--脑氧折线图-->
+<script>
+   var barChart = echarts.init(document.getElementById("shishiData"));
+   var barChart1 = echarts.init(document.getElementById("shishiData1"));
+   var barChart2 = echarts.init(document.getElementById("shishiData2"));
+   var barChart3 = echarts.init(document.getElementById("shishiData3"));
 
 
-    function info(){
-        $('#info').show();
-        $('#jinggong').hide();
-        $('#rili').hide();
-        $('#shibiao').hide();
-        $('#fenxi').hide();
-        $('#fenlei').hide();
+   function info() {
+      $('#info').show();
+      $('#jinggong').hide();
+      $('#rili').hide();
+      $('#shibiao').hide();
+      $('#fenxi').hide();
+      $('#fenlei').hide();
 
-        $("#xinxi").css("border-bottom","5px solid #63BEFE")
-        $("#jinggong5500").css("border-bottom","inherit")
-        $("#rili4000").css("border-bottom","inherit")
-        $("#shibiaoData").css("border-bottom","inherit")
-        $("#report").css("border-bottom","inherit")
+      $("#xinxi").css("border-bottom", "5px solid #63BEFE")
+      $("#jinggong5500").css("border-bottom", "inherit")
+      $("#rili4000").css("border-bottom", "inherit")
+      $("#shibiaoData").css("border-bottom", "inherit")
+      $("#report").css("border-bottom", "inherit")
 
-    };
-    function jinggong(){
-        $.getScript("/js/appjs/information/jinggongData/jinggongData.js");
+   };
 
-
-        $('#info').hide();
-        $('#jinggong').show();
-        $('#rili').hide();
-        $('#shibiao').hide();
-        $('#fenxi').hide();
-        $('#fenlei').show();
-
-        $("#jinggong5500").css("border-bottom","5px solid #63BEFE")
-        $("#xinxi").css("border-bottom","inherit")
-        $("#rili4000").css("border-bottom","inherit")
-        $("#shibiaoData").css("border-bottom","inherit")
-        $("#report").css("border-bottom","inherit")
-
-    };
-
-    function rili(){
-        $.getScript("/js/echarts/echarts-all.js");
-        $.getScript("/js/appjs/information/riliData/riliData.js");
-
-        $('#info').hide();
-        $('#jinggong').hide();
-        $('#rili').show();
-        $('#shibiao').hide();
-        $('#fenxi').hide();
-        $('#fenlei').show();
-
-        $("#rili4000").css("border-bottom","5px solid #63BEFE")
-        $("#jinggong5500").css("border-bottom","inherit")
-        $("#xinxi").css("border-bottom","inherit")
-        $("#shibiaoData").css("border-bottom","inherit")
-        $("#report").css("border-bottom","inherit")
-
-    };
-
-    function shibiao(){
-        $.getScript("/js/appjs/information/shibiaoData/shibiaoData.js");
-
-        $('#info').hide();
-        $('#jinggong').hide();
-        $('#rili').hide();
-        $('#shibiao').show();
-        $('#fenxi').hide();
-        $('#fenlei').hide();
-
-        $("#shibiaoData").css("border-bottom","5px solid #63BEFE")
-        $("#rili4000").css("border-bottom","inherit")
-        $("#jinggong5500").css("border-bottom","inherit")
-        $("#xinxi").css("border-bottom","inherit")
-        $("#report").css("border-bottom","inherit")
-
-    };
-    function fenxi(){
-        $('#info').hide();
-        $('#jinggong').hide();
-        $('#rili').hide();
-        $('#shibiao').hide();
-        $('#fenxi').show();
-        $('#fenlei').hide();
-
-        $("#shibiaoData").css("border-bottom","inherit")
-        $("#rili4000").css("border-bottom","inherit")
-        $("#jinggong5500").css("border-bottom","inherit")
-        $("#xinxi").css("border-bottom","inherit")
-        $("#report").css("border-bottom","5px solid #63BEFE")
-    }
+   function jinggong() {
+      $.getScript("/js/appjs/information/jinggongData/jinggongData.js");
 
 
+      $('#info').hide();
+      $('#jinggong').show();
+      $('#rili').hide();
+      $('#shibiao').hide();
+      $('#fenxi').hide();
+      $('#fenlei').show();
+
+      $("#jinggong5500").css("border-bottom", "5px solid #63BEFE")
+      $("#xinxi").css("border-bottom", "inherit")
+      $("#rili4000").css("border-bottom", "inherit")
+      $("#shibiaoData").css("border-bottom", "inherit")
+      $("#report").css("border-bottom", "inherit")
+
+   };
+
+   function rili() {
+      $.getScript("/js/echarts/echarts-all.js");
+      $.getScript("/js/appjs/information/riliData/riliData.js");
+
+      $('#info').hide();
+      $('#jinggong').hide();
+      $('#rili').show();
+      $('#shibiao').hide();
+      $('#fenxi').hide();
+      $('#fenlei').show();
+
+      $("#rili4000").css("border-bottom", "5px solid #63BEFE")
+      $("#jinggong5500").css("border-bottom", "inherit")
+      $("#xinxi").css("border-bottom", "inherit")
+      $("#shibiaoData").css("border-bottom", "inherit")
+      $("#report").css("border-bottom", "inherit")
+
+   };
+
+   function shibiao() {
+      $.getScript("/js/appjs/information/shibiaoData/shibiaoData.js");
+
+      $('#info').hide();
+      $('#jinggong').hide();
+      $('#rili').hide();
+      $('#shibiao').show();
+      $('#fenxi').hide();
+      $('#fenlei').hide();
+
+      $("#shibiaoData").css("border-bottom", "5px solid #63BEFE")
+      $("#rili4000").css("border-bottom", "inherit")
+      $("#jinggong5500").css("border-bottom", "inherit")
+      $("#xinxi").css("border-bottom", "inherit")
+      $("#report").css("border-bottom", "inherit")
+
+   };
+
+   function fenxi() {
+      $('#info').hide();
+      $('#jinggong').hide();
+      $('#rili').hide();
+      $('#shibiao').hide();
+      $('#fenxi').show();
+      $('#fenlei').hide();
+
+      $("#shibiaoData").css("border-bottom", "inherit")
+      $("#rili4000").css("border-bottom", "inherit")
+      $("#jinggong5500").css("border-bottom", "inherit")
+      $("#xinxi").css("border-bottom", "inherit")
+      $("#report").css("border-bottom", "5px solid #63BEFE")
+   }
 
 
-    barChart.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   barChart.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
-    barChart1.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   });
+   barChart1.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
+   });
 
-    barChart2.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   barChart2.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
-    barChart3.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   });
+   barChart3.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
+   });
 </script>
 
 <script>
-    var barChart = echarts.init(document.getElementById("naoyang1"));
-    var barChart1 = echarts.init(document.getElementById("naoyang2"));
-    var barChart2 = echarts.init(document.getElementById("naoyang3"));
-    var barChart3 = echarts.init(document.getElementById("naoyang4"));
+   var barChart = echarts.init(document.getElementById("naoyang1"));
+   var barChart1 = echarts.init(document.getElementById("naoyang2"));
+   var barChart2 = echarts.init(document.getElementById("naoyang3"));
+   var barChart3 = echarts.init(document.getElementById("naoyang4"));
 
-    barChart.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   barChart.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
-    barChart1.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   });
+   barChart1.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
+   });
 
-    barChart2.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   barChart2.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
-    barChart3.setOption( {
-        title: {
-            text: '折线图堆叠',
-            left:'center'
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['邮件营销', '联盟广告'],
-            top:'5%',
-            left:'right'
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            name:'时间'
-        },
-        yAxis: {
-            type: 'value',
-            name:'（调节波动）'
-        },
-        series: [
-            {
-                name: '邮件营销',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-                name: '联盟广告',
-                type: 'line',
-                stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
-            }
-        ]
+   });
+   barChart3.setOption({
+      title: {
+         text: '折线图堆叠',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['邮件营销', '联盟广告'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '邮件营销',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+         },
+         {
+            name: '联盟广告',
+            type: 'line',
+            stack: '总量',
+            data: [220, 182, 191, 234, 290, 330, 310]
+         }
+      ]
 
-    });
+   });
 </script>
 <style>
-    #title,#userInfo,#userEye,#environmentInfo,#jinggong,#rili,#shibiao,#jingzhi,#yundong,#shishi,#jiaoti{
+    #title, #userInfo, #userEye, #environmentInfo, #jinggong, #rili, #shibiao, #jingzhi, #yundong, #shishi, #jiaoti {
         background-color: white;
     }
-    #title span{
+
+    #title span {
         font-size: 18px;
         font-weight: bold;
         line-height: 50px;
     }
-    #fenlei span{
+
+    #fenlei span {
         font-size: 18px;
         line-height: 50px;
         background-color: white;
