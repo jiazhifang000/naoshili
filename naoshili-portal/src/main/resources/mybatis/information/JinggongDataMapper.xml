@@ -106,7 +106,8 @@
         location,
         num,
         `external_trigger_mark`,
-        original_data
+        original_data,
+        add_time
         )
         values
         <foreach collection="jinggongDataDOList" item="item" separator=",">
@@ -121,6 +122,7 @@
             #{item.num},
             #{item.externalTriggerMark},
             #{item.originalData}
+            #{item.addTime}
             )
         </foreach>
     </insert>
