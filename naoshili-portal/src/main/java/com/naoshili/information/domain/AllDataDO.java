@@ -16,12 +16,9 @@ public class AllDataDO implements Serializable {
 
     //身份信息
     private CollectionInfoDO info;
-    //视标数据集合
-    private List<ShibiaoDataDO> shibiaoDataDOList;
-    //精工数据集合
-    private List<JinggongDataDO> jinggongDataDOList;
-    //日立数据集合
-    private List<RiliDataDO> riliDataDOList;
+
+    private List<DataListDO> data;
+
 
     public CollectionInfoDO getInfo() {
         return info;
@@ -31,37 +28,19 @@ public class AllDataDO implements Serializable {
         this.info = info;
     }
 
-    public List<ShibiaoDataDO> getShibiaoDataDOList() {
-        return shibiaoDataDOList;
+    public List<DataListDO> getData() {
+        return data;
     }
 
-    public void setShibiaoDataDOList(List<ShibiaoDataDO> shibiaoDataDOList) {
-        this.shibiaoDataDOList = shibiaoDataDOList;
-    }
-
-    public List<JinggongDataDO> getJinggongDataDOList() {
-        return jinggongDataDOList;
-    }
-
-    public void setJinggongDataDOList(List<JinggongDataDO> jinggongDataDOList) {
-        this.jinggongDataDOList = jinggongDataDOList;
-    }
-
-    public List<RiliDataDO> getRiliDataDOList() {
-        return riliDataDOList;
-    }
-
-    public void setRiliDataDOList(List<RiliDataDO> riliDataDOList) {
-        this.riliDataDOList = riliDataDOList;
+    public void setData(List<DataListDO> data) {
+        this.data = data;
     }
 
     @Override
     public String toString() {
         return "AllDataDO{" +
                 "info=" + info +
-                ", shibiaoDataDOList=" + shibiaoDataDOList +
-                ", jinggongDataDOList=" + jinggongDataDOList +
-                ", riliDataDOList=" + riliDataDOList +
+                ", data=" + data +
                 '}';
     }
 }

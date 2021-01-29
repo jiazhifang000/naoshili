@@ -3,48 +3,102 @@
 
 <mapper namespace="com.naoshili.information.dao.JinggongDataDao">
 
-	<select id="get" resultType="com.naoshili.information.domain.JinggongDataDO">
-		select `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance`,experimental_mode from n_jinggong_data where id = #{value}
+    <select id="get" resultType="com.naoshili.information.domain.JinggongDataDO">
+		select `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance`,experimental_mode,external_trigger_mark from n_jinggong_data where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.naoshili.information.domain.JinggongDataDO">
-		select `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance`,experimental_mode from n_jinggong_data
-        <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
-		  		  <if test="samplingTime != null and samplingTime != ''"> and sampling_time = #{samplingTime} </if>
-		  		  <if test="eye != null and eye != ''"> and eye = #{eye} </if>
-					<if test="experimentalMode != null and experimentalMode != ''"> and experimental_mode = #{experimentalMode} </if>
-		  		  <if test="diopter != null and diopter != ''"> and diopter = #{diopter} </if>
-		  		  <if test="pupilDistance != null and pupilDistance != ''"> and pupil_distance = #{pupilDistance} </if>
-		  		</where>
+    <select id="groupbyDataId" resultType="com.naoshili.information.domain.JinggongDataDO">
+        select
+        `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance`,experimental_mode,external_trigger_mark,original_data
+        from n_jinggong_data
+        <where>
+            <if test="samplingTime != null and samplingTime != ''">and sampling_time = #{samplingTime}</if>
+        </where>
+
+        GROUP BY data_id
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order} DESC
+            </when>
+            <otherwise>
+                order by id DESC
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="countGroupbyDataId" resultType="int">
+        SELECT
+        count(*)
+        FROM
+        (
+        SELECT
+        count(*)
+        FROM
+        n_jinggong_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="samplingTime != null and samplingTime != ''">and sampling_time = #{samplingTime}</if>
+            <if test="eye != null and eye != ''">and eye = #{eye}</if>
+            <if test="diopter != null and diopter != ''">and diopter = #{diopter}</if>
+            <if test="pupilDistance != null and pupilDistance != ''">and pupil_distance = #{pupilDistance}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+        </where>
+        GROUP BY
+        data_id
+        ORDER BY
+        id DESC
+        ) a
+    </select>
+
+
+    <select id="list" resultType="com.naoshili.information.domain.JinggongDataDO">
+        select
+        `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance`,experimental_mode,external_trigger_mark,original_data
+        from n_jinggong_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="samplingTime != null and samplingTime != ''">and sampling_time = #{samplingTime}</if>
+            <if test="eye != null and eye != ''">and eye = #{eye}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+            <if test="diopter != null and diopter != ''">and diopter = #{diopter}</if>
+            <if test="pupilDistance != null and pupilDistance != ''">and pupil_distance = #{pupilDistance}</if>
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
-			<otherwise>
-                order by id desc
-			</otherwise>
+            <otherwise>
+                order by id
+            </otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-	
- 	<select id="count" resultType="int">
-		select count(*) from n_jinggong_data
-		 <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
-		  		  <if test="samplingTime != null and samplingTime != ''"> and sampling_time = #{samplingTime} </if>
-		  		  <if test="eye != null and eye != ''"> and eye = #{eye} </if>
-		  		  <if test="diopter != null and diopter != ''"> and diopter = #{diopter} </if>
-		  		  <if test="pupilDistance != null and pupilDistance != ''"> and pupil_distance = #{pupilDistance} </if>
-			 	<if test="experimentalMode != null and experimentalMode != ''"> and experimental_mode = #{experimentalMode} </if>
-		  		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.naoshili.information.domain.JinggongDataDO" useGeneratedKeys="true" keyProperty="id">
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from n_jinggong_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="samplingTime != null and samplingTime != ''">and sampling_time = #{samplingTime}</if>
+            <if test="eye != null and eye != ''">and eye = #{eye}</if>
+            <if test="diopter != null and diopter != ''">and diopter = #{diopter}</if>
+            <if test="pupilDistance != null and pupilDistance != ''">and pupil_distance = #{pupilDistance}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.JinggongDataDO" useGeneratedKeys="true"
+            keyProperty="id">
 		insert into n_jinggong_data
 		(
 			`data_id`, 
@@ -64,29 +118,66 @@
 			 #{experimentalMode}
 		)
 	</insert>
-	 
-	<update id="update" parameterType="com.naoshili.information.domain.JinggongDataDO">
-		update n_jinggong_data 
-		<set>
-			<if test="dataId != null">`data_id` = #{dataId}, </if>
-			<if test="samplingTime != null">`sampling_time` = #{samplingTime}, </if>
-			<if test="eye != null">`eye` = #{eye}, </if>
-			<if test="diopter != null">`diopter` = #{diopter}, </if>
-			<if test="pupilDistance != null">`pupil_distance` = #{pupilDistance},</if>
-			<if test="experimentalMode != null">`experimental_mode` = #{experimentalMode}</if>
-		</set>
-		where id = #{id}
-	</update>
-	
-	<delete id="remove">
+
+    <update id="update" parameterType="com.naoshili.information.domain.JinggongDataDO">
+        update n_jinggong_data
+        <set>
+            <if test="dataId != null">`data_id` = #{dataId},</if>
+            <if test="samplingTime != null">`sampling_time` = #{samplingTime},</if>
+            <if test="eye != null">`eye` = #{eye},</if>
+            <if test="diopter != null">`diopter` = #{diopter},</if>
+            <if test="pupilDistance != null">`pupil_distance` = #{pupilDistance},</if>
+            <if test="experimentalMode != null">`experimental_mode` = #{experimentalMode}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
 		delete from n_jinggong_data where id = #{value}
 	</delete>
-	
-	<delete id="batchRemove">
-		delete from n_jinggong_data where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
+    <delete id="batchRemove">
+        delete from n_jinggong_data where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="deleteByDataid">
+        DELETE
+            FROM
+                n_jinggong_data
+            WHERE
+                data_id = #{value}
+    </delete>
+
+    <select id="getLocation" resultType="com.naoshili.information.domain.ZhiHouDO">
+        SELECT
+            *, gap * a.speed - a.localtion localtion1
+        FROM
+            (
+                SELECT
+                    j.sampling_time,
+                    j.diopter,
+                    s.time,
+                    s.localtion,
+                    s.speed,
+                    abs(
+                        UNIX_TIMESTAMP(#{samplingTime}) - UNIX_TIMESTAMP(s.time)
+                    ) AS gap
+                FROM
+                    n_shibiao_data s,
+                    n_jinggong_data j
+                WHERE
+                    s.data_id = j.data_id
+                AND s.data_id = #{id}
+                AND j.sampling_time = #{samplingTime}
+                GROUP BY
+                    gap
+                LIMIT 0,
+                1
+            ) a
+
+    </select>
 
 </mapper>

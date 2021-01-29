@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div id="main5" class="col-xs-6 col-sm-6" style="height:700px;width: 100%;"></div>
+            <div id="mesChart" class="col-xs-6 col-sm-6" style="height:700px;width: 100%;display: none;"></div>
+            <div class="ibox-body">
+
+                <div class="fixed-table-toolbar">
+                    <div class="columns pull-left">
+                        <button type="button"
+                                class="btn  btn-primary" onclick="importCsv()">
+                            导入
+                        </button>
+
+                    </div>
+                    <div class="columns pull-right">
+                        <button class="btn btn-success" onclick="reLoad()">查询</button>
+                        <button class="btn btn-success" onclick="exportExcel()">导出</button>
+                    </div>
+                    <div class="columns pull-right col-md-2 nopadding">
+                        <select id="type1" class="form-control">
+                            <option value="">文件类型</option>
+                            <option value="1">oxy</option>
+                            <option value="2">deoxy</option>
+                            <option value="3">total</option>
+                            <option value="4">MES</option>
+                        </select>
+                    </div>
+                    <input name="id" id="id" th:value="${id}" type="hidden">
+                </div>
+                <table id="exampleTable4" data-mobile-responsive="true">
+                </table>
+                <table id="exampleTable5" data-mobile-responsive="true">
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+<div>
+    <script type="text/javascript">
+       var s_edit_h = 'hidden';
+       var s_remove_h = 'hidden';
+       var s_resetPwd_h = 'hidden';
+    </script>
+</div>
+<div shiro:hasPermission="information:riliImportData:edit">
+    <script type="text/javascript">
+       s_edit_h = '';
+    </script>
+</div>
+<div shiro:hasPermission="information:riliImportData:remove">
+    <script type="text/javascript">
+       var s_remove_h = '';
+    </script>
+</div>
+<div shiro:hasPermission="information:riliImportData:resetPwd">
+    <script type="text/javascript">
+       var s_resetPwd_h = '';
+    </script>
+</div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript">
+   $("#type1").val("1");
+</script>
+<script src="/js/echarts/echarts-all.js"></script>
+<script type="text/javascript" src="/js/appjs/information/riliImportData/riliImportData.js"></script>
+
+
+<script type="text/javascript"
+        th:inline="javascript">
+
+
+</script>
+</body>
+</html>

@@ -94,7 +94,7 @@
     </delete>
 
 
-    <insert id="insertList" parameterType="java.util.List" >
+    <insert id="insertList" parameterType="java.util.List">
         insert into n_jinggong_data
         (
         `data_id`,
@@ -102,7 +102,11 @@
         `experimental_mode`,
         `eye`,
         `diopter`,
-        `pupil_distance`
+        `pupil_distance`,
+        location,
+        num,
+        `external_trigger_mark`,
+        original_data
         )
         values
         <foreach collection="jinggongDataDOList" item="item" separator=",">
@@ -112,7 +116,11 @@
             #{item.experimentalMode},
             #{item.eye},
             #{item.diopter},
-            #{item.pupilDistance}
+            #{item.pupilDistance},
+            #{item.location},
+            #{item.num},
+            #{item.externalTriggerMark},
+            #{item.originalData}
             )
         </foreach>
     </insert>

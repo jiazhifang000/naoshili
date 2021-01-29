@@ -3,168 +3,350 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
-<div class="wrapper wrapper-content " style="width: 1000px;float: left;background-color: white;margin: 10px 5px 100px 10px;">
-    <h1>裸眼数据分析</h1><br>
-    <div class="col-sm-12">
-        <div class="ibox">
-            <div id="main" style="width: 700px;height:400px;margin: 0 auto;"></div>
+<div id="fenxi" style="margin-top: 20px;height: 3500px">
+    <input type="hidden" th:value="${id}">
+    <div id="quguangdu"
+         style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+        <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">屈光度值</p>
+        <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+            <div class="col-sm-2" style="padding-left: 100px;"></div>
+
+            <div class="col-sm-3" style="padding-left: 100px;">
+                <div th:text="${#numbers.formatDecimal(diopterR,1,'COMMA',2,'POINT')}"
+                     style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+
+                </div>
+                <br>
+                <span style="padding-left: 20px">左眼屈光度值</span>
+            </div>
+
+            <div class="col-sm-3" style="padding-left: 100px;"></div>
+            <div class="col-sm-3" style="padding-left: 100px;">
+                <div th:text="${#numbers.formatDecimal(diopterL,1,'COMMA',2,'POINT')}"
+                     style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+                    2.5
+                </div>
+                <br>
+                <span style="padding-left: 20px">右眼屈光度值</span>
+            </div>
+
         </div>
+
     </div>
-    <div class="col-sm-12">
-        <div class="ibox">
-            <div id="main1" style="width: 700px;height:400px;margin: 0 auto;"></div>
+    <br>
+    <div id="weibo"
+         style="height: 800px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+        <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">调节微波动</p>
+        <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+            <div class="col-sm-2" style="padding-left: 100px;">
+
+            </div>
+
+            <div class="col-sm-3" style="padding-left: 100px;">
+                <div th:text="${#numbers.formatDecimal(tiaojieL,1,'COMMA',2,'POINT')}"
+                     style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+                    2.5
+                </div>
+                <br>
+                <span>左眼调节微波动</span>
+            </div>
+            <div class="col-sm-3" style="padding-left: 100px;"></div>
+
+            <div class="col-sm-3" style="padding-left: 100px;">
+                <div th:text="${#numbers.formatDecimal(tiaojieR,1,'COMMA',2,'POINT')}"
+                     style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+                    2.5
+                </div>
+                <br>
+                <span>右眼调节微波动</span>
+            </div>
+
+            <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                <div id="weibodong1" style="width: 500px;height: 400px;">
+                </div>
+            </div>
+            <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                <div id="weibodong2" style="width: 500px;height: 400px;">
+                </div>
+            </div>
+
         </div>
+
     </div>
-    <div class="col-sm-12">
-        <div class="ibox">
-            <div id="main2" style="width: 700px;height:400px;margin: 0 auto;"></div>
+
+    <br>
+    <div id="zhihou"
+         style="height: 800px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+        <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">调节滞后量</p>
+        <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+
+
+            <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                <div id="zhihou1" style="width: 500px;height: 400px;">
+                </div>
+            </div>
+            <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                <div id="zhihou2" style="width: 500px;height: 400px;">
+                </div>
+            </div>
+
         </div>
+
     </div>
+
 </div>
-<div class="wrapper wrapper-content " style="width: 1000px;float: left;background-color: white;margin: 10px 5px 100px 10px;">
-    <h1>戴镜数据分析</h1><br>
-    <div class="col-sm-12">
-        <div class="ibox">
-            <div id="main3" style="width: 700px;height:400px;margin: 0 auto;"></div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="ibox">
-            <div id="main4" style="width: 700px;height:400px;margin: 0 auto;"></div>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div class="ibox">
-            <div id="main5" style="width: 700px;height:400px;margin: 0 auto;"></div>
-        </div>
-    </div>
-</div>
+
 <div th:include="include :: footer"></div>
 <script src="/js/echarts/echarts-all.js"></script>
 
-<script type="text/javascript">
-    var barChart = echarts.init(document.getElementById("main"));
-    var barChart1 = echarts.init(document.getElementById("main1"));
-    var barChart2 = echarts.init(document.getElementById("main2"));
+<script type="text/javascript" th:inline="javascript">
+   var chartDOListBodongL = [[${chartDOListBodongL}]]
+   var chartDOListBodongR = [[${chartDOListBodongR}]]
+   var dateListRY = chartDOListBodongR.map(function (item) {
+      return item['y'];
+   });
+   var dateListRX = chartDOListBodongR.map(function (item) {
+      return item['x'].split(" ")[1];
+   });
 
-    var barChart3 = echarts.init(document.getElementById("main3"));
-    var barChart4 = echarts.init(document.getElementById("main4"));
-    var barChart5 = echarts.init(document.getElementById("main5"));
+   var dateListLY = chartDOListBodongL.map(function (item) {
+      return item['y'];
+   });
+   var dateListLX = chartDOListBodongL.map(function (item) {
+      return item['x'].split(" ")[1];
+   });
 
-    barChart.setOption({
-        title: {
-            text: '裸眼调节刺激量',
-            left:'center'
-        },
-        xAxis: {
-            name:'（时间）',
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            name:'（调节刺激量）',
-            type: 'value'
-        },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-    })
-    barChart1.setOption({
-        title: {
-            text: '裸眼调节反应量',
-            left:'center'
-        },
-        xAxis: {
-            name:'（时间）',
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            name:'（调节刺激量）',
-            type: 'value'
-        },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-    })
-    barChart2.setOption({
-        title: {
-            text: '裸眼调节滞后量',
-            left:'center'
-        },
-        xAxis: {
-            name:'（时间）',
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            name:'（调节刺激量）',
-            type: 'value'
-        },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-    })
-    barChart3.setOption({
-        title: {
-            text: '戴镜调节刺激量',
-            left:'center'
-        },
-        xAxis: {
-            name:'（时间）',
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            name:'（调节刺激量）',
-            type: 'value'
-        },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-    })
-    barChart4.setOption({
-        title: {
-            text: '戴镜调节刺激量',
-            left:'center'
-        },
-        xAxis: {
-            name:'（时间）',
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            name:'（调节刺激量）',
-            type: 'value'
-        },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-    })
-    barChart5.setOption({
-        title: {
-            text: '戴镜调节刺激量',
-            left:'center'
-        },
-        xAxis: {
-            name:'（时间）',
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            name:'（调节刺激量）',
-            type: 'value'
-        },
-        series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line'
-        }]
-    })
+   var barChart = echarts.init(document.getElementById("weibodong1"));
+   var barChart1 = echarts.init(document.getElementById("weibodong2"));
+
+   var barChart2 = echarts.init(document.getElementById("zhihou1"));
+   var barChart3 = echarts.init(document.getElementById("zhihou2"));
+
+   barChart.setOption({
+      title: {
+         text: '左眼调节微波动',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['微波动'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: dateListLX,
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '微波动',
+            type: 'line',
+            stack: '总量',
+            data: dateListLY
+         }
+      ],
+      dataZoom: [{
+         type: 'inside',
+         start: 0,
+         end: 30
+      }, {
+         start: 0,
+         end: 30,
+         handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+         handleSize: '80%',
+         handleStyle: {
+            color: '#fff',
+            shadowBlur: 3,
+            shadowColor: 'rgba(0, 0, 0, 0.6)',
+            shadowOffsetX: 2,
+            shadowOffsetY: 2
+         }
+      }],
+
+   });
+   barChart1.setOption({
+      title: {
+         text: '右眼调节微波动',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['微波动'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: dateListRX,
+         name: '时间'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节波动）'
+      },
+      series: [
+         {
+            name: '微波动',
+            type: 'line',
+            stack: '总量',
+            data: dateListRY
+         }
+      ],
+      dataZoom: [{
+         type: 'inside',
+         start: 0,
+         end: 30
+      }, {
+         start: 0,
+         end: 30,
+         handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+         handleSize: '80%',
+         handleStyle: {
+            color: '#fff',
+            shadowBlur: 3,
+            shadowColor: 'rgba(0, 0, 0, 0.6)',
+            shadowOffsetX: 2,
+            shadowOffsetY: 2
+         }
+      }],
+
+   });
+
+
+   var type = [[${type}]]
+   var string = '';
+   if (type == 1) {
+      string = '戴镜'
+   } else if (type == 2) {
+      string = '不戴镜'
+   }
+   var chartDOListL = [[${chartDOListL}]]
+   var chartDOListR = [[${chartDOListR}]]
+   var Lx = chartDOListL.map(function (item) {
+      return item['x'];
+   });
+   var Ly = chartDOListL.map(function (item) {
+      return item['y'];
+   });
+
+   var Rx = chartDOListR.map(function (item) {
+      return item['x'];
+   });
+   var Ry = chartDOListR.map(function (item) {
+      return item['y'];
+   });
+
+   barChart2.setOption({
+      title: {
+         text: '左眼' + string + '调节滞后量',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['滞后量'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: Lx,
+         name: '视标位置'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节滞后量）'
+      },
+      series: [
+         {
+            name: '滞后量',
+            type: 'line',
+            stack: '总量',
+            data: Ly
+         }
+      ],
+      dataZoom: [{
+         type: 'inside',
+         start: 0,
+         end: 30
+      }, {
+         start: 0,
+         end: 30,
+         handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+         handleSize: '80%',
+         handleStyle: {
+            color: '#fff',
+            shadowBlur: 3,
+            shadowColor: 'rgba(0, 0, 0, 0.6)',
+            shadowOffsetX: 2,
+            shadowOffsetY: 2
+         }
+      }],
+
+   });
+   barChart3.setOption({
+      title: {
+         text: '右眼' + string + '调节滞后量',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'axis'
+      },
+      legend: {
+         data: ['滞后量'],
+         top: '5%',
+         left: 'right'
+      },
+      xAxis: {
+         type: 'category',
+         boundaryGap: false,
+         data: Rx,
+         name: '视标位置'
+      },
+      yAxis: {
+         type: 'value',
+         name: '（调节滞后量）'
+      },
+      series: [
+         {
+            name: '滞后量',
+            type: 'line',
+            stack: '总量',
+            data: Ry
+         }
+      ],
+      dataZoom: [{
+         type: 'inside',
+         start: 0,
+         end: 30
+      }, {
+         start: 0,
+         end: 30,
+         handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+         handleSize: '80%',
+         handleStyle: {
+            color: '#fff',
+            shadowBlur: 3,
+            shadowColor: 'rgba(0, 0, 0, 0.6)',
+            shadowOffsetX: 2,
+            shadowOffsetY: 2
+         }
+      }],
+
+   });
 </script>
 </body>
 </html>

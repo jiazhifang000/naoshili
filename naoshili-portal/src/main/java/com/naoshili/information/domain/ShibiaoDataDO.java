@@ -18,7 +18,7 @@ public class ShibiaoDataDO implements Serializable {
     private Long id;
     // 单次数据序号
     private String dataId;
-  //采集方式（1 静止视标 2 运动静止视标 3 运动实时视标 4 交替视标）
+    //采集方式（1 静止视标 2 运动静止视标 3 运动实时视标 4 交替视标）
     private Integer experimentalMode;
     // 时间
     private String time;
@@ -32,28 +32,37 @@ public class ShibiaoDataDO implements Serializable {
     private Double visualStandard2;
     // 视标3（交替通断）
     private Double visualStandard3;
-    
+
     private Date addTime;
-    
-  
+
+    private int num;
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
 
     public Date getAddTime() {
-		return addTime;
-	}
+        return addTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	public Integer getExperimentalMode() {
-		return experimentalMode;
-	}
+    public Integer getExperimentalMode() {
+        return experimentalMode;
+    }
 
-	public void setExperimentalMode(Integer experimentalMode) {
-		this.experimentalMode = experimentalMode;
-	}
+    public void setExperimentalMode(Integer experimentalMode) {
+        this.experimentalMode = experimentalMode;
+    }
 
-	/**
+    /**
      * 设置：id
      */
     public void setId(Long id) {

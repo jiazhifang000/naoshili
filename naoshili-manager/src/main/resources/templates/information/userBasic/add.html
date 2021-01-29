@@ -9,7 +9,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <form class="form-horizontal m-t" id="signupForm">
-                    	<div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
                             <label class="col-sm-2 control-label">userId：</label>
                             <div class="col-sm-8">
                                 <input id="userId" name="userId" class="form-control" type="text">
@@ -167,6 +167,13 @@
                             </div>
                         </div>
                         <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">左眼眼镜度数：</label>
+                            <div class="col-sm-8">
+                                <input id="lGlassesVision1" name="lGlassesVision1" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
                             <label class="col-sm-2 control-label">每天大约阅读时间（时）：</label>
                             <div class="col-sm-8">
                                 <input id="readTime" name="readTime" class="form-control" type="text">
@@ -177,6 +184,14 @@
                             <label class="col-sm-2 control-label">右眼戴镜视力：</label>
                             <div class="col-sm-8">
                                 <input id="rEyeGlassesVision1" name="rEyeGlassesVision1" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="col-sm-2 control-label">右眼眼镜度数：</label>
+                            <div class="col-sm-8">
+                                <input id="rGlassesVision1" name="rGlassesVision1" class="form-control"
                                        type="text">
                             </div>
                         </div>
@@ -212,11 +227,27 @@
                                 <input id="glassToCornea1" name="glassToCornea1" class="form-control" type="text">
                             </div>
                         </div>
+
                         <div class="form-group  col-md-6">
                             <label class="col-sm-2 control-label">视镜屈光度：</label>
                             <div class="col-sm-8">
                                 <input id="glassDiopter1" name="glassDiopter1" class="form-control" type="text">
                             </div>
+                        </div>
+
+                        <div class="form-group  col-md-6">
+                            <label class="col-sm-2 control-label">眼健康：</label>
+                            <div class="col-sm-8">
+                                <select id="eyeHealth" name="eyeHealth" class="form-control">
+                                    <option value="1">正视</option>
+                                    <option value="2">假性近视</option>
+                                    <option value="3">未确诊近视</option>
+                                    <option value="4">真性近视</option>
+                                    <option value="5">弱视</option>
+                                    <option value="6">其他</option>
+                                </select>
+                            </div>
+
                         </div>
 
 

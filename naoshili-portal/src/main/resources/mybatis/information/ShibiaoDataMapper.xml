@@ -109,7 +109,8 @@
         `speed`,
         `visual_standard1`,
         `visual_standard2`,
-        `visual_standard3`
+        `visual_standard3`,
+        num,add_time,experimental_mode
         )
         values
         <foreach collection="shibiaoDataDOList" item="item" separator=",">
@@ -120,7 +121,10 @@
             #{item.speed},
             #{item.visualStandard1},
             #{item.visualStandard2},
-            #{item.visualStandard3}
+            #{item.visualStandard3},
+            #{item.num},
+            #{item.addTime},
+            #{item.experimentalMode}
             )
         </foreach>
     </insert>

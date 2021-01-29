@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${shibiaoMoveIf.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">实验序号：</label>
+								<div class="col-sm-8">
+									<input id="dataId" name="dataId" th:value="${shibiaoMoveIf.dataId}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">实验类型：</label>
+								<div class="col-sm-8">
+									<input id="dataType" name="dataType" th:value="${shibiaoMoveIf.dataType}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">实验时间：</label>
+								<div class="col-sm-8">
+									<input id="testTime" name="testTime" th:value="${shibiaoMoveIf.testTime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">速度：</label>
+								<div class="col-sm-8">
+									<input id="speed" name="speed" th:value="${shibiaoMoveIf.speed}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">运动轨迹 1=：</label>
+								<div class="col-sm-8">
+									<input id="motionTrail" name="motionTrail" th:value="${shibiaoMoveIf.motionTrail}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">视标亮灭 1=亮，2=灭：</label>
+								<div class="col-sm-8">
+									<input id="lightIf" name="lightIf" th:value="${shibiaoMoveIf.lightIf}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">位置信息：</label>
+								<div class="col-sm-8">
+									<input id="locationInfo" name="locationInfo" th:value="${shibiaoMoveIf.locationInfo}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">保存时间：</label>
+								<div class="col-sm-8">
+									<input id="saveTime" name="saveTime" th:value="${shibiaoMoveIf.saveTime}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/information/shibiaoMoveIf/edit.js">
+	</script>
+</body>
+</html>

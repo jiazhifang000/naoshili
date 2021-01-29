@@ -33,21 +33,49 @@ public class CollectionInfoDO implements Serializable {
     private String deviceName;
     // 精工平均屈光度
     private Double avgDiopter;
-    
-    private Date addTime;
-    
-    
 
+    private Date addTime;
+
+    private int location;
+
+    // 左眼眼镜视力
+    private Double lGlassesVision;
+    // 右眼眼镜视力
+    private Double rGlassesVision;
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
+    public Double getlGlassesVision() {
+        return lGlassesVision;
+    }
+
+    public void setlGlassesVision(Double lGlassesVision) {
+        this.lGlassesVision = lGlassesVision;
+    }
+
+    public Double getrGlassesVision() {
+        return rGlassesVision;
+    }
+
+    public void setrGlassesVision(Double rGlassesVision) {
+        this.rGlassesVision = rGlassesVision;
+    }
 
     public Date getAddTime() {
-		return addTime;
-	}
+        return addTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
-	public Long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -64,10 +92,10 @@ public class CollectionInfoDO implements Serializable {
     }
 
     public Integer getExperimentalMode() {
-		return experimentalMode;
-	}
+        return experimentalMode;
+    }
 
-	public void setExperimentalMode(Integer experimentalMode) {
+    public void setExperimentalMode(Integer experimentalMode) {
         this.experimentalMode = experimentalMode;
     }
 

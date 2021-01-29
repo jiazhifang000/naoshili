@@ -3,62 +3,93 @@
 
 <mapper namespace="com.naoshili.information.dao.UserEyeDataDao">
 
-	<select id="get" resultType="com.naoshili.information.domain.UserEyeDataDO">
-		select `id`,`uid`,`l_eyeball_diameter`,`r_eyeball_diameter`,`l_eyepillar_diameter`,`r_eyepillar_diameter`,`l_eye_axis`,`r_eye_axis`,`l_eye_optometry`,`r_eye_optometry`,`l_eye_naked_vision`,`r_eye_naked_vision`,`l_eye_glasses_vision`,`r_eye_glasses_vision`,glass_to_cornea,glass_diopter from n_user_eye_data where id = #{value}
+    <select id="get" resultType="com.naoshili.information.domain.UserEyeDataDO">
+		select `id`,`uid`,`l_eyeball_diameter`,`r_eyeball_diameter`,`l_eyepillar_diameter`,`r_eyepillar_diameter`,`l_eye_axis`,`r_eye_axis`,`l_eye_optometry`,`r_eye_optometry`,`l_eye_naked_vision`,`r_eye_naked_vision`,`l_eye_glasses_vision`,`r_eye_glasses_vision`,`l_glasses_vision`,`r_glasses_vision`,glass_to_cornea,glass_diopter,eye_health from n_user_eye_data where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.naoshili.information.domain.UserEyeDataDO">
-		select `id`,`uid`,`l_eyeball_diameter`,`r_eyeball_diameter`,`l_eyepillar_diameter`,`r_eyepillar_diameter`,`l_eye_axis`,`r_eye_axis`,`l_eye_optometry`,`r_eye_optometry`,`l_eye_naked_vision`,`r_eye_naked_vision`,`l_eye_glasses_vision`,`r_eye_glasses_vision`,glass_to_cornea,glass_diopter from n_user_eye_data
-        <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="uid != null and uid != ''"> and uid = #{uid} </if>
-		  		  <if test="lEyeballDiameter != null and lEyeballDiameter != ''"> and l_eyeball_diameter = #{lEyeballDiameter} </if>
-		  		  <if test="rEyeballDiameter != null and rEyeballDiameter != ''"> and r_eyeball_diameter = #{rEyeballDiameter} </if>
-		  		  <if test="lEyepillarDiameter != null and lEyepillarDiameter != ''"> and l_eyepillar_diameter = #{lEyepillarDiameter} </if>
-		  		  <if test="rEyepillarDiameter != null and rEyepillarDiameter != ''"> and r_eyepillar_diameter = #{rEyepillarDiameter} </if>
-		  		  <if test="lEyeAxis != null and lEyeAxis != ''"> and l_eye_axis = #{lEyeAxis} </if>
-		  		  <if test="rEyeAxis != null and rEyeAxis != ''"> and r_eye_axis = #{rEyeAxis} </if>
-		  		  <if test="lEyeOptometry != null and lEyeOptometry != ''"> and l_eye_optometry = #{lEyeOptometry} </if>
-		  		  <if test="rEyeOptometry != null and rEyeOptometry != ''"> and r_eye_optometry = #{rEyeOptometry} </if>
-		  		  <if test="lEyeNakedVision != null and lEyeNakedVision != ''"> and l_eye_naked_vision = #{lEyeNakedVision} </if>
-		  		  <if test="rEyeNakedVision != null and rEyeNakedVision != ''"> and r_eye_naked_vision = #{rEyeNakedVision} </if>
-		  		  <if test="lEyeGlassesVision != null and lEyeGlassesVision != ''"> and l_eye_glasses_vision = #{lEyeGlassesVision} </if>
-		  		  <if test="rEyeGlassesVision != null and rEyeGlassesVision != ''"> and r_eye_glasses_vision = #{rEyeGlassesVision} </if>
-		  		</where>
+    <select id="list" resultType="com.naoshili.information.domain.UserEyeDataDO">
+        select
+        `id`,`uid`,`l_eyeball_diameter`,`r_eyeball_diameter`,`l_eyepillar_diameter`,`r_eyepillar_diameter`,`l_eye_axis`,`r_eye_axis`,`l_eye_optometry`,`r_eye_optometry`,`l_eye_naked_vision`,`r_eye_naked_vision`,`l_eye_glasses_vision`,`r_eye_glasses_vision`,`l_glasses_vision`,`r_glasses_vision`,glass_to_cornea,glass_diopter,eye_health
+        from n_user_eye_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="uid != null and uid != ''">and uid = #{uid}</if>
+            <if test="lEyeballDiameter != null and lEyeballDiameter != ''">and l_eyeball_diameter =
+                #{lEyeballDiameter}
+            </if>
+            <if test="rEyeballDiameter != null and rEyeballDiameter != ''">and r_eyeball_diameter =
+                #{rEyeballDiameter}
+            </if>
+            <if test="lEyepillarDiameter != null and lEyepillarDiameter != ''">and l_eyepillar_diameter =
+                #{lEyepillarDiameter}
+            </if>
+            <if test="rEyepillarDiameter != null and rEyepillarDiameter != ''">and r_eyepillar_diameter =
+                #{rEyepillarDiameter}
+            </if>
+            <if test="lEyeAxis != null and lEyeAxis != ''">and l_eye_axis = #{lEyeAxis}</if>
+            <if test="rEyeAxis != null and rEyeAxis != ''">and r_eye_axis = #{rEyeAxis}</if>
+            <if test="lEyeOptometry != null and lEyeOptometry != ''">and l_eye_optometry = #{lEyeOptometry}</if>
+            <if test="rEyeOptometry != null and rEyeOptometry != ''">and r_eye_optometry = #{rEyeOptometry}</if>
+            <if test="lEyeNakedVision != null and lEyeNakedVision != ''">and l_eye_naked_vision = #{lEyeNakedVision}
+            </if>
+            <if test="rEyeNakedVision != null and rEyeNakedVision != ''">and r_eye_naked_vision = #{rEyeNakedVision}
+            </if>
+            <if test="lEyeGlassesVision != null and lEyeGlassesVision != ''">and l_eye_glasses_vision =
+                #{lEyeGlassesVision}
+            </if>
+            <if test="rEyeGlassesVision != null and rEyeGlassesVision != ''">and r_eye_glasses_vision =
+                #{rEyeGlassesVision}
+            </if>
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 order by id desc
-			</otherwise>
+            </otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-	
- 	<select id="count" resultType="int">
-		select count(*) from n_user_eye_data
-		 <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="uid != null and uid != ''"> and uid = #{uid} </if>
-		  		  <if test="lEyeballDiameter != null and lEyeballDiameter != ''"> and l_eyeball_diameter = #{lEyeballDiameter} </if>
-		  		  <if test="rEyeballDiameter != null and rEyeballDiameter != ''"> and r_eyeball_diameter = #{rEyeballDiameter} </if>
-		  		  <if test="lEyepillarDiameter != null and lEyepillarDiameter != ''"> and l_eyepillar_diameter = #{lEyepillarDiameter} </if>
-		  		  <if test="rEyepillarDiameter != null and rEyepillarDiameter != ''"> and r_eyepillar_diameter = #{rEyepillarDiameter} </if>
-		  		  <if test="lEyeAxis != null and lEyeAxis != ''"> and l_eye_axis = #{lEyeAxis} </if>
-		  		  <if test="rEyeAxis != null and rEyeAxis != ''"> and r_eye_axis = #{rEyeAxis} </if>
-		  		  <if test="lEyeOptometry != null and lEyeOptometry != ''"> and l_eye_optometry = #{lEyeOptometry} </if>
-		  		  <if test="rEyeOptometry != null and rEyeOptometry != ''"> and r_eye_optometry = #{rEyeOptometry} </if>
-		  		  <if test="lEyeNakedVision != null and lEyeNakedVision != ''"> and l_eye_naked_vision = #{lEyeNakedVision} </if>
-		  		  <if test="rEyeNakedVision != null and rEyeNakedVision != ''"> and r_eye_naked_vision = #{rEyeNakedVision} </if>
-		  		  <if test="lEyeGlassesVision != null and lEyeGlassesVision != ''"> and l_eye_glasses_vision = #{lEyeGlassesVision} </if>
-		  		  <if test="rEyeGlassesVision != null and rEyeGlassesVision != ''"> and r_eye_glasses_vision = #{rEyeGlassesVision} </if>
-		  		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.naoshili.information.domain.UserEyeDataDO" useGeneratedKeys="true" keyProperty="id">
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from n_user_eye_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="uid != null and uid != ''">and uid = #{uid}</if>
+            <if test="lEyeballDiameter != null and lEyeballDiameter != ''">and l_eyeball_diameter =
+                #{lEyeballDiameter}
+            </if>
+            <if test="rEyeballDiameter != null and rEyeballDiameter != ''">and r_eyeball_diameter =
+                #{rEyeballDiameter}
+            </if>
+            <if test="lEyepillarDiameter != null and lEyepillarDiameter != ''">and l_eyepillar_diameter =
+                #{lEyepillarDiameter}
+            </if>
+            <if test="rEyepillarDiameter != null and rEyepillarDiameter != ''">and r_eyepillar_diameter =
+                #{rEyepillarDiameter}
+            </if>
+            <if test="lEyeAxis != null and lEyeAxis != ''">and l_eye_axis = #{lEyeAxis}</if>
+            <if test="rEyeAxis != null and rEyeAxis != ''">and r_eye_axis = #{rEyeAxis}</if>
+            <if test="lEyeOptometry != null and lEyeOptometry != ''">and l_eye_optometry = #{lEyeOptometry}</if>
+            <if test="rEyeOptometry != null and rEyeOptometry != ''">and r_eye_optometry = #{rEyeOptometry}</if>
+            <if test="lEyeNakedVision != null and lEyeNakedVision != ''">and l_eye_naked_vision = #{lEyeNakedVision}
+            </if>
+            <if test="rEyeNakedVision != null and rEyeNakedVision != ''">and r_eye_naked_vision = #{rEyeNakedVision}
+            </if>
+            <if test="lEyeGlassesVision != null and lEyeGlassesVision != ''">and l_eye_glasses_vision =
+                #{lEyeGlassesVision}
+            </if>
+            <if test="rEyeGlassesVision != null and rEyeGlassesVision != ''">and r_eye_glasses_vision =
+                #{rEyeGlassesVision}
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.UserEyeDataDO" useGeneratedKeys="true"
+            keyProperty="id">
 		insert into n_user_eye_data
 		(
 			`uid`, 
@@ -75,7 +106,7 @@
 			`l_eye_glasses_vision`, 
 			`r_eye_glasses_vision`,
 			glass_to_cornea,
-			glass_diopter
+			glass_diopter,`l_glasses_vision`,`r_glasses_vision`,eye_health
 		)
 		values
 		(
@@ -93,43 +124,49 @@
 			#{lEyeGlassesVision}, 
 			#{rEyeGlassesVision},
 			#{glassToCornea},
-			#{glassDiopter}
+			#{glassDiopter},
+			 #{lGlassesVision},
+            #{rGlassesVision},
+            #{eyeHealth}
 		)
 	</insert>
-	 
-	<update id="update" parameterType="com.naoshili.information.domain.UserEyeDataDO">
-		update n_user_eye_data 
-		<set>
-			<if test="uid != null">`uid` = #{uid}, </if>
-			<if test="lEyeballDiameter != null">`l_eyeball_diameter` = #{lEyeballDiameter}, </if>
-			<if test="rEyeballDiameter != null">`r_eyeball_diameter` = #{rEyeballDiameter}, </if>
-			<if test="lEyepillarDiameter != null">`l_eyepillar_diameter` = #{lEyepillarDiameter}, </if>
-			<if test="rEyepillarDiameter != null">`r_eyepillar_diameter` = #{rEyepillarDiameter}, </if>
-			<if test="lEyeAxis != null">`l_eye_axis` = #{lEyeAxis}, </if>
-			<if test="rEyeAxis != null">`r_eye_axis` = #{rEyeAxis}, </if>
-			<if test="lEyeOptometry != null">`l_eye_optometry` = #{lEyeOptometry}, </if>
-			<if test="rEyeOptometry != null">`r_eye_optometry` = #{rEyeOptometry}, </if>
-			<if test="lEyeNakedVision != null">`l_eye_naked_vision` = #{lEyeNakedVision}, </if>
-			<if test="rEyeNakedVision != null">`r_eye_naked_vision` = #{rEyeNakedVision}, </if>
-			<if test="lEyeGlassesVision != null">`l_eye_glasses_vision` = #{lEyeGlassesVision}, </if>
-			<if test="rEyeGlassesVision != null">`r_eye_glasses_vision` = #{rEyeGlassesVision},</if>
-			<if test="glassToCornea != null">`glass_to_cornea` = #{glassToCornea},</if>
-			<if test="glassDiopter != null">`glass_diopter` = #{glassDiopter}</if>
+
+    <update id="update" parameterType="com.naoshili.information.domain.UserEyeDataDO">
+        update n_user_eye_data
+        <set>
+            <if test="uid != null">`uid` = #{uid},</if>
+            <if test="lEyeballDiameter != null">`l_eyeball_diameter` = #{lEyeballDiameter},</if>
+            <if test="rEyeballDiameter != null">`r_eyeball_diameter` = #{rEyeballDiameter},</if>
+            <if test="lEyepillarDiameter != null">`l_eyepillar_diameter` = #{lEyepillarDiameter},</if>
+            <if test="rEyepillarDiameter != null">`r_eyepillar_diameter` = #{rEyepillarDiameter},</if>
+            <if test="lEyeAxis != null">`l_eye_axis` = #{lEyeAxis},</if>
+            <if test="rEyeAxis != null">`r_eye_axis` = #{rEyeAxis},</if>
+            <if test="lEyeOptometry != null">`l_eye_optometry` = #{lEyeOptometry},</if>
+            <if test="rEyeOptometry != null">`r_eye_optometry` = #{rEyeOptometry},</if>
+            <if test="lEyeNakedVision != null">`l_eye_naked_vision` = #{lEyeNakedVision},</if>
+            <if test="rEyeNakedVision != null">`r_eye_naked_vision` = #{rEyeNakedVision},</if>
+            <if test="lEyeGlassesVision != null">`l_eye_glasses_vision` = #{lEyeGlassesVision},</if>
+            <if test="rEyeGlassesVision != null">`r_eye_glasses_vision` = #{rEyeGlassesVision},</if>
+            <if test="lGlassesVision != null">`l_glasses_vision` = #{lGlassesVision},</if>
+            <if test="rGlassesVision != null">`r_glasses_vision` = #{rGlassesVision},</if>
+            <if test="glassToCornea != null">`glass_to_cornea` = #{glassToCornea},</if>
+            <if test="glassDiopter != null">`glass_diopter` = #{glassDiopter},</if>
+            <if test="eyeHealth != null">`eye_health` = #{eyeHealth}</if>
 
 
-		</set>
-		where id = #{id}
-	</update>
-	
-	<delete id="remove">
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
 		delete from n_user_eye_data where id = #{value}
 	</delete>
-	
-	<delete id="batchRemove">
-		delete from n_user_eye_data where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
+    <delete id="batchRemove">
+        delete from n_user_eye_data where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

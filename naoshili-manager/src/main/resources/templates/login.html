@@ -17,39 +17,39 @@
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
     <script>
-        if (window.top !== window.self) {
-            window.top.location = window.location;
-        }
+       if (window.top !== window.self) {
+          window.top.location = window.location;
+       }
     </script>
-    
+
 </head>
 
-<body class="signin">
+<body class="signin" onload="getCookie();">
 
 
 <div class="signinpanel">
     <div class="row">
-        <div >
+        <div>
             <div class="signin-info">
                 <div class="logopanel m-b" style="margin-left: 90px;margin-top: -50px">
                     <h1 style="font-weight: bold;letter-spacing:8px;font-size:45px;">脑视力研究数据采集后台管理系统</h1>
                 </div>
                 <div class="m-b"></div>
                 <h3>
-                   <!--  欢迎使用 <strong>脑视力后台管理系统</strong> -->
+                    <!--  欢迎使用 <strong>脑视力后台管理系统</strong> -->
                 </h3>
                 <ul class="m-b">
-                   <!--  <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>
-                        springBoot
-                    </li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> mybatis</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> shiro</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>
-                        thymeleaf
-                    </li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>
-                        bootstrap
-                    </li> -->
+                    <!--  <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>
+                         springBoot
+                     </li>
+                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> mybatis</li>
+                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> shiro</li>
+                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>
+                         thymeleaf
+                     </li>
+                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>
+                         bootstrap
+                     </li> -->
                 </ul>
             </div>
         </div>
@@ -59,30 +59,34 @@
 			    padding: 100px;
 			    border-radius: 5px;
 			    background-color: rgba(73,168,253,1);">
-        	<div style=" width: 450px;
+            <div style=" width: 450px;
 				    height: 330px;
 				    border-radius: 5px;">
-            <form id="signupForm">
-                <h3 class="text-center" style="color: #54B3FD">登录</h3>
-                <div class="div-uname">
-                	<i class="icon-uname"></i>
-                 	<input type="text" name="username" class="form-control username"
-                       value="" placeholder="用户名"/>
-                </div>
-               <div class="div-pwd">
-               		<i class="icon-pwd"></i>
-                	<input type="password" name="password"
-                       class="form-control pwd" value="" placeholder="密码"/>
-               </div>
-               
-               
-               
-                <a id="login" class="btn btn-login btn-block">登录</a>
-               
-            </form>
+                <form id="signupForm">
+                    <h3 class="text-center" style="color: #54B3FD">登录</h3>
+                    <div class="div-uname">
+                        <i class="icon-uname"></i>
+                        <input type="text" id="username" name="username" class="form-control username"
+                               value="" placeholder="用户名"/>
+                    </div>
+                    <div class="div-pwd">
+                        <i class="icon-pwd"></i>
+                        <input type="password" id="password" name="password"
+                               class="form-control pwd" value="" placeholder="密码"/>
+                    </div>
+
+                    <div class="checkbox-custom div-pwd" th:classappend="${captchaEnabled==false} ? 'm-t'"
+                         style="text-align: center;">
+                        <input type="checkbox" id="rememberme" name="rememberme"> <label for="rememberme">记住我</label>
+                    </div>
+
+
+                    <a id="login" class="btn btn-login btn-block">登录</a>
+
+                </form>
+            </div>
         </div>
-        </div>
-        
+
     </div>
     <!-- <div class="signup-footer">
         <div class="pull-left">&copy; 2017 All Rights Reserved. BootDo
@@ -92,6 +96,7 @@
 <script th:inline="javascript"> var ctx = [[@{/}]] ; </script>
 <!-- 全局js -->
 <script src="/js/jquery.min.js?v=2.1.4" th:src="@{/js/jquery.min.js?v=2.1.4}"></script>
+
 <script src="/js/bootstrap.min.js?v=3.3.6" th:src="@{/js/bootstrap.min.js?v=3.3.6}"></script>
 
 <!-- 自定义js -->
@@ -99,60 +104,129 @@
 
 <!-- jQuery Validation plugin javascript-->
 <script src="/js/ajax-util.js"></script>
-<script src="/js/plugins/validate/jquery.validate.min.js" th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
+<script src="/js/plugins/validate/jquery.validate.min.js"
+        th:src="@{/js/plugins/validate/jquery.validate.min.js}"></script>
 <script src="/js/plugins/validate/messages_zh.min.js" th:src="@{/js/plugins/validate/messages_zh.min.js}"></script>
 <script src="/js/plugins/layer/layer.min.js" th:src="@{/js/plugins/layer/layer.min.js}"></script>
+<script src="/js/jquery.cookie.js" th:src="@{/js/jquery.cookie.js}"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#login").on('click',function(){$("#signupForm").submit();});
-        validateRule();
-    });
+   $(document).ready(function () {
+      $("#login").on('click', function () {
+         $("#signupForm").submit();
+      });
+      validateRule();
+   });
 
-    $.validator.setDefaults({
-        submitHandler: function () {
-            login();
-        }
-    });
+   $.validator.setDefaults({
+      submitHandler: function () {
+         tologin();
+      }
+   });
 
-    function login() {
-        $.ajax({
-            type: "POST",
-            url: ctx+"login",
-            data: $('#signupForm').serialize(),
-            success: function (r) {
-                 if (r.code == 0) {
-                    var index = layer.load(1, {
-                        shade: [0.1,'#fff'] //0.1透明度的白色背景
-                    });
-                    parent.location.href = '/index';
-                } else {
-                    layer.msg(r.msg);
-                }
-            },
-        });
-    }
+   //把信息设置进去Cookie里面去
+   function setCookie() {
+      var username = $('#username').val();
+      var password = $('#password').val();
+      var aa = $("input[type='checkbox']").is(":checked");//获取是否选中
+      if (aa == true) {//如果选中-->记住密码登录
+         $.cookie("username", username.trim());//有效时间7天，也可以设置为永久，把时间去掉就好
+         $.cookie("password", password.trim());
+      } else {//如果没选中-->不记住密码登录
+         $.cookie("password", "");
+         $.cookie("username", "");
+         // alert("没有记住密码")
+      }
+   }
 
-    function validateRule() {
-        var icon = "<i class='fa fa-times-circle'></i> ";
-        $("#signupForm").validate({
-            rules: {
-                username: {
-                    required: true
-                },
-                password: {
-                    required: true
-                }
-            },
-            messages: {
-                username: {
-                    required: icon + "请输入您的用户名",
-                },
-                password: {
-                    required: icon + "请输入您的密码",
-                }
+
+   function getCookie() { //获取cookie
+      var username = $.cookie("username"); //获取cookie中的用户名
+
+      var pwd = $.cookie("password"); //获取cookie中的登陆密码
+
+      if (pwd) {//密码存在的话把“记住用户名和密码”复选框勾选住
+         $("[name='rememberme']").attr("checked", "true");
+      }
+      if (username != "") {//用户名存在的话把用户名填充到用户名文本框
+         $("#username").val(username);
+      } else {
+         $("#username").val("");
+      }
+      if (pwd != "") {//密码存在的话把密码填充到密码文本框
+         $("#password").val(pwd);
+      } else {
+         $("#password").val("");
+      }
+
+      /*if (username != "" && pwd != "") {
+         login()
+      }*/
+
+   }
+
+   //登录
+   function tologin() {
+      var username = $('#username').val();
+      var password = $('#password').val();
+      var aa = $("input[type='checkbox']").is(":checked");//获取选中状态
+      if (username == '') {
+         alert("请输入用户名。");
+         return;
+      }
+      if (password == '') {
+         alert("请输入密码。");
+         return;
+      }
+      if (aa == true) {
+         setCookie();   //调用设置Cookie的方法
+         //window.location = "<%=request.getContextPath()%>/supplier-list";
+      } else if (aa == false) {
+         setCookie();  //调用设置Cookie的方法
+         //window.location = "http://www.baidu.com";
+      }
+
+      login();
+   }
+
+   function login() {
+      $.ajax({
+         type: "POST",
+         url: ctx + "login",
+         data: $('#signupForm').serialize(),
+         success: function (r) {
+            if (r.code == 0) {
+               var index = layer.load(1, {
+                  shade: [0.1, '#fff'] //0.1透明度的白色背景
+               });
+               parent.location.href = '/index';
+            } else {
+               layer.msg(r.msg);
             }
-        })
-    }
+         },
+      });
+   }
+
+   function validateRule() {
+      var icon = "<i class='fa fa-times-circle'></i> ";
+      $("#signupForm").validate({
+         rules: {
+            username: {
+               required: true
+            },
+            password: {
+               required: true
+            }
+         },
+         messages: {
+            username: {
+               required: icon + "请输入您的用户名",
+            },
+            password: {
+               required: icon + "请输入您的密码",
+            }
+         }
+      })
+   }
 </script>
 </body>
 </html>

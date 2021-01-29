@@ -8,6 +8,8 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
+                    <input id="id" style="display: none" class="form-control" th:value="${id}"
+                           placeholder="">
                     <div style="height: 50px;" id="title">
                         <span class="col-sm-1"></span>
                         <span id="xinxi" class="col-sm-2"
@@ -23,15 +25,37 @@
                               onclick="fenxi()">分析报告</span>
                     </div>
 
-                    <div style="height: 50px;margin-top: 10px;display: none;" id="fenlei">
-                        <span class="col-sm-2" style="text-align: center;cursor: pointer;" onclick="quanbu()">全部</span>
-                        <span class="col-sm-2" style="text-align: center;cursor: pointer;"
-                              onclick="jingzhi()">静止视标</span>
-                        <span class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="sportStatic()">运动静止视标</span>
+                    <div style="height: 50px;margin-top: 20px" id="type">
+                        <span class="col-sm-3"></span>
                         <span class="col-sm-2" style=" text-align: center;cursor: pointer"
-                              onclick="sportReal()">运动实时视标</span>
-                        <span class="col-sm-2" style=" text-align: center;cursor: pointer" onclick="changeShibiao()">交替视标</span>
+                              th:text="实验序号：+${id}"></span>
+                        <span class="col-sm-2"></span>
+                        <span class="col-sm-2" style=" text-align: center;cursor: pointer"
+                              th:text="${experimentalMode} == 1 ? '实验类型：多段移动视标试验' : (${experimentalMode}==2 ? '实验类型：单段移动视标试验':'实验类型：闪烁视标试验')">分析报告</span>
                     </div>
+
+                    <div style="height: 50px;margin-top: 20px;display: none" id="select1">
+                        <span class="col-sm-3"></span>
+                        <span class="col-sm-2" id="left" style=" text-align: center;cursor: pointer"
+                              onclick="qiehuan(1)"
+                        >实时数据</span>
+                        <span class="col-sm-2"></span>
+                        <span class="col-sm-2" id="right" style=" text-align: center;cursor: pointer"
+                              onclick="qiehuan(2)"
+                        >导入数据</span>
+                    </div>
+
+                    <div style="height: 50px;margin-top: 20px;display: none" id="select2">
+                        <span class="col-sm-3"></span>
+                        <span class="col-sm-2" id="left1" style=" text-align: center;cursor: pointer"
+                              onclick="changeJinggong(1)"
+                        >实时数据</span>
+                        <span class="col-sm-2"></span>
+                        <span class="col-sm-2" id="right1" style=" text-align: center;cursor: pointer"
+                              onclick="changeJinggong(2)"
+                        >导入数据</span>
+                    </div>
+
                     <div id="info" style="">
                         <div id="userInfo"
                              style="margin-top: 20px;height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
@@ -121,11 +145,11 @@
                                         <caption>球径</caption>
                                         <tr>
                                             <td>左</td>
-                                            <td th:text="${userEyeDataDO.lEyeballDiameter}"></td>
+                                            <td th:text="${userEyeDataDO.lEyeballDiameter}==null?'无':${userEyeDataDO.lEyeballDiameter}"></td>
                                         </tr>
                                         <tr>
                                             <td>右</td>
-                                            <td th:text="${userEyeDataDO.rEyeballDiameter}"></td>
+                                            <td th:text="${userEyeDataDO.rEyeballDiameter}==null?'无':${userEyeDataDO.rEyeballDiameter}"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -136,11 +160,11 @@
                                         <caption>柱径</caption>
                                         <tr>
                                             <td>左</td>
-                                            <td th:text="${userEyeDataDO.lEyepillarDiameter}"></td>
+                                            <td th:text="${userEyeDataDO.lEyepillarDiameter}==null?'无':${userEyeDataDO.lEyepillarDiameter}"></td>
                                         </tr>
                                         <tr>
                                             <td>右</td>
-                                            <td th:text="${userEyeDataDO.rEyepillarDiameter}"></td>
+                                            <td th:text="${userEyeDataDO.rEyepillarDiameter}==null?'无':${userEyeDataDO.rEyepillarDiameter}"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -151,11 +175,11 @@
                                         <caption>眼轴</caption>
                                         <tr>
                                             <td>左</td>
-                                            <td th:text="${userEyeDataDO.lEyeAxis}"></td>
+                                            <td th:text="${userEyeDataDO.lEyeAxis}==null?'无':${userEyeDataDO.lEyeAxis}"></td>
                                         </tr>
                                         <tr>
                                             <td>右</td>
-                                            <td th:text="${userEyeDataDO.rEyeAxis}"></td>
+                                            <td th:text="${userEyeDataDO.rEyeAxis}==null?'无':${userEyeDataDO.rEyeAxis}"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -166,11 +190,11 @@
                                         <caption>验光</caption>
                                         <tr>
                                             <td>左</td>
-                                            <td th:text="${userEyeDataDO.lEyeOptometry}"></td>
+                                            <td th:text="${userEyeDataDO.lEyeOptometry}==null?'无':${userEyeDataDO.lEyeOptometry}"></td>
                                         </tr>
                                         <tr>
                                             <td>右</td>
-                                            <td th:text="${userEyeDataDO.lEyeOptometry}"></td>
+                                            <td th:text="${userEyeDataDO.rEyeOptometry}==null?'无':${userEyeDataDO.rEyeOptometry}"></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -181,11 +205,15 @@
                                         <caption>裸眼视力</caption>
                                         <tr>
                                             <td>左</td>
-                                            <td th:text="${userEyeDataDO.lEyeNakedVision}">2.6</td>
+                                            <td th:text="${userEyeDataDO.lEyeNakedVision}==null?'无':${userEyeDataDO.lEyeNakedVision}">
+                                                2.6
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>右</td>
-                                            <td th:text="${userEyeDataDO.rEyeNakedVision}">2.6</td>
+                                            <td th:text="${userEyeDataDO.rEyeNakedVision}==null?'无':${userEyeDataDO.rEyeNakedVision}">
+                                                2.6
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -195,11 +223,15 @@
                                         <caption>戴镜视力</caption>
                                         <tr>
                                             <td>左</td>
-                                            <td th:text="${userEyeDataDO.lEyeGlassesVision}">2.6</td>
+                                            <td th:text="${userEyeDataDO.lEyeGlassesVision}==null?'无':${userEyeDataDO.lEyeGlassesVision}">
+                                                2.6
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>右</td>
-                                            <td th:text="${userEyeDataDO.rEyeGlassesVision}">2.6</td>
+                                            <td th:text="${userEyeDataDO.rEyeGlassesVision}==null?'无':${userEyeDataDO.rEyeGlassesVision}">
+                                                2.6
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
@@ -277,259 +309,304 @@
                         </div>
 
                     </div>
-                    <div id="jinggong" class="ibox" style="margin-top: 10px;display: none;padding-top: 50px;">
-                        <div id="main" style="width: 700px;height:400px;margin: 0 auto;"></div>
-                        <div class="ibox-body">
-                            <input id="dataId" style="display: none" class="form-control" th:value="${dataId}"
-                                   placeholder="">
 
-                            <div class="columns pull-right">
-                                <button class="btn btn-success" onclick="reLoad()">查询</button>
-                            </div>
-                            <div class="columns pull-right col-md-2 nopadding">
-                                <input id="eye" type="text" class="form-control"
-                                       placeholder="请输入L/R查询左右眼 ">
-                            </div>
-                            <div class="columns pull-right col-md-2 nopadding">
-                                <select id="experimentalMode" class="form-control">
-                                    <option value="">全部</option>
-                                    <option value="静止视标">静止视标</option>
-                                    <option value="运动静止视标">运动静止视标</option>
-                                    <option value="运动实时视标">运动实时视标</option>
-                                    <option value="交替视标">交替视标</option>
-                                </select>
+                    <div class="ibox" id="jinggong" style="margin-top: 10px;display: none;padding-top: 50px;">
+                        <div class="ibox-body">
+                            <div id="jinggong1" class="col-sm-6" style="height:400px;width: 50%"></div>
+                            <div id="jinggong2" class="col-sm-6" style="height:400px;width: 50%"></div>
+                        </div>
+
+                        <div class="ibox-body">
+                            <div class="fixed-table-toolbar">
+                                <div class="columns pull-right">
+                                    <button class="btn btn-success" onclick="exportOne(1)">导出左眼</button>
+                                </div>
+                                <div class="columns pull-right">
+                                    <button class="btn btn-success" onclick="exportOne(2)">导出右眼</button>
+                                </div>
+                                <div class="columns pull-right">
+                                    <button class="btn btn-success" onclick="reLoad()">查询</button>
+                                </div>
+                                <div class="columns pull-right col-md-2 nopadding">
+                                    <!--<input id="dataId" type="text" class="form-control"
+                                           placeholder="输入序号">-->
+                                    <input id="eye" type="text" class="form-control"
+                                           placeholder="请输入L/l/R/r/查询左右眼 ">
+                                </div>
+
                             </div>
                             <table id="exampleTable" data-mobile-responsive="true">
                             </table>
                         </div>
                     </div>
-                    <div id="rili" class="ibox" style="margin-top: 10px;display: none;padding-top: 50px;">
-                        <div id="main2" class="col-xs-6 col-sm-6" style="height:700px;"></div>
-                        <div id="main3" class="col-xs-6 col-sm-6" style="height:700px;"></div>
-                        <div class="ibox-body">
-                            <div class="columns pull-right">
-                                <button class="btn btn-success" onclick="reLoad()">查询</button>
-                            </div>
-                            <div class="columns pull-right col-md-2 nopadding">
-                                <select id="experimentalMode1" class="form-control">
-                                    <option value="">全部</option>
-                                    <option value="静止视标">静止视标</option>
-                                    <option value="运动静止视标">运动静止视标</option>
-                                    <option value="运动实时视标">运动实时视标</option>
-                                    <option value="交替视标">交替视标</option>
-                                </select>
+                    <div class="ibox" id="rili" style="display: none;margin-top: 20px;padding-top: 50px;">
+
+                        <div id="main" class="col-xs-6 col-sm-6" style="height:700px;width: 100%;"></div>
+
+                        <div class="ibox-body" id="rili1">
+                            <div class="fixed-table-toolbar">
+                                <div class="columns pull-right">
+                                    <button class="btn btn-primary" onclick="exportAll(2)">导出有氧</button>
+                                </div>
+                                <div class="columns pull-right">
+                                    <button class="btn btn-primary" onclick="exportAll(3)">导出无氧</button>
+                                </div>
+                                <div class="columns pull-right">
+                                    <button class="btn btn-success" onclick="reLoadOx(1)">有氧</button>
+                                </div>
+                                <div class="columns pull-right">
+                                    <button class="btn btn-success" onclick="reLoadOx(2)">无氧</button>
+                                </div>
+
+                                <input id="type2" type="hidden" value="oxy">
                             </div>
                             <table id="exampleTable1" data-mobile-responsive="true">
                             </table>
                         </div>
-                    </div>
-                    <div id="shibiao" class="ibox" style="margin-top: 20px;display: none;padding-top: 50px;">
-                        <div class="ibox-body">
-                            <div class="fixed-table-toolbar">
 
+                        <div class="ibox">
+                            <div id="main5" class="col-xs-6 col-sm-6"
+                                 style="height:700px;width: 100%;display: none;"></div>
+                            <div id="mesChart" class="col-xs-6 col-sm-6"
+                                 style="height:700px;width: 100%;display: none;"></div>
+                        </div>
+
+                        <div class=" ibox-body" id="rili2" style="display: none;">
+                            <div class="fixed-table-toolbar">
+                                <div class="columns pull-right">
+                                    <button class="btn btn-success" onclick="reLoad()">查询</button>
+                                    <button class="btn btn-success" onclick="exportExcel()">导出</button>
+                                </div>
                                 <div class="columns pull-right col-md-2 nopadding">
-                                    <input id="dataId2" type="hidden" class="form-control" th:value="${dataId}"
-                                           placeholder="请输入序号">
+                                    <select id="type1" class="form-control">
+                                        <option value="">文件类型</option>
+                                        <option value="1">oxy</option>
+                                        <option value="2">deoxy</option>
+                                        <option value="3">total</option>
+                                        <option value="4">MES</option>
+                                    </select>
                                 </div>
                             </div>
+                            <table id="exampleTable4" data-mobile-responsive="true">
+                            </table>
+                            <table id="exampleTable5" data-mobile-responsive="true">
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="shibiao" class="ibox" style="margin-top: 20px;display: none;padding-top: 50px;">
+                        <div class="ibox-body">
+                            <!--<div class="fixed-table-toolbar">
+
+                                <div class="columns pull-right col-md-2 nopadding">
+                                    <input id="id2" type="hidden" class="form-control" th:value="${id}"
+                                           placeholder="请输入序号">
+                                </div>
+                            </div>-->
+
                             <table id="exampleTable3" data-mobile-responsive="true">
                             </table>
                         </div>
                     </div>
                     <div id="fenxi" style="margin-top: 20px;display: none;height: 3500px">
-                        <div id="jingzhi"
-                             style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
-                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">静止视标</p>
-                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                        2.5
+                        <div id="userInfo1"
+                             style="margin-top: 20px;height: 450px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">基本信息</p>
+                            <p style="margin-left: 50px;margin-top: 20px;" th:text="用户id：+${userBasic.userId}"></p><br>
+                            <!--<p style="margin-left: 50px;margin-top: 20px;" th:text="实验序号：+${id}"></p><br>-->
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;">
+                                <form class="form-horizontal">
+                                    <div class="form-group col-md-3">
+                                        <label class="col-sm-3 control-label">姓名：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.name}"
+                                                   disabled="disabled">
+                                        </div>
                                     </div>
-                                    <br>
-                                    <span>调节微波动平均值</span>
-                                </div>
-
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                        2.5
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-3 control-label">身份证：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.idCard}"
+                                                   disabled="disabled">
+                                        </div>
                                     </div>
-                                    <br>
-                                    <span>调节刺激平均值</span>
-                                </div>
-
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                        2.5
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sm-3 control-label">出生日期：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.birthday}"
+                                                   disabled="disabled">
+                                        </div>
                                     </div>
-                                    <br>
-                                    <span>调节反应量平均值</span>
-                                </div>
 
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                        2.5
+                                    <div class="form-group col-md-3">
+                                        <label class="col-sm-3 control-label">年龄：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.age}"
+                                                   disabled="disabled">
+                                        </div>
                                     </div>
-                                    <br>
-                                    <span>脑氧合血红蛋白平均值</span>
-                                </div>
 
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-3 control-label">性别：</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" th:value="${userBasic.gender}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sm-3 control-label">学校：</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" type="text" th:value="${userBasic.school}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label class="col-sm-3 control-label">班级：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.classname}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-3 control-label">联系人：</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" th:value="${userBasic.contacts}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sm-3 control-label">电话：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.phone}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                </form>
                             </div>
                         </div>
                         <br>
 
-                        <div id="yundong"
-                             style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
-                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">运动静止视标</p><br>
+                        <div id="quguangdu"
+                             style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">屈光度值</p>
                             <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节微波动平均值</span>
-                                </div>
+                                <div class="col-sm-2" style="padding-left: 100px;"></div>
 
                                 <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                        2.5
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;
+                                    font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');
+                                    background-size:100px 100px;" id="quguangL">
+
                                     </div>
                                     <br>
-                                    <span>调节刺激平均值</span>
+                                    <span style="padding-left: 20px">左眼屈光度值</span>
                                 </div>
 
+                                <div class="col-sm-3" style="padding-left: 100px;"></div>
                                 <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节反应量平均值</span>
-                                </div>
+                                    <div id="quguangR" style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;
+                                    line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
 
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                        2.5
                                     </div>
                                     <br>
-                                    <span>脑氧合血红蛋白平均值</span>
+                                    <span style="padding-left: 20px">右眼屈光度值</span>
                                 </div>
 
                             </div>
+
+                        </div>
+                        <br>
+                        <div id="xueyang"
+                             style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">血氧β值</p>
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+                                <div class="col-sm-2" style="padding-left: 100px;"></div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+                                        0.0
+                                    </div>
+                                    <br>
+                                    <span style="padding-left: 20px">左眼血氧β值</span>
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;"></div>
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+                                        0.0
+                                    </div>
+                                    <br>
+                                    <span style="padding-left: 20px">右眼血氧β值</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <div id="weibo"
+                             style="height: 800px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">调节微波动</p>
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
+                                <div class="col-sm-2" style="padding-left: 100px;">
+
+                                </div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div id="tiaojieL"
+                                         style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;
+                                         line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
+
+                                    </div>
+                                    <br>
+                                    <span>左眼调节微波动</span>
+                                </div>
+                                <div class="col-sm-3" style="padding-left: 100px;"></div>
+
+                                <div class="col-sm-3" style="padding-left: 100px;">
+                                    <div id="tiaojieR"
+                                         style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;
+                                         line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
+
+                                    </div>
+                                    <br>
+                                    <span>右眼调节微波动</span>
+                                </div>
+
+                                <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                                    <div id="weibodong1" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                                    <div id="weibodong2" style="width: 500px;height: 400px;">
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
 
                         <br>
-                        <div id="shishi"
-                             style="height: 1300px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;">
-                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">运动实时视标</p><br>
+                        <div id="zhihou"
+                             style="height: 800px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">调节滞后量</p>
                             <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节微波动平均值</span><br>
-                                </div>
 
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节刺激平均值</span>
-                                </div>
 
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节反应量平均值</span>
-                                </div>
-
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>脑氧合血红蛋白平均值</span>
-                                </div>
-
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="shishiData" style="width: 500px;height: 400px;">
+                                <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                                    <div id="zhihou1" style="width: 500px;height: 400px;">
                                     </div>
                                 </div>
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="shishiData1" style="width: 500px;height: 400px;">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="shishiData2" style="width: 500px;height: 400px;">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="shishiData3" style="width: 500px;height: 400px;">
+                                <div class="col-sm-6" style="padding-left: 200px;margin-top: 100px;">
+                                    <div id="zhihou2" style="width: 500px;height: 400px;">
                                     </div>
                                 </div>
 
                             </div>
 
-
-                        </div>
-
-                        <br>
-                        <div id="jiaoti"
-                             style="height: 1300px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
-                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">交替视标</p><br>
-                            <div style="margin-left: -5px; margin-bottom: 100px;margin-top: 50px;">
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#53BEFB;text-align:center;line-height:100px;background-image:url('/img/weibodong.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节微波动平均值</span><br>
-                                </div>
-
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#34CB7A;text-align:center;line-height:100px;background-image:url('/img/ciji.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节刺激平均值</span>
-                                </div>
-
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FC854D;text-align:center;line-height:100px;background-image:url('/img/fanyingliang.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>调节反应量平均值</span>
-                                </div>
-
-                                <div class="col-sm-3" style="padding-left: 100px;">
-                                    <div style="width: 100px;height: 100px;margin-left: 15px;font-size:30px;color:#FE3A53;text-align:center;line-height:100px;background-image:url('/img/naoyanghe.png');background-size:100px 100px;">
-                                        2.5
-                                    </div>
-                                    <br>
-                                    <span>脑氧合血红蛋白平均值</span>
-                                </div>
-
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="naoyang1" style="width: 500px;height: 400px;">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="naoyang2" style="width: 500px;height: 400px;">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="naoyang3" style="width: 500px;height: 400px;">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6" style="padding-left: 100px;margin-top: 100px;">
-                                    <div id="naoyang4" style="width: 500px;height: 400px;">
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -539,288 +616,397 @@
 </div>
 <div th:include="include::footer"></div>
 <script src="/js/echarts/echarts-all.js"></script>
-<script>
-   /*精工-全部*/
-   function quanbu() {
-      $('#experimentalMode').val("")
-      $('#experimentalMode1').val("")
 
-      reLoad();
+<script type="text/javascript" th:inline="javascript">
+   $("#type1").val("1");
+
+   function qiehuan(type) {
+      var id = [[${id}]]
+      $.getScript("/js/appjs/information/riliImportData/riliImportData.js");
+      if (type == 1) {
+         $('#main').show();
+         $('#rili1').show();
+         $('#main5').hide();
+         $('#rili2').hide();
+         $("#left").css("border-bottom", "5px solid #63BEFE")
+         $("#right").css("border-bottom", "inherit")
+
+      } else if (type == 2) {
+
+         $('#main').hide();
+         $('#rili1').hide();
+         $('#main5').show();
+         $('#rili2').show();
+         $("#right").css("border-bottom", "5px solid #63BEFE")
+         $("#left").css("border-bottom", "inherit")
+
+
+         var barChart1 = echarts.init(document.getElementById("main5"));
+
+         var option = {
+            title: {
+               text: 'CH1-CH22通道全部数据'
+            },
+            tooltip: {
+               trigger: 'axis'
+            },
+            legend: {
+               top: '5%',
+               left: '3%',
+               data: ['全选1', 'CH1', 'CH2', 'CH3', 'CH4', 'CH5', 'CH6', 'CH7', 'CH8', 'CH9',
+                  'CH10', 'CH11', 'CH12', 'CH13', 'CH14', 'CH15', 'CH16', 'CH17', 'CH18', 'CH19',
+                  'CH20', 'CH21', 'CH22'],
+               top: "6%"
+            },
+            xAxis: {
+               name: '采集时间',
+               type: 'category',
+               boundaryGap: false,
+               /*data: xoxy*/
+            },
+            yAxis: {
+               type: 'value'
+            },
+            dataZoom: [{
+               type: 'inside',
+               start: 0,
+               end: 100
+            }, {
+               start: 0,
+               end: 100,
+               handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+               handleSize: '80%',
+               handleStyle: {
+                  color: '#fff',
+                  shadowBlur: 3,
+                  shadowColor: 'rgba(0, 0, 0, 0.6)',
+                  shadowOffsetX: 2,
+                  shadowOffsetY: 2
+               }
+            }],
+            series: [
+               {
+                  type: 'line',
+
+               },
+               {
+                  type: 'line',
+
+               },
+               {
+                  type: 'line',
+
+               },
+               {
+                  type: 'line',
+
+               },
+               {
+                  /*name: 'CH4',*/
+                  type: 'line',
+
+                  /*data: ch4oxy*/
+               },
+               {
+                  /*name: 'CH5',*/
+                  type: 'line',
+
+                  /*data: ch5oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH6',*/
+                  type: 'line',
+
+                  /*data: ch6oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH7',*/
+                  type: 'line',
+
+                  /*data: ch7oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH8',*/
+                  type: 'line',
+
+                  /*data: ch8oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH9',*/
+                  type: 'line',
+
+                  /*data: ch9oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH10',*/
+                  type: 'line',
+
+                  /*data: ch10oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH11',*/
+                  type: 'line',
+
+                  /*data: ch11oxy*/
+               }, {
+                  /*name: 'CH12',*/
+                  type: 'line',
+
+                  /*data: ch12oxy*/
+               },
+               {
+                  /*name: 'CH13',*/
+                  type: 'line',
+
+                  /*data: ch13oxy*/
+               },
+               {
+                  /*name: 'CH14',*/
+                  type: 'line',
+
+                  /*data: ch14oxy*/
+               },
+               {
+                  /*name: 'CH15',*/
+                  type: 'line',
+
+                  /*data: ch15oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH16',*/
+                  type: 'line',
+
+                  /*data: ch16oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH17',*/
+                  type: 'line',
+
+                  /*data: ch17oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH18',*/
+                  type: 'line',
+
+                  /*data: ch18oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH19',*/
+                  type: 'line',
+
+                  /*data: ch19oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH20',*/
+                  type: 'line',
+
+                  /*data: ch20oxy*/
+               }
+               ,
+               {
+                  /*name: 'CH21',*/
+                  type: 'line',
+
+                  /*data: ch21oxy*/
+               },
+               {
+                  /* name: 'CH22',*/
+                  type: 'line',
+
+                  /*data: ch22oxy*/
+               }
+            ]
+         }
+         barChart1.setOption(option);
+         barChart1.showLoading();
+      }
+
+      var selectArr = option.legend.data;
+      barChart1.on('legendselectchanged', function (obj1) {
+
+         console.log($(this),"this11")
+         var selected = obj1.selected;
+         var name = obj1.name;
+// 使用 legendToggleSelect Action 会重新触发 legendselectchanged Event，导致本函数重复运行
+// 使得 无 selected 对象
+         if (name == '全选1') {//需要配置一个legend为‘全选’的名称
+//alert("33");
+            var flag = $(this).attr('flag');
+            if (flag == 1) {
+               var val = false;
+               $(this).attr('flag', 0);
+               $(this).val('全选中');
+            } else {
+               var val = true;
+               $(this).attr('flag', 1);
+               $(this).val('全不选');
+            }
+            var obj1 = {};
+            for (var key in selectArr) {
+               obj1[selectArr[key]] = val;
+            }
+            option.legend.selected = obj1;
+            barChart1.setOption(option);
+         }
+      });
+
+      function loadImportChart(type) {
+
+         console.log(type, '选中值');
+         $.ajax({
+            type: "get",
+            async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "/information/riliImportData/getImport",    //请求发送到TestServlet处
+            data: {id: id, type: type},
+            dataType: "json",        //返回数据形式为json
+            success: function (result) {
+               console.log(result)
+               //请求成功时执行该函数内容，result即为服务器返回的json对象
+               if (result) {
+                  barChart1.hideLoading();    //隐藏加载动画
+                  barChart1.setOption({        //加载数据图表
+                     xAxis: {
+                        data: result.data.xoxy
+                     },
+                     series: [{
+                        name: '全选'
+
+                     }, {
+                        name: 'CH1',
+                        data: result.data.ch1oxy
+                     },
+                        {
+                           name: 'CH2',
+                           data: result.data.ch2oxy
+                        },
+                        {
+                           name: 'CH3',
+                           data: result.data.ch3oxy
+                        },
+                        {
+                           name: 'CH4',
+                           data: result.data.ch4oxy
+                        },
+                        {
+                           name: 'CH5',
+                           data: result.data.ch5oxy
+                        }
+                        ,
+                        {
+                           name: 'CH6',
+                           data: result.data.ch6oxy
+                        }
+                        ,
+                        {
+                           name: 'CH7',
+                           data: result.data.ch7oxy
+                        }
+                        ,
+                        {
+                           name: 'CH8',
+                           data: result.data.ch8oxy
+                        }
+                        ,
+                        {
+                           name: 'CH9',
+                           data: result.data.ch9oxy
+                        }
+                        ,
+                        {
+                           name: 'CH10',
+                           data: result.data.ch10oxy
+                        }
+                        ,
+                        {
+                           name: 'CH11',
+                           data: result.data.ch11oxy
+                        },
+                        {
+                           name: 'CH12',
+                           data: result.data.ch12oxy
+                        },
+                        {
+                           name: 'CH13',
+                           data: result.data.ch13oxy
+                        },
+                        {
+                           name: 'CH14',
+                           data: result.data.ch14oxy
+                        },
+                        {
+                           name: 'CH15',
+                           data: result.data.ch15oxy
+                        }
+                        ,
+                        {
+                           name: 'CH16',
+                           data: result.data.ch16oxy
+                        }
+                        ,
+                        {
+                           name: 'CH17',
+                           data: result.data.ch17oxy
+                        }
+                        ,
+                        {
+                           name: 'CH18',
+                           data: result.data.ch18oxy
+                        }
+                        ,
+                        {
+                           name: 'CH19',
+                           data: result.data.ch19oxy
+                        }
+                        ,
+                        {
+                           name: 'CH20',
+                           data: result.data.ch20oxy
+                        }
+                        ,
+                        {
+                           name: 'CH21',
+                           data: result.data.ch21oxy
+                        },
+                        {
+                           name: 'CH22',
+                           data: result.data.ch22oxy
+                        }]
+                  });
+               }
+            },
+            error: function (errorMsg) {
+               //请求失败时执行该函数
+               alert("图表请求数据失败!");
+               barChart1.hideLoading();
+            }
+         })
+      }
+
+      loadImportChart(1)
 
    }
 
-   /*精工-静止视标*/
-   function jingzhi() {
-      $('#experimentalMode').val("静止视标")
-      $('#experimentalMode1').val("静止视标")
-
-      reLoad();
+   function changeJinggong(type) {
+      $.getScript("/js/appjs/information/jinggongImportData/jinggongImportData.js");
    }
-
-   /*运动静止视标*/
-   function sportStatic() {
-      $('#experimentalMode').val("运动静止视标")
-      $('#experimentalMode1').val("运动静止视标")
-
-      reLoad();
-   }
-
-   /*运动实时视标*/
-   function sportReal() {
-      $('#experimentalMode').val("运动实时视标")
-      $('#experimentalMode1').val("运动实时视标")
-
-      reLoad();
-   }
-
-   /*交替视标*/
-   function changeShibiao() {
-      $('#experimentalMode').val("交替视标")
-      $('#experimentalMode1').val("交替视标")
-
-      reLoad();
-   }
-
 </script>
-<!--折线图-->
-<script type="text/javascript">
-   /*var barChart = echarts.init(document.getElementById("main"));
-   var barChart2 = echarts.init(document.getElementById("main2"));
-   var barChart3 = echarts.init(document.getElementById("main3"));*/
+<!--点击切换-->
+<script type="text/javascript"
+        th:inline="javascript">
+   var id = [[${id}]]
 
-   barChart.setOption({
-      title: {
-         text: '精工5500数据图表分析'
-      },
-      legend: {
-         data: ['左眼', '右眼']
-      },
-      xAxis: {
-         name: '(采集时间)',
-         type: 'category',
-         boundaryGap: false,
-         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      },
-      yAxis: {
-         name: '(屈光度)',
-         type: 'value'
-      },
-      series: [{
-         name: '左眼',
-         data: [820, 932, 901, 934, 1290, 1330, 1320],
-         type: 'line',
-         areaStyle: {}
-      }, {
-         name: '右眼',
-         data: [500, 600, 1000, 300, 1000, 1500, 1320],
-         type: 'line',
-         areaStyle: {}
-      }]
-   })
-   barChart2.setOption({
-      title: {
-         text: 'CH12-CH22通道数据'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         top: '5%',
-         bottom: '5%',
-         data: ['CH12', 'CH13', 'CH14', 'CH15', 'CH16', 'CH17', 'CH18', 'CH19',
-            'CH20', 'CH21', 'CH22']
-      },
-      xAxis: {
-         name: '采集时间',
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-      },
-      yAxis: {
-         type: 'value'
-      },
-      series: [
-         {
-            name: 'CH12',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: 'CH13',
-            type: 'line',
-            stack: '总量',
-            data: [150, 232, 201, 154, 190, 330, 410]
-         },
-         {
-            name: 'CH14',
-            type: 'line',
-            stack: '总量',
-            data: [320, 332, 301, 334, 390, 330, 320]
-         },
-         {
-            name: 'CH15',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH16',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH17',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH18',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH19',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH20',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH21',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         },
-         {
-            name: 'CH22',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-   })
-
-   barChart3.setOption({
-      title: {
-         text: 'CH12-CH22通道数据'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         top: '5%',
-         bottom: '5%',
-         data: ['CH12', 'CH13', 'CH14', 'CH15', 'CH16', 'CH17', 'CH18', 'CH19',
-            'CH20', 'CH21', 'CH22']
-      },
-      xAxis: {
-         name: '采集时间',
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-      },
-      yAxis: {
-         type: 'value'
-      },
-      series: [
-         {
-            name: 'CH12',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: 'CH13',
-            type: 'line',
-            stack: '总量',
-            data: [150, 232, 201, 154, 190, 330, 410]
-         },
-         {
-            name: 'CH14',
-            type: 'line',
-            stack: '总量',
-            data: [320, 332, 301, 334, 390, 330, 320]
-         },
-         {
-            name: 'CH15',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH16',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH17',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH18',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH19',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH20',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         }
-         ,
-         {
-            name: 'CH21',
-            type: 'line',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-         },
-         {
-            name: 'CH22',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-   })
-</script>
-
-<!--脑氧折线图-->
-<script>
-   var barChart = echarts.init(document.getElementById("shishiData"));
-   var barChart1 = echarts.init(document.getElementById("shishiData1"));
-   var barChart2 = echarts.init(document.getElementById("shishiData2"));
-   var barChart3 = echarts.init(document.getElementById("shishiData3"));
-
+   console.log(id)
 
    function info() {
       $('#info').show();
@@ -829,6 +1015,8 @@
       $('#shibiao').hide();
       $('#fenxi').hide();
       $('#fenlei').hide();
+      $('#select1').hide();
+      $('#select2').hide();
 
       $("#xinxi").css("border-bottom", "5px solid #63BEFE")
       $("#jinggong5500").css("border-bottom", "inherit")
@@ -848,6 +1036,8 @@
       $('#shibiao').hide();
       $('#fenxi').hide();
       $('#fenlei').show();
+      $('#select1').hide();
+      $('#select2').show();
 
       $("#jinggong5500").css("border-bottom", "5px solid #63BEFE")
       $("#xinxi").css("border-bottom", "inherit")
@@ -855,10 +1045,202 @@
       $("#shibiaoData").css("border-bottom", "inherit")
       $("#report").css("border-bottom", "inherit")
 
-   };
+      var barChart = echarts.init(document.getElementById("jinggong1"));
+      var barChart1 = echarts.init(document.getElementById("jinggong2"));
+
+      barChart.setOption({
+         title: {
+            text: '精工5500数据图表分析'
+         },
+         tooltip: {
+            trigger: 'axis'
+         },
+         legend: {
+            data: ['左眼']
+         },
+         xAxis: {
+            name: '(采集时间)',
+            type: 'category',
+            boundaryGap: false,
+         }, dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
+         }, {
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+               color: '#fff',
+               shadowBlur: 3,
+               shadowColor: 'rgba(0, 0, 0, 0.6)',
+               shadowOffsetX: 2,
+               shadowOffsetY: 2
+            }
+         }],
+         yAxis: {
+            name: '(屈光度)',
+            type: 'value'
+         },
+         series: [{
+
+            type: 'line'
+         }],
+      })
+      barChart.showLoading();
+
+      barChart1.setOption({
+         title: {
+            text: '精工5500数据图表分析'
+         },
+         tooltip: {
+            trigger: 'axis'
+         },
+         legend: {
+            data: ['右眼']
+         },
+         xAxis: {
+            name: '(采集时间)',
+            type: 'category',
+            boundaryGap: false,
+         }, dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
+         }, {
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+               color: '#fff',
+               shadowBlur: 3,
+               shadowColor: 'rgba(0, 0, 0, 0.6)',
+               shadowOffsetX: 2,
+               shadowOffsetY: 2
+            }
+         }],
+         yAxis: {
+            name: '(屈光度)',
+            type: 'value'
+         },
+         series: [{
+            type: 'line',
+         }],
+      })
+      barChart1.showLoading();
+
+      var right = [];
+      var left = [];
+
+      $.ajax({
+         type: "get",
+         async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+         url: "/information/userBasic/getJinggong",    //请求发送到TestServlet处
+         data: {id: id},
+         dataType: "json",        //返回数据形式为json
+         success: function (result) {
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            if (result) {
+               console.log(result, "结果")
+               left = result.data.lJinggong
+               right = result.data.rJinggong
+
+               var xr = result.data.xr;
+               var xl = result.data.xl;
+               var indexl = result.data.indexl;
+               var indexr = result.data.indexr;
+
+               console.log(indexl)
+               console.log(indexr)
+               var index = [];
+               var index2 = [];
+               for (var i = 0; i < indexr.length; i++) {
+                  if (i == 0) {
+                     index.push(
+                        [{
+                           xAxis: xr[indexr[0]]
+                        }, {
+                           xAxis: xr[indexr[i + 1]]
+                        }]
+                     );
+                  } else if (i % 2 == 0 && i > 1) {
+                     index.push(
+                        [{
+                           xAxis: xr[indexr[i]]
+                        }, {
+                           xAxis: xr[indexr[i + 1]]
+                        }]
+                     );
+                  }
+               }
+               for (var i = 0; i < indexl.length; i++) {
+                  if (i == 0) {
+                     index2.push(
+                        [{
+                           xAxis: xl[indexl[0]]
+                        }, {
+                           xAxis: xl[indexl[i + 1]]
+                        }]
+                     );
+                  } else if (i % 2 == 0 && i > 1) {
+                     index2.push(
+                        [{
+                           xAxis: xl[indexl[i]]
+                        }, {
+                           xAxis: xl[indexl[i + 1]]
+                        }]
+                     );
+                  }
+               }
+
+               console.log(index)
+               console.log(index2)
+               barChart.hideLoading();    //隐藏加载动画
+               barChart.setOption({        //加载数据图表
+                  xAxis: {
+                     data: result.data.xl
+                  },
+                  series: [{
+                     // 根据名字对应到相应的系列
+                     name: '左眼',
+                     data: left,
+                     markArea: {
+                        data: index2
+                     },
+                  }]
+               });
+
+               barChart1.hideLoading();    //隐藏加载动画
+               barChart1.setOption({        //加载数据图表
+                  xAxis: {
+                     data: result.data.xr
+                  },
+                  series: [{
+                     name: '右眼',
+                     data: right,
+                     markArea: {
+                        data: index
+                     },
+                  }]
+               });
+
+            }
+
+         },
+         error: function (errorMsg) {
+            //请求失败时执行该函数
+            alert("图表请求数据失败!");
+            barChart.hideLoading();
+         }
+      })
+
+
+   }
+
 
    function rili() {
-      $.getScript("/js/echarts/echarts-all.js");
       $.getScript("/js/appjs/information/riliData/riliData.js");
 
       $('#info').hide();
@@ -867,14 +1249,389 @@
       $('#shibiao').hide();
       $('#fenxi').hide();
       $('#fenlei').show();
+      $('#select1').show();
+      $('#rilichart').hide();
+      $('#select2').hide();
 
+      $('#left').css("border-bottom", "5px solid #63BEFE")
       $("#rili4000").css("border-bottom", "5px solid #63BEFE")
       $("#jinggong5500").css("border-bottom", "inherit")
       $("#xinxi").css("border-bottom", "inherit")
       $("#shibiaoData").css("border-bottom", "inherit")
       $("#report").css("border-bottom", "inherit")
 
+
+      var numoxy;
+
+
+      /*if (xoxy.length > 500) {
+         numoxy = 1
+      } else if (xoxy.length > 200 && xoxy.length < 500) {
+         numoxy = 5
+      } else if (xoxy.length > 100 && xoxy.length < 200) {
+         numoxy = 20
+      } else if (xoxy.length > 50 && xoxy.length < 100) {
+         numoxy = 40
+      } else if (xoxy.length > 20 && xoxy.length < 50) {
+         numoxy = 80
+      } else {
+         numoxy = 100
+      }*/
+
+      var barChart2 = echarts.init(document.getElementById("main"));
+
+      var option2 = {
+         title: {
+            text: 'CH1-CH11通道全部数据'
+         },
+         tooltip: {
+            trigger: 'axis'
+         },
+         legend: {
+            top: '6%',
+            left: '3%',
+            data: ['全选2', 'CH1', 'CH2', 'CH3', 'CH4', 'CH5', 'CH6', 'CH7', 'CH8', 'CH9',
+               'CH10', 'CH11', 'CH12', 'CH13', 'CH14', 'CH15', 'CH16', 'CH17', 'CH18', 'CH19',
+               'CH20', 'CH21', 'CH22'],
+         },
+         xAxis: {
+            name: '采集时间',
+            type: 'category',
+            boundaryGap: false,
+            /*data: xoxy*/
+         },
+         yAxis: {
+            type: 'value'
+         },
+         dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
+         }, {
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+               color: '#fff',
+               shadowBlur: 3,
+               shadowColor: 'rgba(0, 0, 0, 0.6)',
+               shadowOffsetX: 2,
+               shadowOffsetY: 2
+            }
+         }],
+         series: [
+            {
+               type: 'line',
+
+            },
+            {
+               type: 'line',
+
+            },
+            {
+               type: 'line',
+
+            },
+            {
+               type: 'line',
+
+            },
+            {
+               /*name: 'CH4',*/
+               type: 'line',
+
+               /*data: ch4oxy*/
+            },
+            {
+               /*name: 'CH5',*/
+               type: 'line',
+
+               /*data: ch5oxy*/
+            }
+            ,
+            {
+               /*name: 'CH6',*/
+               type: 'line',
+
+               /*data: ch6oxy*/
+            }
+            ,
+            {
+               /*name: 'CH7',*/
+               type: 'line',
+
+               /*data: ch7oxy*/
+            }
+            ,
+            {
+               /*name: 'CH8',*/
+               type: 'line',
+
+               /*data: ch8oxy*/
+            }
+            ,
+            {
+               /*name: 'CH9',*/
+               type: 'line',
+
+               /*data: ch9oxy*/
+            }
+            ,
+            {
+               /*name: 'CH10',*/
+               type: 'line',
+
+               /*data: ch10oxy*/
+            }
+            ,
+            {
+               /*name: 'CH11',*/
+               type: 'line',
+
+               /*data: ch11oxy*/
+            }, {
+               /*name: 'CH12',*/
+               type: 'line',
+
+               /*data: ch12oxy*/
+            },
+            {
+               /*name: 'CH13',*/
+               type: 'line',
+
+               /*data: ch13oxy*/
+            },
+            {
+               /*name: 'CH14',*/
+               type: 'line',
+
+               /*data: ch14oxy*/
+            },
+            {
+               /*name: 'CH15',*/
+               type: 'line',
+
+               /*data: ch15oxy*/
+            }
+            ,
+            {
+               /*name: 'CH16',*/
+               type: 'line',
+
+               /*data: ch16oxy*/
+            }
+            ,
+            {
+               /*name: 'CH17',*/
+               type: 'line',
+
+               /*data: ch17oxy*/
+            }
+            ,
+            {
+               /*name: 'CH18',*/
+               type: 'line',
+
+               /*data: ch18oxy*/
+            }
+            ,
+            {
+               /*name: 'CH19',*/
+               type: 'line',
+
+               /*data: ch19oxy*/
+            }
+            ,
+            {
+               /*name: 'CH20',*/
+               type: 'line',
+
+               /*data: ch20oxy*/
+            }
+            ,
+            {
+               /*name: 'CH21',*/
+               type: 'line',
+
+               /*data: ch21oxy*/
+            },
+            {
+               /* name: 'CH22',*/
+               type: 'line',
+
+               /*data: ch22oxy*/
+            }
+         ]
+      }
+      barChart2.setOption(option2)
+      barChart2.showLoading();
+
+      var selectArr = option2.legend.data;
+      barChart2.on('legendselectchanged', function (obj) {
+         console.log($(this),"this")
+         var selected = obj.selected;
+         var name = obj.name;
+// 使用 legendToggleSelect Action 会重新触发 legendselectchanged Event，导致本函数重复运行
+// 使得 无 selected 对象
+         if (name == '全选2') {//需要配置一个legend为‘全选’的名称
+//alert("33");
+            var flag = $(this).attr('flag');
+            if (flag == 1) {
+               var val = false;
+               $(this).attr('flag', 0);
+               $(this).val('全选中');
+            } else {
+               var val = true;
+               $(this).attr('flag', 1);
+               $(this).val('全不选');
+            }
+            var obj = {};
+            for (var key in selectArr) {
+               obj[selectArr[key]] = val;
+            }
+            option2.legend.selected = obj;
+            barChart2.setOption(option2);
+         }
+      });
+
+
+      function loadChart(type) {
+
+         $.ajax({
+            type: "get",
+            async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+            url: "/information/riliData/getRili",    //请求发送到TestServlet处
+            data: {id: id, type: type},
+            dataType: "json",        //返回数据形式为json
+            success: function (result) {
+               console.log(result)
+               //请求成功时执行该函数内容，result即为服务器返回的json对象
+               if (result) {
+                  barChart2.hideLoading();    //隐藏加载动画
+                  barChart2.setOption({        //加载数据图表
+                     xAxis: {
+                        data: result.data.xoxy
+                     },
+                     series: [
+                        {
+                           name: '全选'
+
+                        }, {
+                           name: 'CH1',
+                           data: result.data.ch1oxy
+                        },
+                        {
+                           name: 'CH2',
+                           data: result.data.ch2oxy
+                        },
+                        {
+                           name: 'CH3',
+                           data: result.data.ch3oxy
+                        },
+                        {
+                           name: 'CH4',
+                           data: result.data.ch4oxy
+                        },
+                        {
+                           name: 'CH5',
+                           data: result.data.ch5oxy
+                        }
+                        ,
+                        {
+                           name: 'CH6',
+                           data: result.data.ch6oxy
+                        }
+                        ,
+                        {
+                           name: 'CH7',
+                           data: result.data.ch7oxy
+                        }
+                        ,
+                        {
+                           name: 'CH8',
+                           data: result.data.ch8oxy
+                        }
+                        ,
+                        {
+                           name: 'CH9',
+                           data: result.data.ch9oxy
+                        }
+                        ,
+                        {
+                           name: 'CH10',
+                           data: result.data.ch10oxy
+                        }
+                        ,
+                        {
+                           name: 'CH11',
+                           data: result.data.ch11oxy
+                        },
+                        {
+                           name: 'CH12',
+                           data: result.data.ch12oxy
+                        },
+                        {
+                           name: 'CH13',
+                           data: result.data.ch13oxy
+                        },
+                        {
+                           name: 'CH14',
+                           data: result.data.ch14oxy
+                        },
+                        {
+                           name: 'CH15',
+                           data: result.data.ch15oxy
+                        }
+                        ,
+                        {
+                           name: 'CH16',
+                           data: result.data.ch16oxy
+                        }
+                        ,
+                        {
+                           name: 'CH17',
+                           data: result.data.ch17oxy
+                        }
+                        ,
+                        {
+                           name: 'CH18',
+                           data: result.data.ch18oxy
+                        }
+                        ,
+                        {
+                           name: 'CH19',
+                           data: result.data.ch19oxy
+                        }
+                        ,
+                        {
+                           name: 'CH20',
+                           data: result.data.ch20oxy
+                        }
+                        ,
+                        {
+                           name: 'CH21',
+                           data: result.data.ch21oxy
+                        },
+                        {
+                           name: 'CH22',
+                           data: result.data.ch22oxy
+                        }]
+                  });
+               }
+            },
+            error: function (errorMsg) {
+               //请求失败时执行该函数
+               alert("图表请求数据失败!");
+            }
+         })
+      }
+
+      loadChart('oxy');
+
+
    };
+
 
    function shibiao() {
       $.getScript("/js/appjs/information/shibiaoData/shibiaoData.js");
@@ -885,6 +1642,8 @@
       $('#shibiao').show();
       $('#fenxi').hide();
       $('#fenlei').hide();
+      $('#select1').hide();
+      $('#select2').hide();
 
       $("#shibiaoData").css("border-bottom", "5px solid #63BEFE")
       $("#rili4000").css("border-bottom", "inherit")
@@ -901,344 +1660,357 @@
       $('#shibiao').hide();
       $('#fenxi').show();
       $('#fenlei').hide();
+      $('#select1').hide();
+      $('#select2').hide();
 
       $("#shibiaoData").css("border-bottom", "inherit")
       $("#rili4000").css("border-bottom", "inherit")
       $("#jinggong5500").css("border-bottom", "inherit")
       $("#xinxi").css("border-bottom", "inherit")
       $("#report").css("border-bottom", "5px solid #63BEFE")
+
+
+      var barChart = echarts.init(document.getElementById("weibodong1"));
+      var barChart1 = echarts.init(document.getElementById("weibodong2"));
+
+      var barChart2 = echarts.init(document.getElementById("zhihou1"));
+      var barChart3 = echarts.init(document.getElementById("zhihou2"));
+
+      /**调节微波动*/
+      barChart.setOption({
+         title: {
+            text: '左眼调节微波动',
+            left: 'center'
+         },
+         tooltip: {
+            trigger: 'axis'
+         },
+         legend: {
+            data: ['微波动'],
+            top: '5%',
+            left: 'right'
+         },
+         xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            /*data: dateListLX,*/
+            name: '时间'
+         },
+         yAxis: {
+            type: 'value',
+            name: '（调节波动）'
+         },
+         series: [
+            {
+               name: '微波动',
+               type: 'line',
+
+               /*data: dateListLY*/
+            }
+         ],
+         dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
+         }, {
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+               color: '#fff',
+               shadowBlur: 3,
+               shadowColor: 'rgba(0, 0, 0, 0.6)',
+               shadowOffsetX: 2,
+               shadowOffsetY: 2
+            }
+         }],
+
+      });
+      barChart.showLoading();
+      barChart1.setOption({
+         title: {
+            text: '右眼调节微波动',
+            left: 'center'
+         },
+         tooltip: {
+            trigger: 'axis'
+         },
+         legend: {
+            data: ['微波动'],
+            top: '5%',
+            left: 'right'
+         },
+         xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            /*data: dateListRX,*/
+            name: '时间'
+         },
+         yAxis: {
+            type: 'value',
+            name: '（调节波动）'
+         },
+         series: [
+            {
+               name: '微波动',
+               type: 'line',
+
+               /*data: dateListRY*/
+            }
+         ],
+         dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
+         }, {
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+               color: '#fff',
+               shadowBlur: 3,
+               shadowColor: 'rgba(0, 0, 0, 0.6)',
+               shadowOffsetX: 2,
+               shadowOffsetY: 2
+            }
+         }],
+
+      });
+      barChart1.showLoading();
+
+      barChart2.setOption({
+         title: {
+            text: '左眼调节滞后量',
+            left: 'center'
+         },
+         tooltip: {
+            trigger: 'axis'
+         },
+         legend: {
+            data: ['滞后量'],
+            top: '5%',
+            left: 'right'
+         },
+         xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            /*data: Lx,*/
+            name: '视标位置'
+         },
+         yAxis: {
+            type: 'value',
+            name: '（调节滞后量）'
+         },
+         series: [
+            {
+               name: '滞后量',
+               type: 'line',
+
+               /*data: Ly*/
+            }
+         ],
+         dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
+         }, {
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+               color: '#fff',
+               shadowBlur: 3,
+               shadowColor: 'rgba(0, 0, 0, 0.6)',
+               shadowOffsetX: 2,
+               shadowOffsetY: 2
+            }
+         }],
+
+      });
+      barChart2.showLoading();
+      barChart3.setOption({
+         title: {
+            text: '右眼调节滞后量',
+            left: 'center'
+         },
+         tooltip: {
+            trigger: 'axis'
+         },
+         legend: {
+            data: ['滞后量'],
+            top: '5%',
+            left: 'right'
+         },
+         xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            /*data: Rx,*/
+            name: '视标位置'
+         },
+         yAxis: {
+            type: 'value',
+            name: '（调节滞后量）'
+         },
+         series: [
+            {
+               name: '滞后量',
+               type: 'line',
+
+               /*data: Ry*/
+            }
+         ],
+         dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
+         }, {
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+               color: '#fff',
+               shadowBlur: 3,
+               shadowColor: 'rgba(0, 0, 0, 0.6)',
+               shadowOffsetX: 2,
+               shadowOffsetY: 2
+            }
+         }],
+
+      });
+      barChart3.showLoading();
+
+      $.ajax({
+         type: "get",
+         async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+         url: "/information/userBasic/getReport",    //请求发送到TestServlet处
+         data: {id: id},
+         dataType: "json",        //返回数据形式为json
+         success: function (result) {
+            console.log(result)
+
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            if (result) {
+               //左右眼屈光度
+               var diopterL = result.data.diopterL;
+               var diopterR = result.data.diopterR;
+
+               $('#quguangL').text(diopterL.toFixed(2))
+               $('#quguangR').text(diopterR.toFixed(2))
+
+               var tiaojieL = result.data.tiaojieL
+               var tiaojieR = result.data.tiaojieR;
+
+               $('#tiaojieL').text(tiaojieL.toFixed(2))
+               $('#tiaojieR').text(tiaojieR.toFixed(2))
+
+               var chartDOListBodongL = result.data.chartDOListBodongL
+               var chartDOListBodongR = result.data.chartDOListBodongR
+               var dateListRY = chartDOListBodongR.map(function (item) {
+                  return item['y'];
+               });
+               var dateListRX = chartDOListBodongR.map(function (item) {
+                  return item['x'].split(" ")[1];
+               });
+
+               var dateListLY = chartDOListBodongL.map(function (item) {
+                  return item['y'];
+               });
+               var dateListLX = chartDOListBodongL.map(function (item) {
+                  return item['x'].split(" ")[1];
+               });
+
+               var type = result.data.type
+               var string = '';
+               if (type == 1) {
+                  string = '戴镜'
+               } else if (type == 2) {
+                  string = '不戴镜'
+               }
+               var chartDOListL = result.data.chartDOListL
+               var chartDOListR = result.data.chartDOListR
+               var Lx = chartDOListL.map(function (item) {
+                  return item['x'];
+               });
+               var Ly = chartDOListL.map(function (item) {
+                  return item['y'];
+               });
+
+               var Rx = chartDOListR.map(function (item) {
+                  return item['x'];
+               });
+               var Ry = chartDOListR.map(function (item) {
+                  return item['y'];
+               });
+
+               barChart.hideLoading();    //隐藏加载动画
+               barChart.setOption({        //加载数据图表
+                  xAxis: {
+                     data: dateListLX
+                  },
+                  series: [{
+                     data: dateListLY
+                  }]
+               });
+
+               barChart1.hideLoading();    //隐藏加载动画
+               barChart1.setOption({        //加载数据图表
+                  xAxis: {
+                     data: dateListRX
+                  },
+                  series: [{
+                     data: dateListRY
+                  }]
+               });
+
+               barChart2.hideLoading();    //隐藏加载动画
+               barChart2.setOption({        //加载数据图表
+                  title: {
+                     text: '左眼' + string + '调节滞后量'
+                  },
+                  xAxis: {
+                     data: Lx
+                  },
+                  series: [{
+                     data: Ly
+                  }]
+               });
+
+               barChart3.hideLoading();    //隐藏加载动画
+               barChart3.setOption({        //加载数据图表
+                  title: {
+                     text: '右眼' + string + '调节滞后量'
+                  },
+                  xAxis: {
+                     data: Rx
+                  },
+                  series: [{
+                     data: Ry
+                  }]
+               });
+
+            }
+
+         },
+         error: function (errorMsg) {
+            //请求失败时执行该函数
+            alert("图表请求数据失败!");
+         }
+      })
+
+
    }
-
-
-   barChart.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
-   barChart1.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
-
-   barChart2.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
-   barChart3.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
 </script>
 
-<script>
-   var barChart = echarts.init(document.getElementById("naoyang1"));
-   var barChart1 = echarts.init(document.getElementById("naoyang2"));
-   var barChart2 = echarts.init(document.getElementById("naoyang3"));
-   var barChart3 = echarts.init(document.getElementById("naoyang4"));
-
-   barChart.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
-   barChart1.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
-
-   barChart2.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
-   barChart3.setOption({
-      title: {
-         text: '折线图堆叠',
-         left: 'center'
-      },
-      tooltip: {
-         trigger: 'axis'
-      },
-      legend: {
-         data: ['邮件营销', '联盟广告'],
-         top: '5%',
-         left: 'right'
-      },
-      xAxis: {
-         type: 'category',
-         boundaryGap: false,
-         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-         name: '时间'
-      },
-      yAxis: {
-         type: 'value',
-         name: '（调节波动）'
-      },
-      series: [
-         {
-            name: '邮件营销',
-            type: 'line',
-            stack: '总量',
-            data: [120, 132, 101, 134, 90, 230, 210]
-         },
-         {
-            name: '联盟广告',
-            type: 'line',
-            stack: '总量',
-            data: [220, 182, 191, 234, 290, 330, 310]
-         }
-      ]
-
-   });
-</script>
 <style>
-    #title, #userInfo, #userEye, #environmentInfo, #jinggong, #rili, #shibiao, #jingzhi, #yundong, #shishi, #jiaoti {
+    #title, #userInfo, #userInfo1, #userEye, #environmentInfo, #jinggong, #rili, #shibiao, #jingzhi, #yundong, #shishi, #jiaoti, #type, #select1, #select2 {
         background-color: white;
     }
 
-    #title span {
+    #title, #type, #select1 span {
         font-size: 18px;
         font-weight: bold;
         line-height: 50px;

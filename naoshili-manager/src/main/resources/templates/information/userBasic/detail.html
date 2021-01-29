@@ -3,40 +3,60 @@
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
 <body class="gray-bg">
-	<div class="wrapper wrapper-content " style="margin: 5px auto;">
-		<div class="col-sm-1"></div>
-		<div class="col-sm-10">
-			<div class="ibox">
-				<div class="ibox-body">
-					<div class="fixed-table-toolbar">
-						<!-- <input th:value="${idCard}" id="idCard" type="hidden"> -->
-						<input th:value="${id}" id="userId" type="hidden">
-						<div class="columns pull-right">
-							<button class="btn btn-success" onclick="reLoad()">查询</button>
-						</div>
-						<div class="columns pull-right col-md-2 nopadding">
-							<input id="id" type="text" class="form-control"
-								placeholder="输入序号查询">
-						</div>
-					</div>
-					<table id="exampleTable" data-mobile-responsive="true">
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-1"></div>
-	</div>
-	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
-		<div>
-			<script type="text/javascript">
-				var s_edit_h = 'hidden';
-				var s_remove_h = 'hidden';
-				var s_resetPwd_h = 'hidden';
-			</script>
-		</div>
+<div class="wrapper wrapper-content " style="margin: 5px auto;">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="ibox">
+            <div class="ibox-body">
+                <div class="fixed-table-toolbar">
+                    <!-- <input th:value="${idCard}" id="idCard" type="hidden"> -->
+                    <input th:value="${id}" id="userId" type="hidden">
+                    <div class="columns pull-right">
+                        <button class="btn btn-success" onclick="reLoad()">查询</button>
+                    </div>
+                    <div class="columns pull-right col-md-2 nopadding">
+                        <input id="endtime" type="text" class="form-control"
+                               placeholder="结束时间">
+                    </div>
+                    <div class="columns pull-right col-md-2 nopadding">
 
-	</div>
-	<div th:include="include :: footer"></div>
-	<script type="text/javascript" src="/js/appjs/information/userBasic/detail.js"></script>
+                        <input id="starttime" type="text" class="form-control"
+                               placeholder="开始时间">
+                    </div>
+                    <div class="columns pull-right col-md-2 nopadding">
+                        <input id="id" type="text" class="form-control"
+                               placeholder="输入序号查询">
+                    </div>
+
+                </div>
+                <table id="exampleTable" data-mobile-responsive="true">
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+<div>
+    <script type="text/javascript">
+       var s_edit_h = 'hidden';
+       var s_remove_h = 'hidden';
+       var s_resetPwd_h = 'hidden';
+    </script>
+</div>
+
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/information/userBasic/detail.js"></script>
+<script>
+   laydate.render({
+      elem: '#starttime',
+      type: 'datetime'
+   })
+   laydate.render({
+      elem: '#endtime',
+      type: 'datetime'
+   })
+</script>
 </body>
 </html>

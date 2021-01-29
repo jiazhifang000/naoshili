@@ -29,19 +29,58 @@ public class JinggongDataDO implements Serializable {
     private Double diopter;
     //瞳距
     private Double pupilDistance;
-    
-    private Date addTime;
-    
-    
 
+    private Date addTime;
+
+    private Integer location;
+
+    private int num;
+
+    //外部触发标记
+    private String externalTriggerMark;
+
+    private String originalData;
+
+    public String getOriginalData() {
+        return originalData;
+    }
+
+    public void setOriginalData(String originalData) {
+        this.originalData = originalData;
+    }
+
+    public String getExternalTriggerMark() {
+        return externalTriggerMark;
+    }
+
+    public void setExternalTriggerMark(String externalTriggerMark) {
+        this.externalTriggerMark = externalTriggerMark;
+    }
+
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public Integer getLocation() {
+        return location;
+    }
+
+    public void setLocation(Integer location) {
+        this.location = location;
+    }
 
     public Date getAddTime() {
-		return addTime;
-	}
+        return addTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
     /**
      * 设置：id

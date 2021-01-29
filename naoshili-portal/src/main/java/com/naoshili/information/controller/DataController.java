@@ -65,8 +65,12 @@ public class DataController extends BaseController {
                 AllDataDO allDataDO = JSON.toJavaObject(data, AllDataDO.class);
                 //保存数据
                 if (allDataDO != null) {
+                    long startTime = System.currentTimeMillis(); // 获取开始时间
+                    // doThing(); // 测试的代码段
                     int result = collectionInfoService.saveData(allDataDO);
 
+                    long endTime = System.currentTimeMillis(); // 获取结束时间
+                    System.out.println("程序运行时间： " + (endTime - startTime) + "ms");
                     if (result > 0) {
                         return R.ok();
                     } else {

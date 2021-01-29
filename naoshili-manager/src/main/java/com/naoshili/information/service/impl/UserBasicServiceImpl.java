@@ -77,7 +77,7 @@ public class UserBasicServiceImpl implements UserBasicService {
                 for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
                     try {
                         row = sheet.getRow(rowNum);
-                        String userId = ExcelUtils.getCellFormatValue(row.getCell((short) 0)); 
+                        String userId = ExcelUtils.getCellFormatValue(row.getCell((short) 0));
                         String phone = ExcelUtils.getCellFormatValue(row.getCell((short) 1));            //手机号
                         String name = ExcelUtils.getCellFormatValue(row.getCell((short) 2));        //姓名
                         String idCard = ExcelUtils.getCellFormatValue(row.getCell((short) 3));        //身份证号
@@ -112,13 +112,13 @@ public class UserBasicServiceImpl implements UserBasicService {
                         UserBasicDO userBasicDO = new UserBasicDO();
                         UserEyeDataDO userEyeDataDO = new UserEyeDataDO();
 
-                        Map<String,Object> mapp = new HashMap<String, Object>();
+                        Map<String, Object> mapp = new HashMap<String, Object>();
                         mapp.put("userId", Long.parseLong(userId));
-                        
-                        if(userId != null && userId != null && userBasicDao.list(mapp).size()<=0){
-                        	userBasicDO.setUserId(Long.parseLong(userId));
-                        }else{
-                        	errnum.add(rowNum);
+
+                        if (userId != null && userId != null && userBasicDao.list(mapp).size() <= 0) {
+                            userBasicDO.setUserId(Long.parseLong(userId));
+                        } else {
+                            errnum.add(rowNum);
                             continue;
                         }
                         if (phone != null && phone != "") {
@@ -165,62 +165,62 @@ public class UserBasicServiceImpl implements UserBasicService {
                             userBasicDO.setHobby(hobby);
                         }
                         if (readTime != null && readTime != "") {
-                            userBasicDO.setReadTime(Double.parseDouble(readTime));
+                            userBasicDO.setReadTime(readTime);
                         }
                         if (fatherLvision != null && fatherLvision != "") {
-                            userBasicDO.setFatherLvision(Double.parseDouble(fatherLvision));
+                            userBasicDO.setFatherLvision(fatherLvision);
                         }
                         if (fatherRvision != null && fatherRvision != "") {
-                            userBasicDO.setFatherRvision(Double.parseDouble(fatherRvision));
+                            userBasicDO.setFatherRvision(fatherRvision);
                         }
                         if (matherLvision != null && matherLvision != "") {
-                            userBasicDO.setMatherLvision(Double.parseDouble(matherLvision));
+                            userBasicDO.setMatherLvision(matherLvision);
                         }
                         if (matherRvision != null && matherRvision != "") {
-                            userBasicDO.setMatherRvision(Double.parseDouble(matherRvision));
+                            userBasicDO.setMatherRvision(matherRvision);
                         }
                         if (lEyeballDiameter != null && lEyeballDiameter != "") {
-                            userEyeDataDO.setlEyeballDiameter(Double.parseDouble(lEyeballDiameter));
+                            userEyeDataDO.setlEyeballDiameter(lEyeballDiameter);
                         }
                         if (lEyeAxis != null && lEyeAxis != "") {
-                            userEyeDataDO.setlEyeAxis(Double.parseDouble(lEyeAxis));
+                            userEyeDataDO.setlEyeAxis(lEyeAxis);
                         }
                         if (rEyeAxis != null && rEyeAxis != "") {
-                            userEyeDataDO.setrEyeAxis(Double.parseDouble(rEyeAxis));
+                            userEyeDataDO.setrEyeAxis(rEyeAxis);
                         }
                         if (rEyeballDiameter != null && rEyeballDiameter != "") {
-                            userEyeDataDO.setrEyeballDiameter(Double.parseDouble(rEyeballDiameter));
+                            userEyeDataDO.setrEyeballDiameter(rEyeballDiameter);
                         }
                         if (lEyepillarDiameter != null && lEyepillarDiameter != "") {
-                            userEyeDataDO.setlEyepillarDiameter(Double.parseDouble(lEyepillarDiameter));
+                            userEyeDataDO.setlEyepillarDiameter(lEyepillarDiameter);
                         }
                         if (lEyeOptometry != null && lEyeOptometry != "") {
-                            userEyeDataDO.setlEyeOptometry(Double.parseDouble(lEyeOptometry));
+                            userEyeDataDO.setlEyeOptometry(lEyeOptometry);
                         }
                         if (rEyeOptometry != null && rEyeOptometry != "") {
-                            userEyeDataDO.setrEyeOptometry(Double.parseDouble(rEyeOptometry));
+                            userEyeDataDO.setrEyeOptometry((rEyeOptometry));
                         }
                         if (lEyeNakedVision != null && lEyeNakedVision != "") {
-                            userEyeDataDO.setlEyeNakedVision(Double.parseDouble(lEyeNakedVision));
+                            userEyeDataDO.setlEyeNakedVision(lEyeNakedVision);
                         }
                         if (rEyeNakedVision != null && rEyeNakedVision != "") {
-                            userEyeDataDO.setrEyeNakedVision(Double.parseDouble(rEyeNakedVision));
+                            userEyeDataDO.setrEyeNakedVision(rEyeNakedVision);
                         }
                         if (lEyeGlassesVision != null && lEyeGlassesVision != "") {
-                            userEyeDataDO.setlEyeGlassesVision(Double.parseDouble(lEyeGlassesVision));
+                            userEyeDataDO.setlEyeGlassesVision(lEyeGlassesVision);
                         }
                         if (rEyeGlassesVision != null && rEyeGlassesVision != "") {
-                            userEyeDataDO.setrEyeGlassesVision(Double.parseDouble(rEyeGlassesVision));
+                            userEyeDataDO.setrEyeGlassesVision(rEyeGlassesVision);
                         }
                         if (rEyepillarDiameter != null && rEyepillarDiameter != "") {
-                            userEyeDataDO.setrEyepillarDiameter(Double.parseDouble(rEyepillarDiameter));
+                            userEyeDataDO.setrEyepillarDiameter(rEyepillarDiameter);
                         }
 
                         if (glassToCornea != null && glassToCornea != "") {
-                            userEyeDataDO.setGlassToCornea(Double.parseDouble(glassToCornea));
+                            userEyeDataDO.setGlassToCornea(glassToCornea);
                         }
                         if (glassDiopter != null && glassDiopter != "") {
-                            userEyeDataDO.setGlassDiopter(Double.parseDouble(glassDiopter));
+                            userEyeDataDO.setGlassDiopter(glassDiopter);
                         }
 
 
@@ -242,7 +242,7 @@ public class UserBasicServiceImpl implements UserBasicService {
                             params.remove("identityCard");
                             params.put("phone", phone);
                             if (!exit(params)) {
-                                if(userBasicDao.save(userBasicDO)>0){
+                                if (userBasicDao.save(userBasicDO) > 0) {
                                     userEyeDataDO.setUid(Long.parseLong(userId));
                                     userEyeDataDao.save(userEyeDataDO);
                                 }
@@ -285,6 +285,31 @@ public class UserBasicServiceImpl implements UserBasicService {
 
     }
 
+    @Override
+    public Map<String, Object> getAge() {
+        return userBasicDao.getAge();
+    }
+
+    @Override
+    public int getTestPerson() {
+        return userBasicDao.getTestPerson();
+    }
+
+    @Override
+    public Map<String, Object> getEyeHealth() {
+        return userBasicDao.getEyeHealth();
+    }
+
+    @Override
+    public Map<String, Object> getType() {
+        return userBasicDao.getType();
+    }
+
+    @Override
+    public Map<String, Object> getGender() {
+        return userBasicDao.getGender();
+    }
+
     public String substringBir(String day) {
         String yyyy = day.substring(0, 4);
         String mm = day.substring(4, 6);
@@ -297,8 +322,8 @@ public class UserBasicServiceImpl implements UserBasicService {
         return yyyy;
     }
 
-	@Override
-	public UserBasicDO getUserId(Long userId) {
-		return userBasicDao.getUserId(userId);
-	}
+    @Override
+    public UserBasicDO getUserId(Long userId) {
+        return userBasicDao.getUserId(userId);
+    }
 }

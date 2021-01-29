@@ -14,7 +14,7 @@ public class UserBasicDO implements Serializable {
 
     // id
     private Long id;
-    
+
     private Long userId;
     //
     private String name;
@@ -43,70 +43,225 @@ public class UserBasicDO implements Serializable {
     // 爱好
     private String hobby;
     // 每天大约阅读时间
-    private Double readTime;
+    private String readTime;
     //父亲左视力
-    private Double fatherLvision;
+    private String fatherLvision;
     //父亲右视力
-    private Double fatherRvision;
+    private String fatherRvision;
     //母亲左视力
-    private Double matherLvision;
+    private String matherLvision;
     //母亲右视力
-    private Double matherRvision;
+    private String matherRvision;
     //视镜片到角膜顶点的距离
-    private Double glassToCornea1;
+    private String glassToCornea1;
     //视镜片的屈光度值
-    private Double glassDiopter1;
+    private String glassDiopter1;
 
     private Integer uid;
     // 左眼球径
-    private Double lEyeballDiameter1;
+    private String lEyeballDiameter1;
     // 右眼球径
-    private Double rEyeballDiameter1;
+    private String rEyeballDiameter1;
     // 左眼柱径
-    private Double lEyepillarDiameter1;
+    private String lEyepillarDiameter1;
     // 右眼柱径
-    private Double rEyepillarDiameter1;
+    private String rEyepillarDiameter1;
     // 左眼轴
-    private Double lEyeAxis1;
+    private String lEyeAxis1;
     // 右眼轴
-    private Double rEyeAxis1;
+    private String rEyeAxis1;
     // 左眼验光
-    private Double lEyeOptometry1;
+    private String lEyeOptometry1;
     // 右眼验光
-    private Double rEyeOptometry1;
+    private String rEyeOptometry1;
     // 左眼裸眼视力
-    private Double lEyeNakedVision1;
+    private String lEyeNakedVision1;
     // 右眼裸眼视力
-    private Double rEyeNakedVision1;
+    private String rEyeNakedVision1;
     // 左眼戴镜视力
-    private Double lEyeGlassesVision1;
+    private String lEyeGlassesVision1;
     // 右眼戴镜视力
-    private Double rEyeGlassesVision1;
-    
-    
-    
+    private String rEyeGlassesVision1;
+    // 左眼戴镜视力
+    private String lGlassesVision1;
+    // 右眼戴镜视力
+    private String rGlassesVision1;
+    private int eyeHealth;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getUserId() {
-		return userId;
-	}
+        return userId;
+    }
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public Double getGlassToCornea1() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getClassname() {
+        return classname;
+    }
+
+    public void setClassname(String classname) {
+        this.classname = classname;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getGetupTime() {
+        return getupTime;
+    }
+
+    public void setGetupTime(String getupTime) {
+        this.getupTime = getupTime;
+    }
+
+    public String getSleepTime() {
+        return sleepTime;
+    }
+
+    public void setSleepTime(String sleepTime) {
+        this.sleepTime = sleepTime;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public String getReadTime() {
+        return readTime;
+    }
+
+    public void setReadTime(String readTime) {
+        this.readTime = readTime;
+    }
+
+    public String getFatherLvision() {
+        return fatherLvision;
+    }
+
+    public void setFatherLvision(String fatherLvision) {
+        this.fatherLvision = fatherLvision;
+    }
+
+    public String getFatherRvision() {
+        return fatherRvision;
+    }
+
+    public void setFatherRvision(String fatherRvision) {
+        this.fatherRvision = fatherRvision;
+    }
+
+    public String getMatherLvision() {
+        return matherLvision;
+    }
+
+    public void setMatherLvision(String matherLvision) {
+        this.matherLvision = matherLvision;
+    }
+
+    public String getMatherRvision() {
+        return matherRvision;
+    }
+
+    public void setMatherRvision(String matherRvision) {
+        this.matherRvision = matherRvision;
+    }
+
+    public String getGlassToCornea1() {
         return glassToCornea1;
     }
 
-    public void setGlassToCornea1(Double glassToCornea1) {
+    public void setGlassToCornea1(String glassToCornea1) {
         this.glassToCornea1 = glassToCornea1;
     }
 
-    public Double getGlassDiopter1() {
+    public String getGlassDiopter1() {
         return glassDiopter1;
     }
 
-    public void setGlassDiopter1(Double glassDiopter1) {
+    public void setGlassDiopter1(String glassDiopter1) {
         this.glassDiopter1 = glassDiopter1;
     }
 
@@ -118,370 +273,123 @@ public class UserBasicDO implements Serializable {
         this.uid = uid;
     }
 
-    public Double getlEyeballDiameter1() {
+    public String getlEyeballDiameter1() {
         return lEyeballDiameter1;
     }
 
-    public void setlEyeballDiameter1(Double lEyeballDiameter1) {
+    public void setlEyeballDiameter1(String lEyeballDiameter1) {
         this.lEyeballDiameter1 = lEyeballDiameter1;
     }
 
-    public Double getrEyeballDiameter1() {
+    public String getrEyeballDiameter1() {
         return rEyeballDiameter1;
     }
 
-    public void setrEyeballDiameter1(Double rEyeballDiameter1) {
+    public void setrEyeballDiameter1(String rEyeballDiameter1) {
         this.rEyeballDiameter1 = rEyeballDiameter1;
     }
 
-    public Double getlEyepillarDiameter1() {
+    public String getlEyepillarDiameter1() {
         return lEyepillarDiameter1;
     }
 
-    public void setlEyepillarDiameter1(Double lEyepillarDiameter1) {
+    public void setlEyepillarDiameter1(String lEyepillarDiameter1) {
         this.lEyepillarDiameter1 = lEyepillarDiameter1;
     }
 
-    public Double getrEyepillarDiameter1() {
+    public String getrEyepillarDiameter1() {
         return rEyepillarDiameter1;
     }
 
-    public void setrEyepillarDiameter1(Double rEyepillarDiameter1) {
+    public void setrEyepillarDiameter1(String rEyepillarDiameter1) {
         this.rEyepillarDiameter1 = rEyepillarDiameter1;
     }
 
-    public Double getrEyeAxis1() {
-        return rEyeAxis1;
-    }
-
-    public void setrEyeAxis1(Double rEyeAxis1) {
-        this.rEyeAxis1 = rEyeAxis1;
-    }
-
-    public Double getlEyeOptometry1() {
-        return lEyeOptometry1;
-    }
-
-    public void setlEyeOptometry1(Double lEyeOptometry1) {
-        this.lEyeOptometry1 = lEyeOptometry1;
-    }
-
-    public Double getrEyeOptometry1() {
-        return rEyeOptometry1;
-    }
-
-    public void setrEyeOptometry1(Double rEyeOptometry1) {
-        this.rEyeOptometry1 = rEyeOptometry1;
-    }
-
-    public Double getlEyeNakedVision1() {
-        return lEyeNakedVision1;
-    }
-
-    public void setlEyeNakedVision1(Double lEyeNakedVision1) {
-        this.lEyeNakedVision1 = lEyeNakedVision1;
-    }
-
-    public Double getrEyeNakedVision1() {
-        return rEyeNakedVision1;
-    }
-
-    public void setrEyeNakedVision1(Double rEyeNakedVision1) {
-        this.rEyeNakedVision1 = rEyeNakedVision1;
-    }
-
-    public Double getlEyeGlassesVision1() {
-        return lEyeGlassesVision1;
-    }
-
-    public void setlEyeGlassesVision1(Double lEyeGlassesVision1) {
-        this.lEyeGlassesVision1 = lEyeGlassesVision1;
-    }
-
-    public Double getrEyeGlassesVision1() {
-        return rEyeGlassesVision1;
-    }
-
-    public void setrEyeGlassesVision1(Double rEyeGlassesVision1) {
-        this.rEyeGlassesVision1 = rEyeGlassesVision1;
-    }
-
-    public Double getlEyeAxis1() {
+    public String getlEyeAxis1() {
         return lEyeAxis1;
     }
 
-    public void setlEyeAxis1(Double lEyeAxis1) {
+    public void setlEyeAxis1(String lEyeAxis1) {
         this.lEyeAxis1 = lEyeAxis1;
     }
 
-    public String getGetupTime() {
-        return getupTime;
+    public String getrEyeAxis1() {
+        return rEyeAxis1;
     }
 
-    public String getSleepTime() {
-        return sleepTime;
+    public void setrEyeAxis1(String rEyeAxis1) {
+        this.rEyeAxis1 = rEyeAxis1;
     }
 
-    public void setGetupTime(String getupTime) {
-        this.getupTime = getupTime;
+    public String getlEyeOptometry1() {
+        return lEyeOptometry1;
     }
 
-    public void setSleepTime(String sleepTime) {
-        this.sleepTime = sleepTime;
+    public void setlEyeOptometry1(String lEyeOptometry1) {
+        this.lEyeOptometry1 = lEyeOptometry1;
     }
 
-    public String getClassname() {
-        return classname;
+    public String getrEyeOptometry1() {
+        return rEyeOptometry1;
     }
 
-    public void setClassname(String classname) {
-        this.classname = classname;
+    public void setrEyeOptometry1(String rEyeOptometry1) {
+        this.rEyeOptometry1 = rEyeOptometry1;
     }
 
-    /**
-     * 设置：id
-     */
-    public void setId(Long id) {
-        this.id = id;
+    public String getlEyeNakedVision1() {
+        return lEyeNakedVision1;
     }
 
-    /**
-     * 获取：id
-     */
-    public Long getId() {
-        return id;
+    public void setlEyeNakedVision1(String lEyeNakedVision1) {
+        this.lEyeNakedVision1 = lEyeNakedVision1;
     }
 
-    /**
-     * 设置：
-     */
-    public void setName(String name) {
-        this.name = name;
+    public String getrEyeNakedVision1() {
+        return rEyeNakedVision1;
     }
 
-    /**
-     * 获取：
-     */
-    public String getName() {
-        return name;
+    public void setrEyeNakedVision1(String rEyeNakedVision1) {
+        this.rEyeNakedVision1 = rEyeNakedVision1;
     }
 
-    /**
-     * 设置：身份证
-     */
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
+    public String getlEyeGlassesVision1() {
+        return lEyeGlassesVision1;
     }
 
-    /**
-     * 获取：身份证
-     */
-    public String getIdCard() {
-        return idCard;
+    public void setlEyeGlassesVision1(String lEyeGlassesVision1) {
+        this.lEyeGlassesVision1 = lEyeGlassesVision1;
     }
 
-    /**
-     * 设置：生日
-     */
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public String getrEyeGlassesVision1() {
+        return rEyeGlassesVision1;
     }
 
-    /**
-     * 设置：年龄
-     */
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setrEyeGlassesVision1(String rEyeGlassesVision1) {
+        this.rEyeGlassesVision1 = rEyeGlassesVision1;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getlGlassesVision1() {
+        return lGlassesVision1;
     }
 
-    /**
-     * 获取：年龄
-     */
-    public Integer getAge() {
-        return age;
+    public void setlGlassesVision1(String lGlassesVision1) {
+        this.lGlassesVision1 = lGlassesVision1;
     }
 
-    /**
-     * 设置：性别
-     */
-    public void setGender(String gender) {
-        this.gender = gender;
+    public String getrGlassesVision1() {
+        return rGlassesVision1;
     }
 
-    /**
-     * 获取：性别
-     */
-    public String getGender() {
-        return gender;
+    public void setrGlassesVision1(String rGlassesVision1) {
+        this.rGlassesVision1 = rGlassesVision1;
     }
 
-    /**
-     * 设置：学校
-     */
-    public void setSchool(String school) {
-        this.school = school;
+    public int getEyeHealth() {
+        return eyeHealth;
     }
 
-    /**
-     * 获取：学校
-     */
-    public String getSchool() {
-        return school;
-    }
-
-    /**
-     * 设置：年级
-     */
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    /**
-     * 获取：年级
-     */
-    public String getGrade() {
-        return grade;
-    }
-
-    /**
-     * 设置：班级
-     */
-
-    /**
-     * 设置：联系人
-     */
-    public void setContacts(String contacts) {
-        this.contacts = contacts;
-    }
-
-    /**
-     * 获取：联系人
-     */
-    public String getContacts() {
-        return contacts;
-    }
-
-    /**
-     * 设置：电话
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    /**
-     * 获取：电话
-     */
-    public String getPhone() {
-        return phone;
-    }
-
-    /**
-     * 设置：通常起床时间
-     */
-
-    /**
-     * 设置：爱好
-     */
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
-    }
-
-    /**
-     * 获取：爱好
-     */
-    public String getHobby() {
-        return hobby;
-    }
-
-    /**
-     * 设置：每天大约阅读时间
-     */
-    public void setReadTime(Double readTime) {
-        this.readTime = readTime;
-    }
-
-    /**
-     * 获取：每天大约阅读时间
-     */
-    public Double getReadTime() {
-        return readTime;
-    }
-
-
-    public Double getFatherLvision() {
-        return fatherLvision;
-    }
-
-    public void setFatherLvision(Double fatherLvision) {
-        this.fatherLvision = fatherLvision;
-    }
-
-    public Double getFatherRvision() {
-        return fatherRvision;
-    }
-
-    public void setFatherRvision(Double fatherRvision) {
-        this.fatherRvision = fatherRvision;
-    }
-
-    public Double getMatherLvision() {
-        return matherLvision;
-    }
-
-    public void setMatherLvision(Double matherLvision) {
-        this.matherLvision = matherLvision;
-    }
-
-    public Double getMatherRvision() {
-        return matherRvision;
-    }
-
-    public void setMatherRvision(Double matherRvision) {
-        this.matherRvision = matherRvision;
-    }
-
-    @Override
-    public String toString() {
-        return "UserBasicDO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", idCard='" + idCard + '\'' +
-                ", birthday='" + birthday + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", school='" + school + '\'' +
-                ", grade='" + grade + '\'' +
-                ", classname='" + classname + '\'' +
-                ", contacts='" + contacts + '\'' +
-                ", phone='" + phone + '\'' +
-                ", getupTime='" + getupTime + '\'' +
-                ", sleepTime='" + sleepTime + '\'' +
-                ", hobby='" + hobby + '\'' +
-                ", readTime=" + readTime +
-                ", fatherLvision=" + fatherLvision +
-                ", fatherRvision=" + fatherRvision +
-                ", matherLvision=" + matherLvision +
-                ", matherRvision=" + matherRvision +
-                ", glassToCornea1=" + glassToCornea1 +
-                ", glassDiopter1=" + glassDiopter1 +
-                ", uid=" + uid +
-                ", lEyeballDiameter1=" + lEyeballDiameter1 +
-                ", rEyeballDiameter1=" + rEyeballDiameter1 +
-                ", lEyepillarDiameter1=" + lEyepillarDiameter1 +
-                ", rEyepillarDiameter1=" + rEyepillarDiameter1 +
-                ", lEyeAxis1=" + lEyeAxis1 +
-                ", rEyeAxis1=" + rEyeAxis1 +
-                ", lEyeOptometry1=" + lEyeOptometry1 +
-                ", rEyeOptometry1=" + rEyeOptometry1 +
-                ", lEyeNakedVision1=" + lEyeNakedVision1 +
-                ", rEyeNakedVision1=" + rEyeNakedVision1 +
-                ", lEyeGlassesVision1=" + lEyeGlassesVision1 +
-                ", rEyeGlassesVision1=" + rEyeGlassesVision1 +
-                '}';
+    public void setEyeHealth(int eyeHealth) {
+        this.eyeHealth = eyeHealth;
     }
 }

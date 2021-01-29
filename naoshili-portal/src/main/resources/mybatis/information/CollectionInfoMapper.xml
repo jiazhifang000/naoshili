@@ -71,7 +71,9 @@
 			`responsible_doctor`,
 			`device_name`,
 			`avg_diopter`,
-			add_time
+			add_time,
+			r_glasses_vision,
+			l_glasses_vision
 		)
 		values
 		(
@@ -85,7 +87,9 @@
 			#{responsibleDoctor},
 			#{deviceName},
 			#{avgDiopter},
-			#{addTime}
+			#{addTime},
+			#{rGlassesVision},
+			#{lGlassesVision}
 		)
 	</insert>
 

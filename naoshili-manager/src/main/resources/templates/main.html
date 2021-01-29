@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html lang="zh">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,144 +14,226 @@
 <script type="text/javascript" src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/js/jquery.sparkline.min.js"></script>
 <script src="/js/echarts/echarts-all.js"></script>
-    <link href="/css/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
-    
-    
-    
-	<link href="/css/animate.css" rel="stylesheet"/>
-	<link href="/css/style.css" rel="stylesheet"/>
-	<link href="/css/ry-ui.css" rel="stylesheet"/>
+<link href="/css/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+
+
+<link href="/css/animate.css" rel="stylesheet"/>
+<link href="/css/style.css" rel="stylesheet"/>
+<link href="/css/ry-ui.css" rel="stylesheet"/>
 <body>
 <div class="panel panel-default">
-    <div class="panel-heading"> <h1 style="color:#49A8FC;font-weight: bold">&nbsp;&nbsp;&nbsp;脑视力研究数据采集后台管理系统</h1></div>
-          <!--=============================平均调节刺激量===================================================-->
-	        	<div class="col-md-3" style="margin: 40px 20px 50px 100px;">
-	                <div class="ibox clear" >
-	                    <div class="ibox-content">
-		                    <div style="float: left; height: 100px;">
-		                    	<h3>平均调节刺激量</h3>
-		                    	<span style="font-size:35px; margin-left: 70%">100</span>
-		                    	
-		                    </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-md-3"  style="margin: 40px 20px 50px 20px;">
-	                <div class="ibox clear" >
-	                    <div class="ibox-content">
-		                    <div style="float: left; height: 100px;">
-		                    	<h3>平均调节反应量</h3>
-		                    	<span style="font-size:35px; margin-left: 70%">200</span>
-		                    	
-		                    </div>
-	                    </div>
-	                </div>
-               </div>
-                <div class="col-md-3"  style="margin: 40px 20px 50px 20px;">
-	                <div class="ibox clear" >
-	                    <div class="ibox-content">
-		                    <div style="float: left; height: 100px;">
-		                    	<h3>平均调节滞后量</h3>
-		                    	<span style="font-size:35px; margin-left: 70%">300</span>
-		                    	
-		                    </div>
-	                    </div>
-	                </div>
-            	</div>
-        
-        		<!--=============================综合调节刺激量===================================================-->
-        		<div class="col-md-5"  style="margin: 40px 20px 50px 100px;">
-        			<div class="echarts" id="echarts-bar-chart1" style="width: 700px;height: 500px;"></div>
-        		</div>
-	            
-	            
-	            <!--=============================综合调节反应量===================================================-->
-	           <div class="col-md-5"  style="margin: 40px 20px 50px 100px;">
-        			<div class="echarts" id="echarts-bar-chart2" style="width: 700px;height: 500px;"></div>
-        		</div>
-	            
-	            <!--=============================综合调节滞后量===================================================-->
-	           <div class="col-md-5"  style="margin: 40px 20px 50px 100px;">
-        			<div class="echarts" id="echarts-bar-chart3" style="width: 700px;height: 500px;"></div>
-        		</div>
-    </div> 
+    <div class="panel-heading"><h1 style="color:#49A8FC;font-weight: bold">&nbsp;&nbsp;&nbsp;脑视力研究数据采集后台管理系统</h1></div>
+
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4" style="margin: 80px 40px 0 0px;">
+        <div class="ibox clear">
+            <div class="ibox-content">
+                <div style="float: left; height: 100px;">
+                    <span style="font-size:35px;" th:text="${personAll}+人"></span>
+                    <br>
+                    <h2>受试者总人数</h2>
+                </div>
+                <div style="float: right; height:100px;">
+                    <img alt="" src="/img/员工.png" style="height: 100px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-5" style="margin: 40px 20px 50px 100px;">
+        <div class="echarts" id="echarts-bar-chart1" style="width: 700px;height: 500px;"></div>
+    </div>
+
+
+    <div class="col-md-5" style="margin: 40px 20px 50px 100px;">
+        <div class="echarts" id="echarts-bar-chart2" style="width: 700px;height: 500px;"></div>
+    </div>
+
+    <div class="col-md-5" style="margin: 40px 20px 50px 100px;">
+        <div class="echarts" id="echarts-bar-chart3" style="width: 700px;height: 500px;"></div>
+    </div>
+
+    <div class="col-md-5" style="margin: 40px 20px 50px 100px;">
+        <div class="echarts" id="echarts-bar-chart4" style="width: 700px;height: 500px;"></div>
+    </div>
+</div>
 </div>
 </body>
 <style>
- .clear:after {
-2     clear: both;
-3     content: " ";
-4     display: block;
-5     height: 0;
-6     overflow: hidden;
-7     visibility: hidden;
-8 }
+    .clear:after {
+        clear: both;
+        content: " ";
+        display: block;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
 </style>
-<script type="text/javascript">
-<!--=============================平均单次阅读时长柱形图===================================================-->
-			var barChart = echarts.init(document.getElementById("echarts-bar-chart1"));
-			var barChart2 = echarts.init(document.getElementById("echarts-bar-chart2"));
-			var barChart3 = echarts.init(document.getElementById("echarts-bar-chart3"));
-	
-    		barChart.setOption( {
-    			title: {
-    		        text: '综合调节刺激量',
-    		        left:'45%'
-    		    },
-    			xAxis: {
-    				name:'时间',
-    		        type: 'category',
-    		        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    		    },
-    		    yAxis: {
-    		    	name:'调节刺激量',
-    		        type: 'value'
-    		    },
-    		    series: [{
-    		        data: [820, 932, 901, 934, 1290, 1330, 1320],
-    		        type: 'line'
-    		    }]
-			
-			})
-			barChart2.setOption( {
-				title: {
-    		        text: '综合调节反应量',
-    		        left:'45%'
-    		    },
-    			xAxis: {
-    				name:'时间',
-    		        type: 'category',
-    		        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    		    },
-    		    yAxis: {
-    		    	name:'调节反应量',
-    		        type: 'value'
-    		    },
-    		    series: [{
-    		        data: [820, 932, 901, 934, 1290, 1330, 1320],
-    		        type: 'line'
-    		    }]
-			
-			})
-			barChart3.setOption( {
-				title: {
-    		        text: '综合调节滞后量',
-    		        left:'45%'
-    		    },
-    			xAxis: {
-    				name:'时间',
-    		        type: 'category',
-    		        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    		    },
-    		    yAxis: {
-    		    	name:'调节滞后量',
-    		        type: 'value'
-    		    },
-    		    series: [{
-    		        data: [820, 932, 901, 934, 1290, 1330, 1320],
-    		        type: 'line'
-    		    }]
-			
-			})
+<script type="text/javascript" th:inline="javascript">
+   var barChart = echarts.init(document.getElementById("echarts-bar-chart1"));
+   var barChart2 = echarts.init(document.getElementById("echarts-bar-chart2"));
+   var barChart3 = echarts.init(document.getElementById("echarts-bar-chart3"));
+   var barChart4 = echarts.init(document.getElementById("echarts-bar-chart4"));
+
+
+   var eyeHealth = [[${eyeHealth}]]
+   console.log(eyeHealth, 'eyeHealth')
+
+   var gender = [[${gender}]]
+
+   var ageMap = [[${ageMap}]]
+   console.log(ageMap, 'ageMap')
+
+   var type = [[${type}]]
+   console.log(type, 'type')
+   barChart.setOption(
+      {
+         title: {
+            text: '受试者眼健康情况',
+            left: 'center'
+         },
+         tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+         },
+         legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['正视人数', '假性近视人数', '未确诊近视人数', '真性近视人数', '弱视人数', '其他']
+         },
+         series: [
+            {
+               name: '受试者眼健康情况',
+               type: 'pie',
+               radius: '55%',
+               center: ['50%', '60%'],
+               data: [
+                  {value: eyeHealth.zc, name: '正视人数'},
+                  {value: eyeHealth.jx, name: '假性近视人数'},
+                  {value: eyeHealth.wqz, name: '未确诊近视人数'},
+                  {value: eyeHealth.zx, name: '真性近视人数'},
+                  {value: eyeHealth.rs, name: '弱视人数'},
+                  {value: eyeHealth.qt, name: '其他'}
+               ],
+               emphasis: {
+                  itemStyle: {
+                     shadowBlur: 10,
+                     shadowOffsetX: 0,
+                     shadowColor: 'rgba(0, 0, 0, 0.5)'
+                  }
+               }
+            }
+         ]
+      }
+   )
+   barChart2.setOption({
+      title: {
+         text: '受试者性别结构',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'item',
+         formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      legend: {
+         orient: 'vertical',
+         left: 'left',
+         data: ['男性数量', '女性数量']
+      },
+      series: [
+         {
+            name: '受试者性别结构',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: [
+               {value: gender.nan, name: '男性数量'},
+               {value: gender.nv, name: '女性数量'}
+            ],
+            emphasis: {
+               itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+               }
+            }
+         }
+      ]
+   })
+   barChart3.setOption({
+      title: {
+         text: '受试者年龄结构',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'item',
+         formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      legend: {
+         orient: 'vertical',
+         left: 'left',
+         data: ['6岁以下', '6-8岁', '9-10岁', '10-12岁', '13-15岁', '16-18岁']
+      },
+      series: [
+         {
+            name: '受试者年龄结构',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: [
+               {value: ageMap.six, name: '6岁以下'},
+               {value: ageMap.sixandeight, name: '6-8岁'},
+               {value: ageMap.nineandten, name: '9-10岁'},
+               {value: ageMap.tenandtwelve, name: '10-12岁'},
+               {value: ageMap.thirteenandfifteen, name: '13-15岁'},
+               {value: ageMap.sixteenandeighteen, name: '16-18岁'}
+            ],
+            emphasis: {
+               itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+               }
+            }
+         }
+      ]
+   })
+
+   barChart4.setOption({
+      title: {
+         text: '实验类型数量统计',
+         left: 'center'
+      },
+      tooltip: {
+         trigger: 'item',
+         formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      legend: {
+         orient: 'vertical',
+         left: 'left',
+         data: ['多段移动视标试验', '单段移动视标试验', '闪烁视标试验']
+      },
+      series: [
+         {
+            name: '实验类型数量统计',
+            type: 'pie',
+            radius: '55%',
+            center: ['50%', '60%'],
+            data: [
+               {value: type.duo, name: '多段移动视标试验'},
+               {value: type.dan, name: '单段移动视标试验'},
+               {value: type.move, name: '闪烁视标试验'}
+            ],
+            emphasis: {
+               itemStyle: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+               }
+            }
+         }
+      ]
+   })
 </script>
 </html>

@@ -3,51 +3,103 @@
 
 <mapper namespace="com.naoshili.information.dao.ShibiaoDataDao">
 
-	<select id="get" resultType="com.naoshili.information.domain.ShibiaoDataDO">
+    <select id="get" resultType="com.naoshili.information.domain.ShibiaoDataDO">
 		select `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3`,`experimental_mode` from n_shibiao_data where id = #{value}
 	</select>
 
-	<select id="list" resultType="com.naoshili.information.domain.ShibiaoDataDO">
-		select `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3`,`experimental_mode` from n_shibiao_data
-        <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
-		  		  <if test="time != null and time != ''"> and time = #{time} </if>
-		  		  <if test="localtion != null and localtion != ''"> and localtion = #{localtion} </if>
-		  		  <if test="speed != null and speed != ''"> and speed = #{speed} </if>
-		  		  <if test="visualStandard1 != null and visualStandard1 != ''"> and visual_standard1 = #{visualStandard1} </if>
-		  		  <if test="visualStandard2 != null and visualStandard2 != ''"> and visual_standard2 = #{visualStandard2} </if>
-		  		  <if test="visualStandard3 != null and visualStandard3 != ''"> and visual_standard3 = #{visualStandard3} </if>
-		  		  <if test="experimentalMode != null and experimentalMode != ''"> and experimental_mode = #{experimentalMode} </if>
-		  		</where>
+    <select id="list" resultType="com.naoshili.information.domain.ShibiaoDataDO">
+        select
+        `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3`,`experimental_mode`
+        from n_shibiao_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="localtion != null and localtion != ''">and localtion = #{localtion}</if>
+            <if test="speed != null and speed != ''">and speed = #{speed}</if>
+            <if test="visualStandard1 != null and visualStandard1 != ''">and visual_standard1 = #{visualStandard1}</if>
+            <if test="visualStandard2 != null and visualStandard2 != ''">and visual_standard2 = #{visualStandard2}</if>
+            <if test="visualStandard3 != null and visualStandard3 != ''">and visual_standard3 = #{visualStandard3}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+        </where>
+
+        group by data_id
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 order by id desc
-			</otherwise>
+            </otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-	
- 	<select id="count" resultType="int">
-		select count(*) from n_shibiao_data
-		 <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="dataId != null and dataId != ''"> and data_id = #{dataId} </if>
-		  		  <if test="time != null and time != ''"> and time = #{time} </if>
-		  		  <if test="localtion != null and localtion != ''"> and localtion = #{localtion} </if>
-		  		  <if test="speed != null and speed != ''"> and speed = #{speed} </if>
-		  		  <if test="visualStandard1 != null and visualStandard1 != ''"> and visual_standard1 = #{visualStandard1} </if>
-		  		  <if test="visualStandard2 != null and visualStandard2 != ''"> and visual_standard2 = #{visualStandard2} </if>
-		  		  <if test="visualStandard3 != null and visualStandard3 != ''"> and visual_standard3 = #{visualStandard3} </if>
-		  		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.naoshili.information.domain.ShibiaoDataDO" useGeneratedKeys="true" keyProperty="id">
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from (select count(*) from n_shibiao_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="localtion != null and localtion != ''">and localtion = #{localtion}</if>
+            <if test="speed != null and speed != ''">and speed = #{speed}</if>
+            <if test="visualStandard1 != null and visualStandard1 != ''">and visual_standard1 = #{visualStandard1}</if>
+            <if test="visualStandard2 != null and visualStandard2 != ''">and visual_standard2 = #{visualStandard2}</if>
+            <if test="visualStandard3 != null and visualStandard3 != ''">and visual_standard3 = #{visualStandard3}</if>
+        </where>
+        group by data_id
+        ) a
+    </select>
+
+
+    <select id="detaillist" resultType="com.naoshili.information.domain.ShibiaoDataDO">
+        select
+        `id`,`data_id`,`time`,`localtion`,`speed`,`visual_standard1`,`visual_standard2`,`visual_standard3`,`experimental_mode`
+        from n_shibiao_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="localtion != null and localtion != ''">and localtion = #{localtion}</if>
+            <if test="speed != null and speed != ''">and speed = #{speed}</if>
+            <if test="visualStandard1 != null and visualStandard1 != ''">and visual_standard1 = #{visualStandard1}</if>
+            <if test="visualStandard2 != null and visualStandard2 != ''">and visual_standard2 = #{visualStandard2}</if>
+            <if test="visualStandard3 != null and visualStandard3 != ''">and visual_standard3 = #{visualStandard3}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}
+            </if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="detailcount" resultType="int">
+        select count(*) from n_shibiao_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="localtion != null and localtion != ''">and localtion = #{localtion}</if>
+            <if test="speed != null and speed != ''">and speed = #{speed}</if>
+            <if test="visualStandard1 != null and visualStandard1 != ''">and visual_standard1 = #{visualStandard1}</if>
+            <if test="visualStandard2 != null and visualStandard2 != ''">and visual_standard2 = #{visualStandard2}</if>
+            <if test="visualStandard3 != null and visualStandard3 != ''">and visual_standard3 = #{visualStandard3}</if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.ShibiaoDataDO" useGeneratedKeys="true"
+            keyProperty="id">
 		insert into n_shibiao_data
 		(
 			`data_id`, 
@@ -69,30 +121,38 @@
 			#{visualStandard3}
 		)
 	</insert>
-	 
-	<update id="update" parameterType="com.naoshili.information.domain.ShibiaoDataDO">
-		update n_shibiao_data 
-		<set>
-			<if test="dataId != null">`data_id` = #{dataId}, </if>
-			<if test="time != null">`time` = #{time}, </if>
-			<if test="localtion != null">`localtion` = #{localtion}, </if>
-			<if test="speed != null">`speed` = #{speed}, </if>
-			<if test="visualStandard1 != null">`visual_standard1` = #{visualStandard1}, </if>
-			<if test="visualStandard2 != null">`visual_standard2` = #{visualStandard2}, </if>
-			<if test="visualStandard3 != null">`visual_standard3` = #{visualStandard3}</if>
-		</set>
-		where id = #{id}
-	</update>
-	
-	<delete id="remove">
+
+    <update id="update" parameterType="com.naoshili.information.domain.ShibiaoDataDO">
+        update n_shibiao_data
+        <set>
+            <if test="dataId != null">`data_id` = #{dataId},</if>
+            <if test="time != null">`time` = #{time},</if>
+            <if test="localtion != null">`localtion` = #{localtion},</if>
+            <if test="speed != null">`speed` = #{speed},</if>
+            <if test="visualStandard1 != null">`visual_standard1` = #{visualStandard1},</if>
+            <if test="visualStandard2 != null">`visual_standard2` = #{visualStandard2},</if>
+            <if test="visualStandard3 != null">`visual_standard3` = #{visualStandard3}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteByDataid">
+        DELETE
+            FROM
+                n_shibiao_data
+            WHERE
+                data_id = #{value}
+    </delete>
+
+    <delete id="remove">
 		delete from n_shibiao_data where id = #{value}
 	</delete>
-	
-	<delete id="batchRemove">
-		delete from n_shibiao_data where id in 
-		<foreach item="id" collection="array" open="(" separator="," close=")">
-			#{id}
-		</foreach>
-	</delete>
+
+    <delete id="batchRemove">
+        delete from n_shibiao_data where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
 
 </mapper>

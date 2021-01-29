@@ -4,17 +4,38 @@
 <mapper namespace="com.naoshili.information.dao.UserBasicDao">
 
     <select id="get" resultType="com.naoshili.information.domain.UserBasicDO">
-		select `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision` from n_user_basic where id = #{value}
+		select `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision`,eye_health from n_user_basic where id = #{value}
 	</select>
-	
-	<select id="getUserId" resultType="com.naoshili.information.domain.UserBasicDO">
-		select `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision` from n_user_basic where user_id = #{value}
+
+    <select id="getUserId" resultType="com.naoshili.information.domain.UserBasicDO">
+		select `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision`,eye_health from n_user_basic where user_id = #{value}
 	</select>
 
     <select id="list" resultType="com.naoshili.information.domain.UserBasicDO">
-        select
-        `id`,user_id,`name`,`id_card`,`birthday`,`age`,`gender`,`school`,`grade`,`classname`,`contacts`,`phone`,`getup_time`,`sleep_time`,`hobby`,`read_time`,`father_Lvision`,`father_Rvision`,`mather_Lvision`,`mather_Rvision`
-        from n_user_basic
+        SELECT
+        `id`,
+        user_id,
+        `name`,
+        `id_card`,
+        `birthday`,
+        `age`,
+        `gender`,
+        `school`,
+        `grade`,
+        `classname`,
+        `contacts`,
+        `phone`,
+        `getup_time`,
+        `sleep_time`,
+        `hobby`,
+        `read_time`,
+        `father_Lvision`,
+        `father_Rvision`,
+        `mather_Lvision`,
+        `mather_Rvision`,
+        eye_health
+        FROM
+        n_user_basic
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="userId != null and userId != ''">and user_id = #{userId}</if>
@@ -36,6 +57,7 @@
             <if test="fatherRvision != null and fatherRvision != ''">and father_Rvision = #{fatherRvision}</if>
             <if test="matherLvision != null and matherLvision != ''">and mather_Lvision = #{matherLvision}</if>
             <if test="matherRvision != null and matherRvision != ''">and mather_Rvision = #{matherRvision}</if>
+            <if test="eyeHealth != null and eyeHealth != ''">and eye_health = #{eyeHealth}</if>
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -51,9 +73,33 @@
     </select>
 
     <select id="count" resultType="int">
-        select count(*) from n_user_basic
+        select count(*) from (SELECT
+        `id`,
+        user_id,
+        `name`,
+        `id_card`,
+        `birthday`,
+        `age`,
+        `gender`,
+        `school`,
+        `grade`,
+        `classname`,
+        `contacts`,
+        `phone`,
+        `getup_time`,
+        `sleep_time`,
+        `hobby`,
+        `read_time`,
+        `father_Lvision`,
+        `father_Rvision`,
+        `mather_Lvision`,
+        `mather_Rvision`,
+        eye_health
+        FROM
+        n_user_basic
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
             <if test="name != null and name != ''">and name = #{name}</if>
             <if test="idCard != null and idCard != ''">and id_card = #{idCard}</if>
             <if test="birthday != null and birthday != ''">and birthday = #{birthday}</if>
@@ -68,11 +114,13 @@
             <if test="sleepTime != null and sleepTime != ''">and sleep_time = #{sleepTime}</if>
             <if test="hobby != null and hobby != ''">and hobby = #{hobby}</if>
             <if test="readTime != null and readTime != ''">and read_time = #{readTime}</if>
-            <if test="fatherLvision != null and fatherLvision != ''"> and father_Lvision = #{fatherLvision} </if>
-            <if test="fatherRvision != null and fatherRvision != ''"> and father_Rvision = #{fatherRvision} </if>
-            <if test="matherLvision != null and matherLvision != ''"> and mather_Lvision = #{matherLvision} </if>
-            <if test="matherRvision != null and matherRvision != ''"> and mather_Rvision = #{matherRvision} </if>
+            <if test="fatherLvision != null and fatherLvision != ''">and father_Lvision = #{fatherLvision}</if>
+            <if test="fatherRvision != null and fatherRvision != ''">and father_Rvision = #{fatherRvision}</if>
+            <if test="matherLvision != null and matherLvision != ''">and mather_Lvision = #{matherLvision}</if>
+            <if test="matherRvision != null and matherRvision != ''">and mather_Rvision = #{matherRvision}</if>
+            <if test="eyeHealth != null and eyeHealth != ''">and eye_health = #{eyeHealth}</if>
         </where>
+        ) a
     </select>
 
     <insert id="save" parameterType="com.naoshili.information.domain.UserBasicDO" useGeneratedKeys="true"
@@ -97,7 +145,7 @@
 			`father_Lvision`,
 			`father_Rvision`,
 			`mather_Lvision`,
-			`mather_Rvision`
+			`mather_Rvision`,eye_health
 		)
 		values
 		(
@@ -119,7 +167,8 @@
 			#{fatherLvision},
 			#{fatherRvision},
 			#{matherLvision},
-			#{matherRvision}
+			#{matherRvision},
+			 #{eyeHealth}
 		)
 	</insert>
 
@@ -140,10 +189,11 @@
             <if test="sleepTime != null">`sleep_time` = #{sleepTime},</if>
             <if test="hobby != null">`hobby` = #{hobby},</if>
             <if test="readTime != null">`read_time` = #{readTime},</if>
-            <if test="fatherLvision != null">`father_Lvision` = #{fatherLvision}, </if>
-            <if test="fatherRvision != null">`father_Rvision` = #{fatherRvision}, </if>
-            <if test="matherLvision != null">`mather_Lvision` = #{matherLvision}, </if>
-            <if test="matherRvision != null">`mather_Rvision` = #{matherRvision}</if>
+            <if test="fatherLvision != null">`father_Lvision` = #{fatherLvision},</if>
+            <if test="fatherRvision != null">`father_Rvision` = #{fatherRvision},</if>
+            <if test="matherLvision != null">`mather_Lvision` = #{matherLvision},</if>
+            <if test="matherRvision != null">`mather_Rvision` = #{matherRvision},</if>
+            <if test="eyeHealth != null">`eye_health` = #{eyeHealth}</if>
         </set>
         where id = #{id}
     </update>
@@ -159,4 +209,63 @@
         </foreach>
     </delete>
 
+
+    <select id="getAge" resultType="Map">
+        SELECT
+        sum(age  &lt;   6)  'six',
+        sum(age &gt;= 6 AND age &lt;= 8) AS 'sixandeight',
+        sum(age &gt;= 9 AND age &lt;= 10) AS 'nineandten',
+        sum(age &gt; 10 AND age &lt;12) AS 'tenandtwelve',
+        sum(age &gt; 13 AND age &lt;15) AS 'thirteenandfifteen',
+        sum(age &gt; 16 AND age &lt;18) AS'sixteenandeighteen'
+        FROM
+        n_user_basic
+
+
+    </select>
+
+
+    <select id="getTestPerson" resultType="int">
+        SELECT COUNT(*) count FROM n_user_basic
+    </select>
+
+
+    <select id="getEyeHealth" resultType="Map">
+        SELECT
+            IFNULL(a.zc, 0) zc,
+            IFNULL(a.jx, 0) jx,
+            IFNULL(a.wqz, 0) wqz,
+            IFNULL(a.zx, 0) zx,
+            IFNULL(a.rs, 0) rs,
+            IFNULL(a.qt, 0) qt
+        FROM
+            (
+                SELECT
+                    SUM(eye_health = 1) zc,
+                    SUM(eye_health = 2) jx,
+                    SUM(eye_health = 3) wqz,
+                    SUM(eye_health = 4) zx,
+                    SUM(eye_health = 5) rs,
+                    SUM(eye_health = 6) qt
+                FROM
+                    n_user_eye_data
+            ) a
+    </select>
+
+    <select id="getType" resultType="Map">
+        SELECT
+            sum(experimental_mode = 1) 'duo',
+            sum(experimental_mode = 2) 'dan',
+            sum(experimental_mode = 3) 'move'
+        FROM
+            n_collection_info
+    </select>
+
+    <select id="getGender" resultType="Map">
+        SELECT
+            SUM(gender = '男') nan,
+            SUM(gender = '女') nv
+        FROM
+            n_user_basic
+    </select>
 </mapper>

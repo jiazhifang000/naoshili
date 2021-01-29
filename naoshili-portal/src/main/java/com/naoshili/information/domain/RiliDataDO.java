@@ -72,30 +72,48 @@ public class RiliDataDO implements Serializable {
     private Double ch21;
     //CH22
     private Double ch22;
-    
-    private Date addTime;
-    
-    
 
+    private Date addTime;
+
+
+    private int num;
+
+    private String location;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 
     public Date getAddTime() {
-		return addTime;
-	}
+        return addTime;
+    }
 
-	public void setAddTime(Date addTime) {
-		this.addTime = addTime;
-	}
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
 
 
     public Integer getExperimentalMode() {
-		return experimentalMode;
-	}
+        return experimentalMode;
+    }
 
-	public void setExperimentalMode(Integer experimentalMode) {
-		this.experimentalMode = experimentalMode;
-	}
+    public void setExperimentalMode(Integer experimentalMode) {
+        this.experimentalMode = experimentalMode;
+    }
 
-	public String getType() {
+    public String getType() {
         return type;
     }
 

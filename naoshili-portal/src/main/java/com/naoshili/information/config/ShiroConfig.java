@@ -80,7 +80,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/blog/open/**", "anon");
         filterChainDefinitionMap.put("/dataController/saveData", "anon");
         filterChainDefinitionMap.put("/LoginController/getUserInfo", "anon");
-        filterChainDefinitionMap.put("/**", "authc");
+        //filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+        //filterChainDefinitionMap.put("/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

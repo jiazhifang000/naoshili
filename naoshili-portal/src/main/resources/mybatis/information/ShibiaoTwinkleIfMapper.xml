@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naoshili.information.dao.ShibiaoTwinkleIfDao">
+
+    <select id="get" resultType="com.naoshili.information.domain.ShibiaoTwinkleIfDO">
+		select `id`,`data_id`,`data_type`,`test_time`,`light_time`,`offlight_time`,`preliminary_acquisition_time`,`gaze_time`,`first_sleep`,`alternate_count`,`second_sleep`,`light1`,`light2`,`light3`,`save_time` from n_shibiao_twinkle_if where id = #{value}
+	</select>
+
+    <select id="list" resultType="com.naoshili.information.domain.ShibiaoTwinkleIfDO">
+        select
+        `id`,`data_id`,`data_type`,`test_time`,`light_time`,`offlight_time`,`preliminary_acquisition_time`,`gaze_time`,`first_sleep`,`alternate_count`,`second_sleep`,`light1`,`light2`,`light3`,`save_time`
+        from n_shibiao_twinkle_if
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="dataType != null and dataType != ''">and data_type = #{dataType}</if>
+            <if test="testTime != null and testTime != ''">and test_time = #{testTime}</if>
+            <if test="lightTime != null and lightTime != ''">and light_time = #{lightTime}</if>
+            <if test="offlightTime != null and offlightTime != ''">and offlight_time = #{offlightTime}</if>
+            <if test="preliminaryAcquisitionTime != null and preliminaryAcquisitionTime != ''">and
+                preliminary_acquisition_time = #{preliminaryAcquisitionTime}
+            </if>
+            <if test="gazeTime != null and gazeTime != ''">and gaze_time = #{gazeTime}</if>
+            <if test="firstSleep != null and firstSleep != ''">and first_sleep = #{firstSleep}</if>
+            <if test="alternateCount != null and alternateCount != ''">and alternate_count = #{alternateCount}</if>
+            <if test="secondSleep != null and secondSleep != ''">and second_sleep = #{secondSleep}</if>
+            <if test="light1 != null and light1 != ''">and light1 = #{light1}</if>
+            <if test="light2 != null and light2 != ''">and light2 = #{light2}</if>
+            <if test="light3 != null and light3 != ''">and light3 = #{light3}</if>
+            <if test="saveTime != null and saveTime != ''">and save_time = #{saveTime}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from n_shibiao_twinkle_if
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="dataType != null and dataType != ''">and data_type = #{dataType}</if>
+            <if test="testTime != null and testTime != ''">and test_time = #{testTime}</if>
+            <if test="lightTime != null and lightTime != ''">and light_time = #{lightTime}</if>
+            <if test="offlightTime != null and offlightTime != ''">and offlight_time = #{offlightTime}</if>
+            <if test="preliminaryAcquisitionTime != null and preliminaryAcquisitionTime != ''">and
+                preliminary_acquisition_time = #{preliminaryAcquisitionTime}
+            </if>
+            <if test="gazeTime != null and gazeTime != ''">and gaze_time = #{gazeTime}</if>
+            <if test="firstSleep != null and firstSleep != ''">and first_sleep = #{firstSleep}</if>
+            <if test="alternateCount != null and alternateCount != ''">and alternate_count = #{alternateCount}</if>
+            <if test="secondSleep != null and secondSleep != ''">and second_sleep = #{secondSleep}</if>
+            <if test="light1 != null and light1 != ''">and light1 = #{light1}</if>
+            <if test="light2 != null and light2 != ''">and light2 = #{light2}</if>
+            <if test="light3 != null and light3 != ''">and light3 = #{light3}</if>
+            <if test="saveTime != null and saveTime != ''">and save_time = #{saveTime}</if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.ShibiaoTwinkleIfDO" useGeneratedKeys="true"
+            keyProperty="id">
+		insert into n_shibiao_twinkle_if
+		(
+			`data_id`, 
+			`data_type`, 
+			`test_time`, 
+			`light_time`, 
+			`offlight_time`, 
+			`preliminary_acquisition_time`, 
+			`gaze_time`, 
+			`first_sleep`, 
+			`alternate_count`, 
+			`second_sleep`, 
+			`light1`, 
+			`light2`, 
+			`light3`, 
+			`save_time`,
+			num
+		)
+		values
+		(
+			#{dataId}, 
+			#{dataType}, 
+			#{testTime}, 
+			#{lightTime}, 
+			#{offlightTime}, 
+			#{preliminaryAcquisitionTime}, 
+			#{gazeTime}, 
+			#{firstSleep}, 
+			#{alternateCount}, 
+			#{secondSleep}, 
+			#{light1}, 
+			#{light2}, 
+			#{light3}, 
+			#{saveTime},
+			#{num}
+		)
+	</insert>
+
+    <update id="update" parameterType="com.naoshili.information.domain.ShibiaoTwinkleIfDO">
+        update n_shibiao_twinkle_if
+        <set>
+            <if test="dataId != null">`data_id` = #{dataId},</if>
+            <if test="dataType != null">`data_type` = #{dataType},</if>
+            <if test="testTime != null">`test_time` = #{testTime},</if>
+            <if test="lightTime != null">`light_time` = #{lightTime},</if>
+            <if test="offlightTime != null">`offlight_time` = #{offlightTime},</if>
+            <if test="preliminaryAcquisitionTime != null">`preliminary_acquisition_time` =
+                #{preliminaryAcquisitionTime},
+            </if>
+            <if test="gazeTime != null">`gaze_time` = #{gazeTime},</if>
+            <if test="firstSleep != null">`first_sleep` = #{firstSleep},</if>
+            <if test="alternateCount != null">`alternate_count` = #{alternateCount},</if>
+            <if test="secondSleep != null">`second_sleep` = #{secondSleep},</if>
+            <if test="light1 != null">`light1` = #{light1},</if>
+            <if test="light2 != null">`light2` = #{light2},</if>
+            <if test="light3 != null">`light3` = #{light3},</if>
+            <if test="saveTime != null">`save_time` = #{saveTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
+		delete from n_shibiao_twinkle_if where id = #{value}
+	</delete>
+
+    <delete id="batchRemove">
+        delete from n_shibiao_twinkle_if where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naoshili.information.dao.ShibiaoMoveIfDao">
+
+    <select id="get" resultType="com.naoshili.information.domain.ShibiaoMoveIfDO">
+		select `id`,`data_id`,`data_type`,`test_time`,`speed`,`motion_trail`,`light_if`,`location_info`,`save_time` from n_shibiao_move_if where id = #{value}
+	</select>
+
+    <select id="list" resultType="com.naoshili.information.domain.ShibiaoMoveIfDO">
+        select `id`,`data_id`,`data_type`,`test_time`,`speed`,`motion_trail`,`light_if`,`location_info`,`save_time` from
+        n_shibiao_move_if
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="dataType != null and dataType != ''">and data_type = #{dataType}</if>
+            <if test="testTime != null and testTime != ''">and test_time = #{testTime}</if>
+            <if test="speed != null and speed != ''">and speed = #{speed}</if>
+            <if test="motionTrail != null and motionTrail != ''">and motion_trail = #{motionTrail}</if>
+            <if test="lightIf != null and lightIf != ''">and light_if = #{lightIf}</if>
+            <if test="locationInfo != null and locationInfo != ''">and location_info = #{locationInfo}</if>
+            <if test="saveTime != null and saveTime != ''">and save_time = #{saveTime}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from n_shibiao_move_if
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="dataType != null and dataType != ''">and data_type = #{dataType}</if>
+            <if test="testTime != null and testTime != ''">and test_time = #{testTime}</if>
+            <if test="speed != null and speed != ''">and speed = #{speed}</if>
+            <if test="motionTrail != null and motionTrail != ''">and motion_trail = #{motionTrail}</if>
+            <if test="lightIf != null and lightIf != ''">and light_if = #{lightIf}</if>
+            <if test="locationInfo != null and locationInfo != ''">and location_info = #{locationInfo}</if>
+            <if test="saveTime != null and saveTime != ''">and save_time = #{saveTime}</if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.ShibiaoMoveIfDO" useGeneratedKeys="true"
+            keyProperty="id">
+		insert into n_shibiao_move_if
+		(
+			`data_id`, 
+			`data_type`, 
+			`test_time`, 
+			`speed`, 
+			`motion_trail`, 
+			`light_if`, 
+			`location_info`, 
+			`save_time`
+		)
+		values
+		(
+			#{dataId}, 
+			#{dataType}, 
+			#{testTime}, 
+			#{speed}, 
+			#{motionTrail}, 
+			#{lightIf}, 
+			#{locationInfo}, 
+			#{saveTime}
+		)
+	</insert>
+
+    <update id="update" parameterType="com.naoshili.information.domain.ShibiaoMoveIfDO">
+        update n_shibiao_move_if
+        <set>
+            <if test="dataId != null">`data_id` = #{dataId},</if>
+            <if test="dataType != null">`data_type` = #{dataType},</if>
+            <if test="testTime != null">`test_time` = #{testTime},</if>
+            <if test="speed != null">`speed` = #{speed},</if>
+            <if test="motionTrail != null">`motion_trail` = #{motionTrail},</if>
+            <if test="lightIf != null">`light_if` = #{lightIf},</if>
+            <if test="locationInfo != null">`location_info` = #{locationInfo},</if>
+            <if test="saveTime != null">`save_time` = #{saveTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
+		delete from n_shibiao_move_if where id = #{value}
+	</delete>
+
+    <delete id="deleteByDataid">
+        DELETE
+            FROM
+                n_shibiao_move_if
+            WHERE
+                data_id = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from n_shibiao_move_if where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

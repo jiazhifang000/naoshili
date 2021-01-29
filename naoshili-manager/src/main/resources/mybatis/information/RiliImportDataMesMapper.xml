@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naoshili.information.dao.RiliImportDataMesDao">
+
+
+    <resultMap id="RiliImportDataMesResult" type="com.naoshili.information.domain.RiliImportDataMesDO">
+        <result property="id" column="id"/>
+        <result property="dataId" column="data_id"/>
+        <result property="ch1" column="ch1"/>
+        <result property="ch1_1" column="ch1_1"/>
+        <result property="ch2" column="ch2"/>
+        <result property="ch2_1" column="ch2_1"/>
+        <result property="ch3" column="ch3"/>
+        <result property="ch3_1" column="ch3_1"/>
+        <result property="ch4" column="ch4"/>
+        <result property="ch4_1" column="ch4_1"/>
+        <result property="ch5" column="ch5"/>
+        <result property="ch5_1" column="ch5_1"/>
+        <result property="ch6" column="ch6"/>
+        <result property="ch6_1" column="ch6_1"/>
+        <result property="ch7" column="ch7"/>
+        <result property="ch7_1" column="ch7_1"/>
+        <result property="ch8" column="ch8"/>
+        <result property="ch8_1" column="ch8_1"/>
+        <result property="ch9" column="ch9"/>
+        <result property="ch9_1" column="ch9_1"/>
+        <result property="ch10" column="ch10"/>
+        <result property="ch10_1" column="ch10_1"/>
+        <result property="ch11" column="ch11"/>
+        <result property="ch11_1" column="ch11_1"/>
+        <result property="ch12" column="ch12"/>
+        <result property="ch12_1" column="ch12_1"/>
+        <result property="ch13" column="ch13"/>
+        <result property="ch13_1" column="ch13_1"/>
+        <result property="ch14" column="ch14"/>
+        <result property="ch14_1" column="ch14_1"/>
+        <result property="ch15" column="ch15"/>
+        <result property="ch15_1" column="ch15_1"/>
+        <result property="ch16" column="ch16"/>
+        <result property="ch16_1" column="ch16_1"/>
+        <result property="ch17" column="ch17"/>
+        <result property="ch17_1" column="ch17_1"/>
+        <result property="ch18" column="ch18"/>
+        <result property="ch18_1" column="ch18_1"/>
+        <result property="ch19" column="ch19"/>
+        <result property="ch19_1" column="ch19_1"/>
+        <result property="ch20" column="ch20"/>
+        <result property="ch20_1" column="ch20_1"/>
+        <result property="ch21" column="ch21"/>
+        <result property="ch21_1" column="ch21_1"/>
+        <result property="ch22" column="ch22"/>
+        <result property="ch22_1" column="ch22_1"/>
+        <result property="mark" column="mark"/>
+        <result property="time" column="time"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <select id="get" resultType="com.naoshili.information.domain.RiliImportDataMesDO">
+		select `id`,`data_id`,`ch1`,`ch1_1`,`ch2`,`ch2_1`,`ch3`,`ch3_1`,`ch4`,`ch4_1`,`ch5`,`ch5_1`,`ch6`,`ch6_1`,`ch7`,`ch7_1`,`ch8`,
+		`ch8_1`,`ch9`,`ch9_1`,`ch10`,`ch10_1`,`ch11`,`ch11_1`,`ch12`,`ch12_1`,`ch13`,`ch13_1`,`ch14`,`ch14_1`,`ch15`,`ch15_1`,`ch16`,
+		`ch16_1`,`ch17`,`ch17_1`,`ch18`,`ch18_1`,`ch19`,`ch19_1`,`ch20`,`ch20_1`,`ch21`,`ch21_1`,`ch22`,`ch22_1`,`mark`,`time`,`type`
+		from n_rili_import_data_mes where id = #{value}
+	</select>
+
+    <select id="list" resultMap="RiliImportDataMesResult">
+        select
+        `id`,`data_id`,`ch1`,`ch1_1`,`ch2`,`ch2_1`,`ch3`,`ch3_1`,`ch4`,`ch4_1`,`ch5`,`ch5_1`,`ch6`,`ch6_1`,`ch7`,`ch7_1`,`ch8`,`ch8_1`,`ch9`,`ch9_1`,`ch10`,`ch10_1`,`ch11`,`ch11_1`,`ch12`,`ch12_1`,`ch13`,`ch13_1`,`ch14`,`ch14_1`,`ch15`,`ch15_1`,`ch16`,`ch16_1`,`ch17`,`ch17_1`,`ch18`,`ch18_1`,`ch19`,`ch19_1`,`ch20`,`ch20_1`,`ch21`,`ch21_1`,`ch22`,`ch22_1`,`mark`,`time`,`type`
+        from n_rili_import_data_mes
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="ch1 != null and ch1 != ''">and ch1 = #{ch1}</if>
+            <if test="ch1_1 != null and ch1_1 != ''">and ch1_1 = #{ch1_1}</if>
+            <if test="ch2 != null and ch2 != ''">and ch2 = #{ch2}</if>
+            <if test="ch2_1 != null and ch2_1 != ''">and ch2_1 = #{ch2_1}</if>
+            <if test="ch3 != null and ch3 != ''">and ch3 = #{ch3}</if>
+            <if test="ch3_1 != null and ch3_1 != ''">and ch3_1 = #{ch3_1}</if>
+            <if test="ch4 != null and ch4 != ''">and ch4 = #{ch4}</if>
+            <if test="ch4_1 != null and ch4_1 != ''">and ch4_1 = #{ch4_1}</if>
+            <if test="ch5 != null and ch5 != ''">and ch5 = #{ch5}</if>
+            <if test="ch5_1 != null and ch5_1 != ''">and ch5_1 = #{ch5_1}</if>
+            <if test="ch6 != null and ch6 != ''">and ch6 = #{ch6}</if>
+            <if test="ch6_1 != null and ch6_1 != ''">and ch6_1 = #{ch6_1}</if>
+            <if test="ch7 != null and ch7 != ''">and ch7 = #{ch7}</if>
+            <if test="ch7_1 != null and ch71 != ''">and ch7_1 = #{ch7_1}</if>
+            <if test="ch8 != null and ch8 != ''">and ch8 = #{ch8}</if>
+            <if test="ch8_1 != null and ch8_1 != ''">and ch8_1 = #{ch8_1}</if>
+            <if test="ch9 != null and ch9 != ''">and ch9 = #{ch9}</if>
+            <if test="ch9_1 != null and ch9_1 != ''">and ch9_1 = #{ch9_1}</if>
+            <if test="ch10 != null and ch10 != ''">and ch10 = #{ch10}</if>
+            <if test="ch101 != null and ch101 != ''">and ch10_1 = #{ch101}</if>
+            <if test="ch11 != null and ch11 != ''">and ch11 = #{ch11}</if>
+            <if test="ch111 != null and ch111 != ''">and ch11_1 = #{ch111}</if>
+            <if test="ch12 != null and ch12 != ''">and ch12 = #{ch12}</if>
+            <if test="ch121 != null and ch121 != ''">and ch12_1 = #{ch121}</if>
+            <if test="ch13 != null and ch13 != ''">and ch13 = #{ch13}</if>
+            <if test="ch131 != null and ch131 != ''">and ch13_1 = #{ch131}</if>
+            <if test="ch14 != null and ch14 != ''">and ch14 = #{ch14}</if>
+            <if test="ch141 != null and ch141 != ''">and ch14_1 = #{ch141}</if>
+            <if test="ch15 != null and ch15 != ''">and ch15 = #{ch15}</if>
+            <if test="ch151 != null and ch151 != ''">and ch15_1 = #{ch151}</if>
+            <if test="ch16 != null and ch16 != ''">and ch16 = #{ch16}</if>
+            <if test="ch161 != null and ch161 != ''">and ch16_1 = #{ch161}</if>
+            <if test="ch17 != null and ch17 != ''">and ch17 = #{ch17}</if>
+            <if test="ch171 != null and ch171 != ''">and ch17_1 = #{ch171}</if>
+            <if test="ch18 != null and ch18 != ''">and ch18 = #{ch18}</if>
+            <if test="ch181 != null and ch181 != ''">and ch18_1 = #{ch181}</if>
+            <if test="ch19 != null and ch19 != ''">and ch19 = #{ch19}</if>
+            <if test="ch191 != null and ch191 != ''">and ch19_1 = #{ch191}</if>
+            <if test="ch20 != null and ch20 != ''">and ch20 = #{ch20}</if>
+            <if test="ch201 != null and ch201 != ''">and ch20_1 = #{ch201}</if>
+            <if test="ch21 != null and ch21 != ''">and ch21 = #{ch21}</if>
+            <if test="ch211 != null and ch211 != ''">and ch21_1 = #{ch211}</if>
+            <if test="ch22 != null and ch22 != ''">and ch22 = #{ch22}</if>
+            <if test="ch221 != null and ch221 != ''">and ch22_1 = #{ch221}</if>
+            <if test="mark != null and mark != ''">and mark = #{mark}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="type != null and type != ''">and type = #{type}</if>
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from n_rili_import_data_mes
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="ch1 != null and ch1 != ''">and ch1 = #{ch1}</if>
+            <if test="ch11 != null and ch11 != ''">and ch1_1 = #{ch11}</if>
+            <if test="ch2 != null and ch2 != ''">and ch2 = #{ch2}</if>
+            <if test="ch21 != null and ch21 != ''">and ch2_1 = #{ch21}</if>
+            <if test="ch3 != null and ch3 != ''">and ch3 = #{ch3}</if>
+            <if test="ch31 != null and ch31 != ''">and ch3_1 = #{ch31}</if>
+            <if test="ch4 != null and ch4 != ''">and ch4 = #{ch4}</if>
+            <if test="ch41 != null and ch41 != ''">and ch4_1 = #{ch41}</if>
+            <if test="ch5 != null and ch5 != ''">and ch5 = #{ch5}</if>
+            <if test="ch51 != null and ch51 != ''">and ch5_1 = #{ch51}</if>
+            <if test="ch6 != null and ch6 != ''">and ch6 = #{ch6}</if>
+            <if test="ch61 != null and ch61 != ''">and ch6_1 = #{ch61}</if>
+            <if test="ch7 != null and ch7 != ''">and ch7 = #{ch7}</if>
+            <if test="ch71 != null and ch71 != ''">and ch7_1 = #{ch71}</if>
+            <if test="ch8 != null and ch8 != ''">and ch8 = #{ch8}</if>
+            <if test="ch81 != null and ch81 != ''">and ch8_1 = #{ch81}</if>
+            <if test="ch9 != null and ch9 != ''">and ch9 = #{ch9}</if>
+            <if test="ch91 != null and ch91 != ''">and ch9_1 = #{ch91}</if>
+            <if test="ch10 != null and ch10 != ''">and ch10 = #{ch10}</if>
+            <if test="ch101 != null and ch101 != ''">and ch10_1 = #{ch101}</if>
+            <if test="ch11 != null and ch11 != ''">and ch11 = #{ch11}</if>
+            <if test="ch111 != null and ch111 != ''">and ch11_1 = #{ch111}</if>
+            <if test="ch12 != null and ch12 != ''">and ch12 = #{ch12}</if>
+            <if test="ch121 != null and ch121 != ''">and ch12_1 = #{ch121}</if>
+            <if test="ch13 != null and ch13 != ''">and ch13 = #{ch13}</if>
+            <if test="ch131 != null and ch131 != ''">and ch13_1 = #{ch131}</if>
+            <if test="ch14 != null and ch14 != ''">and ch14 = #{ch14}</if>
+            <if test="ch141 != null and ch141 != ''">and ch14_1 = #{ch141}</if>
+            <if test="ch15 != null and ch15 != ''">and ch15 = #{ch15}</if>
+            <if test="ch151 != null and ch151 != ''">and ch15_1 = #{ch151}</if>
+            <if test="ch16 != null and ch16 != ''">and ch16 = #{ch16}</if>
+            <if test="ch161 != null and ch161 != ''">and ch16_1 = #{ch161}</if>
+            <if test="ch17 != null and ch17 != ''">and ch17 = #{ch17}</if>
+            <if test="ch171 != null and ch171 != ''">and ch17_1 = #{ch171}</if>
+            <if test="ch18 != null and ch18 != ''">and ch18 = #{ch18}</if>
+            <if test="ch181 != null and ch181 != ''">and ch18_1 = #{ch181}</if>
+            <if test="ch19 != null and ch19 != ''">and ch19 = #{ch19}</if>
+            <if test="ch191 != null and ch191 != ''">and ch19_1 = #{ch191}</if>
+            <if test="ch20 != null and ch20 != ''">and ch20 = #{ch20}</if>
+            <if test="ch201 != null and ch201 != ''">and ch20_1 = #{ch201}</if>
+            <if test="ch21 != null and ch21 != ''">and ch21 = #{ch21}</if>
+            <if test="ch211 != null and ch211 != ''">and ch21_1 = #{ch211}</if>
+            <if test="ch22 != null and ch22 != ''">and ch22 = #{ch22}</if>
+            <if test="ch221 != null and ch221 != ''">and ch22_1 = #{ch221}</if>
+            <if test="mark != null and mark != ''">and mark = #{mark}</if>
+            <if test="time != null and time != ''">and time = #{time}</if>
+            <if test="type != null and type != ''">and type = #{type}</if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.naoshili.information.domain.RiliImportDataMesDO" useGeneratedKeys="true"
+            keyProperty="id">
+		insert into n_rili_import_data_mes
+		(
+			`data_id`,
+			`ch1`,
+			`ch1_1`,
+			`ch2`,
+			`ch2_1`,
+			`ch3`,
+			`ch3_1`,
+			`ch4`,
+			`ch4_1`,
+			`ch5`,
+			`ch5_1`,
+			`ch6`,
+			`ch6_1`,
+			`ch7`,
+			`ch7_1`,
+			`ch8`,
+			`ch8_1`,
+			`ch9`,
+			`ch9_1`,
+			`ch10`,
+			`ch10_1`,
+			`ch11`,
+			`ch11_1`,
+			`ch12`,
+			`ch12_1`,
+			`ch13`,
+			`ch13_1`,
+			`ch14`,
+			`ch14_1`,
+			`ch15`,
+			`ch15_1`,
+			`ch16`,
+			`ch16_1`,
+			`ch17`,
+			`ch17_1`,
+			`ch18`,
+			`ch18_1`,
+			`ch19`,
+			`ch19_1`,
+			`ch20`,
+			`ch20_1`,
+			`ch21`,
+			`ch21_1`,
+			`ch22`,
+			`ch22_1`,
+			`mark`,
+			`time`,
+			`type`
+		)
+		values
+		(
+			#{dataId},
+			#{ch1},
+			#{ch1_1},
+			#{ch2},
+			#{ch2_1},
+			#{ch3},
+			#{ch3_1},
+			#{ch4},
+			#{ch4_1},
+			#{ch5},
+			#{ch5_1},
+			#{ch6},
+			#{ch6_1},
+			#{ch7},
+			#{ch7_1},
+			#{ch8},
+			#{ch8_1},
+			#{ch9},
+			#{ch9_1},
+			#{ch10},
+			#{ch10_1},
+			#{ch11},
+			#{ch11_1},
+			#{ch12},
+			#{ch12_1},
+			#{ch13},
+			#{ch13_1},
+			#{ch14},
+			#{ch14_1},
+			#{ch15},
+			#{ch15_1},
+			#{ch16},
+			#{ch16_1},
+			#{ch17},
+			#{ch17_1},
+			#{ch18},
+			#{ch18_1},
+			#{ch19},
+			#{ch19_1},
+			#{ch20},
+			#{ch20_1},
+			#{ch21},
+			#{ch21_1},
+			#{ch22},
+			#{ch22_1},
+			#{mark},
+			#{time},
+			#{type}
+		)
+	</insert>
+
+
+    <insert id="saveList" parameterType="java.util.List">
+        insert into n_rili_import_data_mes
+        (
+        `data_id`,
+        `ch1`,
+        `ch1_1`,
+        `ch2`,
+        `ch2_1`,
+        `ch3`,
+        `ch3_1`,
+        `ch4`,
+        `ch4_1`,
+        `ch5`,
+        `ch5_1`,
+        `ch6`,
+        `ch6_1`,
+        `ch7`,
+        `ch7_1`,
+        `ch8`,
+        `ch8_1`,
+        `ch9`,
+        `ch9_1`,
+        `ch10`,
+        `ch10_1`,
+        `ch11`,
+        `ch11_1`,
+        `ch12`,
+        `ch12_1`,
+        `ch13`,
+        `ch13_1`,
+        `ch14`,
+        `ch14_1`,
+        `ch15`,
+        `ch15_1`,
+        `ch16`,
+        `ch16_1`,
+        `ch17`,
+        `ch17_1`,
+        `ch18`,
+        `ch18_1`,
+        `ch19`,
+        `ch19_1`,
+        `ch20`,
+        `ch20_1`,
+        `ch21`,
+        `ch21_1`,
+        `ch22`,
+        `ch22_1`,
+        `mark`,
+        `time`,
+        `type`
+        )
+        values
+        <foreach collection="riliImportDataMesDOList" item="item" separator=",">
+            (
+            #{item.dataId},
+            #{item.ch1},
+            #{item.ch1_1},
+            #{item.ch2},
+            #{item.ch2_1},
+            #{item.ch3},
+            #{item.ch3_1},
+            #{item.ch4},
+            #{item.ch4_1},
+            #{item.ch5},
+            #{item.ch5_1},
+            #{item.ch6},
+            #{item.ch6_1},
+            #{item.ch7},
+            #{item.ch7_1},
+            #{item.ch8},
+            #{item.ch8_1},
+            #{item.ch9},
+            #{item.ch9_1},
+            #{item.ch10},
+            #{item.ch10_1},
+            #{item.ch11},
+            #{item.ch11_1},
+            #{item.ch12},
+            #{item.ch12_1},
+            #{item.ch13},
+            #{item.ch13_1},
+            #{item.ch14},
+            #{item.ch14_1},
+            #{item.ch15},
+            #{item.ch15_1},
+            #{item.ch16},
+            #{item.ch16_1},
+            #{item.ch17},
+            #{item.ch17_1},
+            #{item.ch18},
+            #{item.ch18_1},
+            #{item.ch19},
+            #{item.ch19_1},
+            #{item.ch20},
+            #{item.ch20_1},
+            #{item.ch21},
+            #{item.ch21_1},
+            #{item.ch22},
+            #{item.ch22_1},
+            #{item.mark},
+            #{item.time},
+            #{item.type}
+            )
+        </foreach>
+    </insert>
+    <update id="update" parameterType="com.naoshili.information.domain.RiliImportDataMesDO">
+        update n_rili_import_data_mes
+        <set>
+            <if test="dataId != null">`data_id` = #{dataId},</if>
+            <if test="ch1 != null">`ch1` = #{ch1},</if>
+            <if test="ch11 != null">`ch1_1` = #{ch1_1},</if>
+            <if test="ch2 != null">`ch2` = #{ch2},</if>
+            <if test="ch21 != null">`ch2_1` = #{ch21},</if>
+            <if test="ch3 != null">`ch3` = #{ch3},</if>
+            <if test="ch31 != null">`ch3_1` = #{ch31},</if>
+            <if test="ch4 != null">`ch4` = #{ch4},</if>
+            <if test="ch41 != null">`ch4_1` = #{ch41},</if>
+            <if test="ch5 != null">`ch5` = #{ch5},</if>
+            <if test="ch51 != null">`ch5_1` = #{ch51},</if>
+            <if test="ch6 != null">`ch6` = #{ch6},</if>
+            <if test="ch61 != null">`ch6_1` = #{ch61},</if>
+            <if test="ch7 != null">`ch7` = #{ch7},</if>
+            <if test="ch71 != null">`ch7_1` = #{ch71},</if>
+            <if test="ch8 != null">`ch8` = #{ch8},</if>
+            <if test="ch81 != null">`ch8_1` = #{ch81},</if>
+            <if test="ch9 != null">`ch9` = #{ch9},</if>
+            <if test="ch91 != null">`ch9_1` = #{ch91},</if>
+            <if test="ch10 != null">`ch10` = #{ch10},</if>
+            <if test="ch101 != null">`ch10_1` = #{ch101},</if>
+            <if test="ch11 != null">`ch11` = #{ch11},</if>
+            <if test="ch111 != null">`ch11_1` = #{ch111},</if>
+            <if test="ch12 != null">`ch12` = #{ch12},</if>
+            <if test="ch121 != null">`ch12_1` = #{ch121},</if>
+            <if test="ch13 != null">`ch13` = #{ch13},</if>
+            <if test="ch131 != null">`ch13_1` = #{ch131},</if>
+            <if test="ch14 != null">`ch14` = #{ch14},</if>
+            <if test="ch141 != null">`ch14_1` = #{ch141},</if>
+            <if test="ch15 != null">`ch15` = #{ch15},</if>
+            <if test="ch151 != null">`ch15_1` = #{ch151},</if>
+            <if test="ch16 != null">`ch16` = #{ch16},</if>
+            <if test="ch161 != null">`ch16_1` = #{ch161},</if>
+            <if test="ch17 != null">`ch17` = #{ch17},</if>
+            <if test="ch171 != null">`ch17_1` = #{ch171},</if>
+            <if test="ch18 != null">`ch18` = #{ch18},</if>
+            <if test="ch181 != null">`ch18_1` = #{ch181},</if>
+            <if test="ch19 != null">`ch19` = #{ch19},</if>
+            <if test="ch191 != null">`ch19_1` = #{ch191},</if>
+            <if test="ch20 != null">`ch20` = #{ch20},</if>
+            <if test="ch201 != null">`ch20_1` = #{ch201},</if>
+            <if test="ch21 != null">`ch21` = #{ch21},</if>
+            <if test="ch211 != null">`ch21_1` = #{ch211},</if>
+            <if test="ch22 != null">`ch22` = #{ch22},</if>
+            <if test="ch221 != null">`ch22_1` = #{ch221},</if>
+            <if test="mark != null">`mark` = #{mark},</if>
+            <if test="time != null">`time` = #{time},</if>
+            <if test="type != null">`type` = #{type}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
+		delete from n_rili_import_data_mes where id = #{value}
+	</delete>
+
+    <delete id="batchRemove">
+        delete from n_rili_import_data_mes where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
