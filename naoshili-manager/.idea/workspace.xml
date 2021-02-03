@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f40d1bb7-b0f6-4404-bbac-77357c1ad72e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/common/utils/Sqrt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/LinshiUrlController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/JinggongAdjustDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/LinshiUrlDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/JinggongAdjustDO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/LinshiUrlDO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/JinggongAdjustService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/LinshiUrlService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/JinggongAdjustServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/LinshiUrlServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongAdjustMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/information/LinshiUrlMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/information/dataReport/dengdajiaoyuju.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/脑视力报告.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/CollectionInfoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/CollectionInfoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/JinggongDataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/JinggongDataDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/UserEyeDataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/UserEyeDataDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/ChartDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/ChartDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/JinggongDataDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/JinggongDataDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/CollectionInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/CollectionInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/JinggongDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/JinggongDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/UserEyeDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/UserEyeDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/CollectionInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/CollectionInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/JinggongDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/JinggongDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/UserEyeDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/UserEyeDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/information/CollectionInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/information/CollectionInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongDataMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongDataMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/information/UserEyeDataMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/information/UserEyeDataMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html" afterDir="false" />
-    </list>
+    <list default="true" id="f40d1bb7-b0f6-4404-bbac-77357c1ad72e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +13,7 @@
     <session id="-1049887790">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -151,7 +119,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
+            <state relative-caret-position="-1288">
               <caret line="2326" column="32" lean-forward="true" selection-start-line="2326" selection-start-column="32" selection-end-line="2326" selection-end-column="32" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -371,9 +339,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-20" />
-    <option name="y" value="2" />
-    <option name="width" value="1403" />
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -492,7 +460,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1612348589577" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1612349628370" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -553,16 +521,15 @@
       <workItem from="1611897902090" duration="16255000" />
       <workItem from="1612142190061" duration="23530000" />
       <workItem from="1612227546610" duration="26763000" />
-      <workItem from="1612314257318" duration="26398000" />
+      <workItem from="1612314257318" duration="26994000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94423000" />
+    <option name="totallyTimeSpent" value="95019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25772098" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -972,7 +939,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
+        <state relative-caret-position="-1288">
           <caret line="2326" column="32" lean-forward="true" selection-start-line="2326" selection-start-column="32" selection-end-line="2326" selection-end-column="32" />
           <folding>
             <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
