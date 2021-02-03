@@ -6,6 +6,9 @@
     <select id="get" resultType="com.naoshili.information.domain.UserEyeDataDO">
 		select `id`,`uid`,`l_eyeball_diameter`,`r_eyeball_diameter`,`l_eyepillar_diameter`,`r_eyepillar_diameter`,`l_eye_axis`,`r_eye_axis`,`l_eye_optometry`,`r_eye_optometry`,`l_eye_naked_vision`,`r_eye_naked_vision`,`l_eye_glasses_vision`,`r_eye_glasses_vision`,`l_glasses_vision`,`r_glasses_vision`,glass_to_cornea,glass_diopter,eye_health from n_user_eye_data where id = #{value}
 	</select>
+    <select id="getUid" resultType="com.naoshili.information.domain.UserEyeDataDO">
+		select `id`,`uid`,`l_eyeball_diameter`,`r_eyeball_diameter`,`l_eyepillar_diameter`,`r_eyepillar_diameter`,`l_eye_axis`,`r_eye_axis`,`l_eye_optometry`,`r_eye_optometry`,`l_eye_naked_vision`,`r_eye_naked_vision`,`l_eye_glasses_vision`,`r_eye_glasses_vision`,`l_glasses_vision`,`r_glasses_vision`,glass_to_cornea,glass_diopter,eye_health from n_user_eye_data where uid = #{value}
+	</select>
 
     <select id="list" resultType="com.naoshili.information.domain.UserEyeDataDO">
         select

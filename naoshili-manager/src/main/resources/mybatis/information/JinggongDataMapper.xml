@@ -82,6 +82,36 @@
             limit #{offset}, #{limit}
         </if>
     </select>
+    <select id="getList" resultType="com.naoshili.information.domain.JinggongDataDO">
+        select
+        `id`,`data_id`,`sampling_time`,`eye`,`diopter`,`pupil_distance`,experimental_mode,location,external_trigger_mark,original_data
+        from n_jinggong_data
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dataId != null and dataId != ''">and data_id = #{dataId}</if>
+            <if test="samplingTime != null and samplingTime != ''">and sampling_time = #{samplingTime}</if>
+            <if test="eye != null and eye != ''">and eye = #{eye}</if>
+            <if test="experimentalMode != null and experimentalMode != ''">and experimental_mode = #{experimentalMode}</if>
+            <if test="diopter != null and diopter != ''">and diopter = #{diopter}</if>
+            <if test="pupilDistance != null and pupilDistance != ''">and pupil_distance = #{pupilDistance}</if>
+            <if test="externalTriggerMark != null and externalTriggerMark != ''">and external_trigger_mark = #{externalTriggerMark}</if>
+            and diopter != 0
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+    <select id="getCheckTime" resultType="string">
+        SELECT DISTINCT DATE_FORMAT(sampling_time,'%Y-%m-%d') FROM n_jinggong_data WHERE data_id = #{id}
+    </select>
 
     <select id="count" resultType="int">
         select count(*) from n_jinggong_data

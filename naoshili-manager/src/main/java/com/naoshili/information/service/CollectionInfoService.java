@@ -17,7 +17,8 @@ public interface CollectionInfoService {
 	CollectionInfoDO get(Long id);
 	
 	List<CollectionInfoDO> list(Map<String, Object> map);
-	
+	List<CollectionInfoDO> getAllCollection(Long id);
+
 	int count(Map<String, Object> map);
 	
 	int save(CollectionInfoDO collectionInfo);
@@ -27,4 +28,6 @@ public interface CollectionInfoService {
 	int remove(Long id);
 	
 	int batchRemove(Long[] ids);
+
+    Integer getUserId(Long id);
 }

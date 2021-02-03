@@ -40,4 +40,8 @@ public interface JinggongDataDao {
     ZhiHouDO getLocation(@Param("samplingTime") String samplingTime, @Param("id") Long id);
 
     int deleteByDataid(Long id);
+
+    List<JinggongDataDO> getList(Map<String, Object> map);
+
+    String getCheckTime(String id);
 }

@@ -27,6 +27,16 @@ public class JinggongDataServiceImpl implements JinggongDataService {
     }
 
     @Override
+    public List<JinggongDataDO> getList(Map<String, Object> map) {
+        return jinggongDataDao.getList(map);
+    }
+
+    @Override
+    public String getCheckTime(String id) {
+        return jinggongDataDao.getCheckTime(id);
+    }
+
+    @Override
     public int count(Map<String, Object> map) {
         return jinggongDataDao.count(map);
     }

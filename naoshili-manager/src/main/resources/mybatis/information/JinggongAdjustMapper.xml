@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naoshili.information.dao.JinggongAdjustDao">
+
+	<select id="get" resultType="com.naoshili.information.domain.JinggongAdjustDO">
+		select `id`,`user_id`,`microwave_paragraph_A`,`microwave_paragraph_B`,`microwave_paragraph_C`,`microwave_flashing_A`,`microwave_flashing_B`,`lag_paragraph_A`,`lag_paragraph_B`,`lag_paragraph_C`,`lag_flashing_A`,`lag_flashing_B` from n_jinggong_adjust where user_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.naoshili.information.domain.JinggongAdjustDO">
+		select `id`,`user_id`,`microwave_paragraph_A`,`microwave_paragraph_B`,`microwave_paragraph_C`,`microwave_flashing_A`,`microwave_flashing_B`,`lag_paragraph_A`,`lag_paragraph_B`,`lag_paragraph_C`,`lag_flashing_A`,`lag_flashing_B` from n_jinggong_adjust
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+		  		  <if test="microwaveParagraphA != null and microwaveParagraphA != ''"> and microwave_paragraph_A = #{microwaveParagraphA} </if>
+		  		  <if test="microwaveParagraphB != null and microwaveParagraphB != ''"> and microwave_paragraph_B = #{microwaveParagraphB} </if>
+		  		  <if test="microwaveParagraphC != null and microwaveParagraphC != ''"> and microwave_paragraph_C = #{microwaveParagraphC} </if>
+		  		  <if test="microwaveFlashingA != null and microwaveFlashingA != ''"> and microwave_flashing_A = #{microwaveFlashingA} </if>
+		  		  <if test="microwaveFlashingB != null and microwaveFlashingB != ''"> and microwave_flashing_B = #{microwaveFlashingB} </if>
+		  		  <if test="lagParagraphA != null and lagParagraphA != ''"> and lag_paragraph_A = #{lagParagraphA} </if>
+		  		  <if test="lagParagraphB != null and lagParagraphB != ''"> and lag_paragraph_B = #{lagParagraphB} </if>
+		  		  <if test="lagParagraphC != null and lagParagraphC != ''"> and lag_paragraph_C = #{lagParagraphC} </if>
+		  		  <if test="lagFlashingA != null and lagFlashingA != ''"> and lag_flashing_A = #{lagFlashingA} </if>
+		  		  <if test="lagFlashingB != null and lagFlashingB != ''"> and lag_flashing_B = #{lagFlashingB} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from n_jinggong_adjust
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+		  		  <if test="microwaveParagraphA != null and microwaveParagraphA != ''"> and microwave_paragraph_A = #{microwaveParagraphA} </if>
+		  		  <if test="microwaveParagraphB != null and microwaveParagraphB != ''"> and microwave_paragraph_B = #{microwaveParagraphB} </if>
+		  		  <if test="microwaveParagraphC != null and microwaveParagraphC != ''"> and microwave_paragraph_C = #{microwaveParagraphC} </if>
+		  		  <if test="microwaveFlashingA != null and microwaveFlashingA != ''"> and microwave_flashing_A = #{microwaveFlashingA} </if>
+		  		  <if test="microwaveFlashingB != null and microwaveFlashingB != ''"> and microwave_flashing_B = #{microwaveFlashingB} </if>
+		  		  <if test="lagParagraphA != null and lagParagraphA != ''"> and lag_paragraph_A = #{lagParagraphA} </if>
+		  		  <if test="lagParagraphB != null and lagParagraphB != ''"> and lag_paragraph_B = #{lagParagraphB} </if>
+		  		  <if test="lagParagraphC != null and lagParagraphC != ''"> and lag_paragraph_C = #{lagParagraphC} </if>
+		  		  <if test="lagFlashingA != null and lagFlashingA != ''"> and lag_flashing_A = #{lagFlashingA} </if>
+		  		  <if test="lagFlashingB != null and lagFlashingB != ''"> and lag_flashing_B = #{lagFlashingB} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.naoshili.information.domain.JinggongAdjustDO" useGeneratedKeys="true" keyProperty="id">
+		insert into n_jinggong_adjust
+		(
+			`user_id`, 
+			`microwave_paragraph_A`, 
+			`microwave_paragraph_B`, 
+			`microwave_paragraph_C`, 
+			`microwave_flashing_A`, 
+			`microwave_flashing_B`, 
+			`lag_paragraph_A`, 
+			`lag_paragraph_B`, 
+			`lag_paragraph_C`, 
+			`lag_flashing_A`, 
+			`lag_flashing_B`
+		)
+		values
+		(
+			#{userId}, 
+			#{microwaveParagraphA}, 
+			#{microwaveParagraphB}, 
+			#{microwaveParagraphC}, 
+			#{microwaveFlashingA}, 
+			#{microwaveFlashingB}, 
+			#{lagParagraphA}, 
+			#{lagParagraphB}, 
+			#{lagParagraphC}, 
+			#{lagFlashingA}, 
+			#{lagFlashingB}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.naoshili.information.domain.JinggongAdjustDO">
+		update n_jinggong_adjust 
+		<set>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="microwaveParagraphA != null">`microwave_paragraph_A` = #{microwaveParagraphA}, </if>
+			<if test="microwaveParagraphB != null">`microwave_paragraph_B` = #{microwaveParagraphB}, </if>
+			<if test="microwaveParagraphC != null">`microwave_paragraph_C` = #{microwaveParagraphC}, </if>
+			<if test="microwaveFlashingA != null">`microwave_flashing_A` = #{microwaveFlashingA}, </if>
+			<if test="microwaveFlashingB != null">`microwave_flashing_B` = #{microwaveFlashingB}, </if>
+			<if test="lagParagraphA != null">`lag_paragraph_A` = #{lagParagraphA}, </if>
+			<if test="lagParagraphB != null">`lag_paragraph_B` = #{lagParagraphB}, </if>
+			<if test="lagParagraphC != null">`lag_paragraph_C` = #{lagParagraphC}, </if>
+			<if test="lagFlashingA != null">`lag_flashing_A` = #{lagFlashingA}, </if>
+			<if test="lagFlashingB != null">`lag_flashing_B` = #{lagFlashingB}</if>
+		</set>
+		where user_id = #{userId}
+	</update>
+	
+	<delete id="remove">
+		delete from n_jinggong_adjust where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from n_jinggong_adjust where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

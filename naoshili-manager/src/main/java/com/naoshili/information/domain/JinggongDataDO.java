@@ -27,6 +27,15 @@ public class JinggongDataDO implements Serializable {
     private Double diopter;
     //瞳距
     private Double pupilDistance;
+    private Integer location;
+
+    public Integer getLocation() {
+        return location;
+    }
+
+    public void setLocation(Integer location) {
+        this.location = location;
+    }
 
     //外部触发标记
     private String externalTriggerMark;

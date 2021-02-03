@@ -18,6 +18,8 @@ public interface JinggongDataService {
     JinggongDataDO get(Long id);
 
     List<JinggongDataDO> list(Map<String, Object> map);
+    List<JinggongDataDO> getList(Map<String, Object> map);
+    String getCheckTime(String id);
 
     int count(Map<String, Object> map);
 

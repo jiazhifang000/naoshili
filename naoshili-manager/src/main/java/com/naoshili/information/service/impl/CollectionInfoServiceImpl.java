@@ -26,8 +26,13 @@ public class CollectionInfoServiceImpl implements CollectionInfoService {
 	public List<CollectionInfoDO> list(Map<String, Object> map){
 		return collectionInfoDao.list(map);
 	}
-	
-	@Override
+
+    @Override
+    public List<CollectionInfoDO> getAllCollection(Long id) {
+        return collectionInfoDao.getAllCollection(id);
+    }
+
+    @Override
 	public int count(Map<String, Object> map){
 		return collectionInfoDao.count(map);
 	}
@@ -51,5 +56,10 @@ public class CollectionInfoServiceImpl implements CollectionInfoService {
 	public int batchRemove(Long[] ids){
 		return collectionInfoDao.batchRemove(ids);
 	}
-	
+
+    @Override
+    public Integer getUserId(Long id) {
+        return collectionInfoDao.getUserId(id);
+    }
+
 }

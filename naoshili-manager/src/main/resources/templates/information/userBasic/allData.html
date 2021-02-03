@@ -22,7 +22,7 @@
                         <span id="shibiaoData" class="col-sm-2" style=" text-align: center;cursor: pointer"
                               onclick="shibiao()">视标数据</span>
                         <span id="report" class="col-sm-2" style=" text-align: center;cursor: pointer"
-                              onclick="fenxi()">分析报告</span>
+                              onclick="report()">分析报告</span>
                     </div>
 
                     <div style="height: 50px;margin-top: 20px" id="type">
@@ -409,7 +409,7 @@
                         </div>
                     </div>
                     <div id="fenxi" style="margin-top: 20px;display: none;height: 3500px">
-                        <div id="userInfo1"
+                        <div id="userInfo2"
                              style="margin-top: 20px;height: 450px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
                             <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">基本信息</p>
                             <p style="margin-left: 50px;margin-top: 20px;" th:text="用户id：+${userBasic.userId}"></p><br>
@@ -489,7 +489,6 @@
                             </div>
                         </div>
                         <br>
-
                         <div id="quguangdu"
                              style="height: 350px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
                             <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">屈光度值</p>
@@ -607,6 +606,313 @@
 
                             </div>
 
+                        </div>
+                    </div>
+
+
+                    <div id="fenxireport" style="margin-top: 20px;display: none;height: 3500px">
+                        <div id="userInfo1"
+                             style="margin-top: 20px;height: 450px;padding-top: 50px;padding-bottom: 50px;margin-bottom: 5px;">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">基本信息</p>
+                            <p style="margin-left: 50px;margin-top: 20px;" th:text="用户id：+${userBasic.userId}"></p><br>
+                            <!--<p style="margin-left: 50px;margin-top: 20px;" th:text="实验序号：+${id}"></p><br>-->
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;">
+                                <form class="form-horizontal">
+                                    <div class="form-group col-md-3">
+                                        <label class="col-sm-3 control-label">姓名：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.name}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-3 control-label">身份证：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.idCard}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sm-3 control-label">出生日期：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.birthday}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label class="col-sm-3 control-label">年龄：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.age}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-3 control-label">性别：</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" th:value="${userBasic.gender}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sm-3 control-label">学校：</label>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" type="text" th:value="${userBasic.school}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label class="col-sm-3 control-label">班级：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.classname}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-3 control-label">联系人：</label>
+                                        <div class="col-sm-3">
+                                            <input class="form-control" type="text" th:value="${userBasic.contacts}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sm-3 control-label">电话：</label>
+                                        <div class="col-sm-6">
+                                            <input class="form-control" type="text" th:value="${userBasic.phone}"
+                                                   disabled="disabled">
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="reportuserEye" style="height: 500px;padding-top: 50px;margin-bottom: -15px;background-color: white">
+                            <p style="margin-left: 50px;margin-top: 20px;font-weight: bold">眼检查数据</p><br>
+                            <div style="margin-top: 20px;margin-left: -5px; margin-bottom: 100px;">
+                                <div class="col-sm-3" style="margin-left: 40px;">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
+                                        <caption>球径</caption>
+                                        <tr>
+                                            <td>左</td>
+                                            <td th:text="${userEyeDataDO.lEyeballDiameter}==null?'无':${userEyeDataDO.lEyeballDiameter}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>右</td>
+                                            <td th:text="${userEyeDataDO.rEyeballDiameter}==null?'无':${userEyeDataDO.rEyeballDiameter}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-4">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
+                                        <caption>柱径</caption>
+                                        <tr>
+                                            <td>左</td>
+                                            <td th:text="${userEyeDataDO.lEyepillarDiameter}==null?'无':${userEyeDataDO.lEyepillarDiameter}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>右</td>
+                                            <td th:text="${userEyeDataDO.rEyepillarDiameter}==null?'无':${userEyeDataDO.rEyepillarDiameter}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
+                                        <caption>眼轴</caption>
+                                        <tr>
+                                            <td>左</td>
+                                            <td th:text="${userEyeDataDO.lEyeAxis}==null?'无':${userEyeDataDO.lEyeAxis}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>右</td>
+                                            <td th:text="${userEyeDataDO.rEyeAxis}==null?'无':${userEyeDataDO.rEyeAxis}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="col-sm-3" style="margin-left: 40px;margin-top: 80px;">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
+                                        <caption>验光</caption>
+                                        <tr>
+                                            <td>左</td>
+                                            <td th:text="${userEyeDataDO.lEyeOptometry}==null?'无':${userEyeDataDO.lEyeOptometry}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>右</td>
+                                            <td th:text="${userEyeDataDO.rEyeOptometry}==null?'无':${userEyeDataDO.rEyeOptometry}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-4" style="margin-top: 80px;">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
+                                        <caption>裸眼视力</caption>
+                                        <tr>
+                                            <td>左</td>
+                                            <td th:text="${userEyeDataDO.lEyeNakedVision}==null?'无':${userEyeDataDO.lEyeNakedVision}">
+                                                2.6
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>右</td>
+                                            <td th:text="${userEyeDataDO.rEyeNakedVision}==null?'无':${userEyeDataDO.rEyeNakedVision}">
+                                                2.6
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-sm-3" style="margin-top: 80px;">
+                                    <table border=3 width="200" height="80" align="center" bordercolor="black"
+                                           style="text-align: center;line-height: 34px">
+                                        <caption>戴镜视力</caption>
+                                        <tr>
+                                            <td>左</td>
+                                            <td th:text="${userEyeDataDO.lEyeGlassesVision}==null?'无':${userEyeDataDO.lEyeGlassesVision}">
+                                                2.6
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>右</td>
+                                            <td th:text="${userEyeDataDO.rEyeGlassesVision}==null?'无':${userEyeDataDO.rEyeGlassesVision}">
+                                                2.6
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div id="shibiaotu"
+                             style="height: 800px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+                            <div class="ibox-body">
+                                <div id="danduan" class="col-sm-6" style="height:400px;width: 50%"></div>
+                                <div id="jiaoti" class="col-sm-6" style="height:400px;width: 50%"></div>
+                            </div>
+                            <div class="ibox-body">
+                                <div id="JTmicrowave" class="col-sm-6" style="height:200px;width: 50%">
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">凝视调节微波动：</label>
+                                        <div class="col-sm-6">
+                                            <input id="JTAb" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">交替闪烁调节微波动：</label>
+                                        <div class="col-sm-6">
+                                            <input id="JTBb" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="DDmicrowave" class="col-sm-6" style="height:200px;width: 50%">
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">近点调节微波动：</label>
+                                        <div class="col-sm-6">
+                                            <input id="DDAb" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">运动调节微波动：</label>
+                                        <div class="col-sm-6">
+                                            <input id="DDBb" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">远点调节微波动：</label>
+                                        <div class="col-sm-6">
+                                            <input id="DDCb" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ibox-body">
+                                <div id="JTlag" class="col-sm-6" style="height:200px;width: 50%">
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">凝视调节滞后量：</label>
+                                        <div class="col-sm-6">
+                                            <input id="JTAx" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">交替闪烁调节滞后量：</label>
+                                        <div class="col-sm-6">
+                                            <input id="JTBx" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="DDlag" class="col-sm-6" style="height:200px;width: 50%">
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">近点调节滞后量：</label>
+                                        <div class="col-sm-6">
+                                            <input id="DDAx" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">运动调节滞后量：</label>
+                                        <div class="col-sm-6">
+                                            <input id="DDBx" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label class="col-sm-5 control-label">远点调节滞后量：</label>
+                                        <div class="col-sm-6">
+                                            <input id="DDCx" class="form-control" type="text" disabled="disabled">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+                        <div id="result" style="height: 400px;padding-top: 50px;padding-bottom: 50px;margin-bottom: -15px;background-color: white">
+                            <form id="formdata">
+                                <label class="col-sm-5 control-label">视标单段运动视皮层血氧反应（beta） ：</label>
+                                <label class="col-sm-5 control-label">视标交替注视视皮层血氧反应（beta） ：</label>
+                                <div class="form-group col-md-5">
+                                    <label class="col-sm-5 control-label">被试眼同侧视皮层：</label>
+                                    <div class="col-sm-6">
+                                        <input id="DDtong" name="DDtong" class="form-control" type="text" >
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="col-sm-5 control-label">被试眼同侧视皮层：</label>
+                                    <div class="col-sm-6">
+                                        <input id="JTtong" name="JTtong" class="form-control" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-5">
+                                    <label class="col-sm-5 control-label">被试眼对侧视皮层：</label>
+                                    <div class="col-sm-6">
+                                        <input id="DDdui" name="DDdui" class="form-control" type="text" >
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="col-sm-5 control-label">被试眼对侧视皮层：</label>
+                                    <div class="col-sm-6">
+                                        <input id="JTdui" name="JTdui" class="form-control" type="text" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-3">
+                                        <button type="submit" class="btn btn-primary" onclick="getreport()">输出报告</button>
+                                    </div>
+                                </div>
+                                <input id="userid" name="id" th:value="${userBasic.userId}" type="hidden">
+                                <input id="DDid" name="DDid"  type="hidden">
+                                <input id="JTid" name="JTid"  type="hidden">
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -1017,6 +1323,7 @@
       $('#fenlei').hide();
       $('#select1').hide();
       $('#select2').hide();
+       $('#fenxireport').hide();
 
       $("#xinxi").css("border-bottom", "5px solid #63BEFE")
       $("#jinggong5500").css("border-bottom", "inherit")
@@ -1038,6 +1345,7 @@
       $('#fenlei').show();
       $('#select1').hide();
       $('#select2').show();
+       $('#fenxireport').hide();
 
       $("#jinggong5500").css("border-bottom", "5px solid #63BEFE")
       $("#xinxi").css("border-bottom", "inherit")
@@ -1252,6 +1560,7 @@
       $('#select1').show();
       $('#rilichart').hide();
       $('#select2').hide();
+       $('#fenxireport').hide();
 
       $('#left').css("border-bottom", "5px solid #63BEFE")
       $("#rili4000").css("border-bottom", "5px solid #63BEFE")
@@ -1644,6 +1953,7 @@
       $('#fenlei').hide();
       $('#select1').hide();
       $('#select2').hide();
+       $('#fenxireport').hide();
 
       $("#shibiaoData").css("border-bottom", "5px solid #63BEFE")
       $("#rili4000").css("border-bottom", "inherit")
@@ -2003,6 +2313,257 @@
 
 
    }
+
+   function report() {
+
+       $('#info').hide();
+       $('#jinggong').hide();
+       $('#rili').hide();
+       $('#shibiao').hide();
+       $('#fenxi').hide();
+       $('#fenlei').hide();
+       $('#select1').hide();
+       $('#select2').hide();
+       $('#fenxireport').show();
+
+       $("#shibiaoData").css("border-bottom", "inherit")
+       $("#rili4000").css("border-bottom", "inherit")
+       $("#jinggong5500").css("border-bottom", "inherit")
+       $("#xinxi").css("border-bottom", "inherit")
+       $("#report").css("border-bottom", "5px solid #63BEFE")
+
+       var barChart = echarts.init(document.getElementById("danduan"));
+       var barChart1 = echarts.init(document.getElementById("jiaoti"));
+
+       barChart.setOption({
+           title: {
+               text: '视标交替注视图'
+           },
+           tooltip: {
+               trigger: 'axis'
+           },
+           legend: {
+               data: ['左眼']
+           },
+           xAxis: {
+               name: '(采集时间)',
+               type: 'category',
+               boundaryGap: false,
+           }, dataZoom: [{
+               type: 'inside',
+               start: 0,
+               end: 100
+           }, {
+               start: 0,
+               end: 100,
+               handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+               handleSize: '80%',
+               handleStyle: {
+                   color: '#fff',
+                   shadowBlur: 3,
+                   shadowColor: 'rgba(0, 0, 0, 0.6)',
+                   shadowOffsetX: 2,
+                   shadowOffsetY: 2
+               }
+           }],
+           yAxis: {
+               name: '(屈光度)',
+               type: 'value'
+           },
+           series: [{
+
+               type: 'line'
+           }],
+       })
+       barChart.showLoading();
+
+       barChart1.setOption({
+           title: {
+               text: '视标单段运动图'
+           },
+           tooltip: {
+               trigger: 'axis'
+           },
+           legend: {
+               data: ['右眼']
+           },
+           xAxis: {
+               name: '(采集时间)',
+               type: 'category',
+               boundaryGap: false,
+           }, dataZoom: [{
+               type: 'inside',
+               start: 0,
+               end: 100
+           }, {
+               start: 0,
+               end: 100,
+               handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+               handleSize: '80%',
+               handleStyle: {
+                   color: '#fff',
+                   shadowBlur: 3,
+                   shadowColor: 'rgba(0, 0, 0, 0.6)',
+                   shadowOffsetX: 2,
+                   shadowOffsetY: 2
+               }
+           }],
+           yAxis: {
+               name: '(屈光度)',
+               type: 'value'
+           },
+           series: [{
+               type: 'line',
+           }],
+       })
+       barChart1.showLoading();
+       var right = [];
+       var left = [];
+
+       $.ajax({
+           type: "get",
+           async: true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+           url: "/information/userBasic/getAllJinggong",    //请求发送到TestServlet处
+           data: {id: id},
+           dataType: "json",        //返回数据形式为json
+           success: function (result) {
+               //请求成功时执行该函数内容，result即为服务器返回的json对象
+               if (result) {
+                   console.log(result, "结果")
+                   left = result.data.lJinggong
+                   right = result.data.rJinggong
+
+                   var xr = result.data.xr;
+                   var xl = result.data.xl;
+                   var indexl = result.data.indexl;
+                   var indexr = result.data.indexr;
+
+                   console.log(indexl)
+                   console.log(indexr)
+                   var index = [];
+                   var index2 = [];
+                   for (var i = 0; i < indexr.length; i++) {
+                       if (i == 0) {
+                           index.push(
+                               [{
+                                   xAxis: xr[indexr[0]]
+                               }, {
+                                   xAxis: xr[indexr[i + 1]]
+                               }]
+                           );
+                       } else if (i % 2 == 0 && i > 1) {
+                           index.push(
+                               [{
+                                   xAxis: xr[indexr[i]]
+                               }, {
+                                   xAxis: xr[indexr[i + 1]]
+                               }]
+                           );
+                       }
+                   }
+                   for (var i = 0; i < indexl.length; i++) {
+                       if (i == 0) {
+                           index2.push(
+                               [{
+                                   xAxis: xl[indexl[0]]
+                               }, {
+                                   xAxis: xl[indexl[i + 1]]
+                               }]
+                           );
+                       } else if (i % 2 == 0 && i > 1) {
+                           index2.push(
+                               [{
+                                   xAxis: xl[indexl[i]]
+                               }, {
+                                   xAxis: xl[indexl[i + 1]]
+                               }]
+                           );
+                       }
+                   }
+
+                   console.log(index)
+                   console.log(index2)
+                   barChart.hideLoading();    //隐藏加载动画
+                   barChart.setOption({        //加载数据图表
+                       xAxis: {
+                           data: result.data.xl
+                       },
+                       series: [{
+                           // 根据名字对应到相应的系列
+                           animation: false,
+                           name: '左眼',
+                           data: left,
+                           markArea: {
+                               data: index2
+                           },
+                       }]
+                   });
+
+                   barChart1.hideLoading();    //隐藏加载动画
+                   barChart1.setOption({        //加载数据图表
+                       xAxis: {
+                           data: result.data.xr
+                       },
+                       series: [{
+                           animation: false,
+                           name: '右眼',
+                           data: right,
+                           markArea: {
+                               data: index
+                           },
+                       }]
+                   });
+
+               }
+               $("#JTAb").val(result.data.JTAb);
+               $("#JTBb").val(result.data.JTBb);
+               $("#DDAb").val(result.data.DDAb);
+               $("#DDBb").val(result.data.DDBb);
+               $("#DDCb").val(result.data.DDCb);
+               $("#JTAx").val(result.data.JTAx);
+               $("#JTBx").val(result.data.JTBx);
+               $("#DDAx").val(result.data.DDAx);
+               $("#DDBx").val(result.data.DDBx);
+               $("#DDCx").val(result.data.DDCx);
+               $("#DDid").val(result.data.DDid);
+               $("#JTid").val(result.data.JTid);
+               $.ajax({
+                   type : 'POST',
+                   dataType: 'json',
+                   data : {
+                       "userId" : id,
+                       "danduantu" :barChart1.getDataURL(),
+                       "jiaotitu" : barChart.getDataURL()
+                   },
+                   url : '/information/linshiUrl/save',
+                   success : function(result) {
+                       console.log(result.msg)
+                   }
+               })
+           },
+           error: function (errorMsg) {
+               //请求失败时执行该函数
+               alert("图表请求数据失败!");
+               barChart.hideLoading();
+           }
+       })
+
+   }
+
+   function getreport() {
+
+       window.open("/information/userBasic/dengdai?id="+$("#userid").val()
+       +"&DDtong="+$("#DDtong").val()
+       +"&DDdui="+$("#DDdui").val()
+       +"&JTdui="+$("#JTdui").val()
+       +"&JTtong="+$("#JTtong").val()
+       +"&DDid="+$("#DDid").val()
+       +"&JTid="+$("#JTid").val());
+
+   }
+
+
+
 </script>
 
 <style>

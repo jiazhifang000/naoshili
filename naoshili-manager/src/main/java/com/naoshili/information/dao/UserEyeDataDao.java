@@ -17,7 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserEyeDataDao {
 
 	UserEyeDataDO get(Long id);
-	
+	UserEyeDataDO getUid(Long id);
+
 	List<UserEyeDataDO> list(Map<String,Object> map);
 	
 	int count(Map<String,Object> map);

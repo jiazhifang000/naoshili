@@ -19,7 +19,8 @@ public interface CollectionInfoDao {
 	CollectionInfoDO get(Long id);
 	
 	List<CollectionInfoDO> list(Map<String,Object> map);
-	
+	List<CollectionInfoDO> getAllCollection(Long id);
+
 	int count(Map<String,Object> map);
 	
 	int save(CollectionInfoDO collectionInfo);
@@ -27,6 +28,7 @@ public interface CollectionInfoDao {
 	int update(CollectionInfoDO collectionInfo);
 	
 	int remove(Long id);
-	
+	Integer getUserId(Long id);
+
 	int batchRemove(Long[] ids);
 }

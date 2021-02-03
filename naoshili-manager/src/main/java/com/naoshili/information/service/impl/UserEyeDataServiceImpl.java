@@ -21,8 +21,13 @@ public class UserEyeDataServiceImpl implements UserEyeDataService {
 	public UserEyeDataDO get(Long id){
 		return userEyeDataDao.get(id);
 	}
-	
-	@Override
+
+    @Override
+    public UserEyeDataDO getUid(Long id) {
+        return userEyeDataDao.getUid(id);
+    }
+
+    @Override
 	public List<UserEyeDataDO> list(Map<String, Object> map){
 		return userEyeDataDao.list(map);
 	}

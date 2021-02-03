@@ -113,5 +113,12 @@
             #{id}
         </foreach>
     </delete>
+    <select id="getAllCollection" resultType="com.naoshili.information.domain.CollectionInfoDO">
+        SELECT * FROM n_collection_info WHERE user_id = (SELECT user_id FROM n_collection_info WHERE id = #{id}) ORDER BY collection_date desc
+    </select>
+
+    <select id="getUserId" resultType="int">
+        SELECT DISTINCT user_id FROM n_collection_info WHERE id = #{id}
+    </select>
 
 </mapper>

@@ -15,6 +15,7 @@ import java.util.Map;
 public interface UserEyeDataService {
 	
 	UserEyeDataDO get(Long id);
+    UserEyeDataDO getUid(Long id);
 	
 	List<UserEyeDataDO> list(Map<String, Object> map);
 	

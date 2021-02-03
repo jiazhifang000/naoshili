@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.naoshili.information.dao.LinshiUrlDao">
+
+	<select id="get" resultType="com.naoshili.information.domain.LinshiUrlDO">
+		select `id`,`user_id`,`danduantu`,`jiaotitu` from n_linshi_url where user_id = #{value}
+	</select>
+
+	<select id="list" resultType="com.naoshili.information.domain.LinshiUrlDO">
+		select `id`,`user_id`,`danduantu`,`jiaotitu` from n_linshi_url
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+		  		  <if test="danduantu != null and danduantu != ''"> and danduantu = #{danduantu} </if>
+		  		  <if test="jiaotitu != null and jiaotitu != ''"> and jiaotitu = #{jiaotitu} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from n_linshi_url
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
+		  		  <if test="danduantu != null and danduantu != ''"> and danduantu = #{danduantu} </if>
+		  		  <if test="jiaotitu != null and jiaotitu != ''"> and jiaotitu = #{jiaotitu} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.naoshili.information.domain.LinshiUrlDO" useGeneratedKeys="true" keyProperty="id">
+		insert into n_linshi_url
+		(
+			`user_id`, 
+			`danduantu`, 
+			`jiaotitu`
+		)
+		values
+		(
+			#{userId}, 
+			#{danduantu}, 
+			#{jiaotitu}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.naoshili.information.domain.LinshiUrlDO">
+		update n_linshi_url 
+		<set>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="danduantu != null">`danduantu` = #{danduantu}, </if>
+			<if test="jiaotitu != null">`jiaotitu` = #{jiaotitu}</if>
+		</set>
+		where user_id = #{userId}
+	</update>
+	
+	<delete id="remove">
+		delete from n_linshi_url where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from n_linshi_url where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

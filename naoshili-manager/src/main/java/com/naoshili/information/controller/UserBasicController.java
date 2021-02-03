@@ -3,6 +3,7 @@ package com.naoshili.information.controller;
 import com.naoshili.common.utils.PageUtils;
 import com.naoshili.common.utils.Query;
 import com.naoshili.common.utils.R;
+import com.naoshili.common.utils.Sqrt;
 import com.naoshili.information.domain.*;
 import com.naoshili.information.service.*;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -12,9 +13,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.*;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 
 /**
  * 用户基本数据表
@@ -34,6 +44,8 @@ public class UserBasicController {
     @Autowired
     private JinggongDataService jinggongDataService;
     @Autowired
+    private JinggongAdjustService jinggongAdjustService;
+    @Autowired
     private RiliDataService riliDataService;
     @Autowired
     private ShibiaoDataService shibiaoDataService;
@@ -45,6 +57,8 @@ public class UserBasicController {
 
     @Autowired
     private ShibiaoMoveIfService shibiaoMoveIfService;
+    @Autowired
+    private LinshiUrlService linshiUrlService;
     @Autowired
     HttpSession session;
 
@@ -780,6 +794,392 @@ public class UserBasicController {
         result.put("type", type);
         data.put("data", result);
         return R.ok(data);
+    }
+    @GetMapping("/getAllJinggong")
+    @ResponseBody
+    R getAllJinggong(String id) {
+        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> data = new HashMap<>();
+        result.put("rJinggong", null);
+        result.put("lJinggong", null);
+        result.put("xl", null);
+        result.put("xr", null);
+        result.put("indexl", new ArrayList<>());
+        result.put("indexr", new ArrayList<>());
+        Integer userId = collectionInfoService.getUserId(Long.parseLong(id));
+        List<CollectionInfoDO> allCollection = collectionInfoService.getAllCollection(Long.parseLong(id));
+        for (CollectionInfoDO collectionInfoDO : allCollection){
+            //视标交替注视图
+            if (collectionInfoDO.getExperimentalMode()==3){
+                R jiaoti = getJinggong(collectionInfoDO.getId());
+                Map<String, Object> datar = (Map<String, Object>)jiaoti.get("data");
+                ArrayList indexsl = (ArrayList) datar.get("indexl");
+                if (indexsl.size()>0){
+                    result.put("indexl", indexsl);
+                    result.put("xl",datar.get("xl"));
+                    result.put("lJinggong",datar.get("lJinggong"));
+                }else {
+                    result.put("indexl", datar.get("indexr"));
+                    result.put("xl",datar.get("xr"));
+                    result.put("lJinggong",datar.get("rJinggong"));
+                }
+                result.putAll( biaozhuncha(collectionInfoDO.getId(), "A","JT"));//JT——交替
+                result.putAll( biaozhuncha(collectionInfoDO.getId(), "B","JT"));
+                double jtAx = JTA((List<JinggongDataDO>) result.get("JTAx"));
+                double jtBx = JTB((List<JinggongDataDO>) result.get("JTBx"));
+                result.put("JTAx",df(jtAx));
+                result.put("JTBx",df(jtBx));
+                result.put("JTid",collectionInfoDO.getId());
+                break;
+            }
+        }
+        for (CollectionInfoDO collectionInfoDO : allCollection){
+            //视标单段运动图
+            if (collectionInfoDO.getExperimentalMode()==2){
+                R danduan = getJinggong(collectionInfoDO.getId());
+                Map<String, Object> datar = (Map<String, Object>)danduan.get("data");
+                ArrayList indexsl = (ArrayList) datar.get("indexl");
+                if (indexsl.size()>0){
+                    result.put("indexr", indexsl);
+                    result.put("xr",datar.get("xl"));
+                    result.put("rJinggong",datar.get("lJinggong"));
+                }else {
+                    result.put("indexr", datar.get("indexr"));
+                    result.put("xr",datar.get("xr"));
+                    result.put("rJinggong",datar.get("rJinggong"));
+                }
+                result.putAll( biaozhuncha(collectionInfoDO.getId(), "A","DD"));//DD——单段
+                result.putAll( biaozhuncha(collectionInfoDO.getId(), "B","DD"));
+                result.putAll( biaozhuncha(collectionInfoDO.getId(), "C","DD"));
+                double ddAx = DDA((List<JinggongDataDO>) result.get("DDAx"));
+                double ddCx = DDC((List<JinggongDataDO>) result.get("DDCx"));
+                double ddBx = DDB(collectionInfoDO.getId(),"B",(List<JinggongDataDO>) result.get("DDBx"));
+                result.put("DDAx",df(ddAx));
+                result.put("DDCx",df(ddCx));
+                result.put("DDBx",df(ddBx));
+                result.put("DDid",collectionInfoDO.getId());
+                break;
+            }
+        }
+        JinggongAdjustDO jinggongAdjustDO = new JinggongAdjustDO();
+        jinggongAdjustDO.setUserId(userId);
+        jinggongAdjustDO.setMicrowaveFlashingA(Double.parseDouble(result.get("JTAb").toString()));
+        jinggongAdjustDO.setMicrowaveParagraphA(Double.parseDouble(result.get("DDAb").toString()));
+        jinggongAdjustDO.setMicrowaveParagraphB(Double.parseDouble(result.get("DDBb").toString()));
+        jinggongAdjustDO.setMicrowaveParagraphC(Double.parseDouble(result.get("DDCb").toString()));
+        jinggongAdjustDO.setMicrowaveFlashingB(Double.parseDouble(result.get("JTBb").toString()));
+        jinggongAdjustDO.setLagParagraphA(Double.parseDouble(result.get("DDAx").toString()));
+        jinggongAdjustDO.setLagParagraphB(Double.parseDouble(result.get("DDBx").toString()));
+        jinggongAdjustDO.setLagParagraphC(Double.parseDouble(result.get("DDCx").toString()));
+        jinggongAdjustDO.setLagFlashingA(Double.parseDouble(result.get("JTAx").toString()));
+        jinggongAdjustDO.setLagFlashingB(Double.parseDouble(result.get("JTBx").toString()));
+        Map<String,Object> map = new HashMap<>();
+        map.put("userId",userId);
+        List<JinggongAdjustDO> list = jinggongAdjustService.list(map);
+        if (list.size()>0) {
+            jinggongAdjustService.update(jinggongAdjustDO);
+        }else {
+            jinggongAdjustService.save(jinggongAdjustDO);
+        }
+        data.put("data", result);
+        return R.ok(data);
+    }
+    @GetMapping("/dengdai")
+    public String dengdai(HttpServletRequest request, HttpServletResponse response,Model model){
+        String DDtong = request.getParameter("DDtong");
+        String DDdui = request.getParameter("DDdui");
+        String JTdui = request.getParameter("JTdui");
+        String JTtong = request.getParameter("JTtong");
+        String id = request.getParameter("id");
+        String DDid = request.getParameter("DDid");
+        String JTid = request.getParameter("JTid");
+        model.addAttribute("DDtong",DDtong);
+        model.addAttribute("DDdui",DDdui);
+        model.addAttribute("JTdui",JTdui);
+        model.addAttribute("JTtong",JTtong);
+        model.addAttribute("id",id);
+        model.addAttribute("DDid",DDid);
+        model.addAttribute("JTid",JTid);
+        return "information/dataReport/dengdajiaoyuju";
+    }
+    @GetMapping("/getNewReport")
+    public void getReport(HttpServletRequest request, HttpServletResponse response)throws IOException {
+        String DDtong = request.getParameter("DDtong");
+        String DDdui = request.getParameter("DDdui");
+        String JTdui = request.getParameter("JTdui");
+        String JTtong = request.getParameter("JTtong");
+        String id = request.getParameter("id");
+        String DDid = request.getParameter("DDid");
+        String JTid = request.getParameter("JTid");
+        String checkTime = jinggongDataService.getCheckTime(DDid);
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("DDtong",DDtong);
+        params.put("DDdui",DDdui);
+        params.put("JTdui",JTdui);
+        params.put("JTtong",JTtong);
+        params.put("id",id);
+        params.put("DDid",DDid);
+        params.put("JTid",JTid);
+        params.put("checkTime",checkTime);
+        UserBasicDO userBasicDO = userBasicService.getUserId(Long.parseLong(id));
+        params.put("school",userBasicDO.getSchool()==null?"":userBasicDO.getSchool());
+        params.put("grade",userBasicDO.getGrade()==null?"":userBasicDO.getGrade());
+        params.put("name",userBasicDO.getName()==null?"":userBasicDO.getName());
+        params.put("sex",userBasicDO.getGender()==null?"":userBasicDO.getGender());
+        params.put("class",userBasicDO.getClassname()==null?"":userBasicDO.getClassname());
+        UserEyeDataDO userEyeDataDO = userEyeDataService.getUid(Long.parseLong(id));
+        params.put("luor",userEyeDataDO.getrEyeNakedVision()==null?"":userEyeDataDO.getrEyeNakedVision());
+        params.put("dair",userEyeDataDO.getrEyeGlassesVision()==null?"":userEyeDataDO.getrEyeGlassesVision());
+        params.put("qiur",userEyeDataDO.getrEyeballDiameter()==null?"":userEyeDataDO.getrEyeballDiameter());
+        params.put("zhur",userEyeDataDO.getrEyepillarDiameter()==null?"":userEyeDataDO.getrEyepillarDiameter());
+        params.put("zhour",userEyeDataDO.getrEyeAxis()==null?"":userEyeDataDO.getrEyeAxis());
+        params.put("luol",userEyeDataDO.getlEyeNakedVision()==null?"":userEyeDataDO.getlEyeNakedVision());
+        params.put("dail",userEyeDataDO.getlEyeGlassesVision()==null?"":userEyeDataDO.getlEyeGlassesVision());
+        params.put("qiul",userEyeDataDO.getlEyeballDiameter()==null?"":userEyeDataDO.getlEyeballDiameter());
+        params.put("zhul",userEyeDataDO.getlEyepillarDiameter()==null?"":userEyeDataDO.getlEyepillarDiameter());
+        params.put("zhoul",userEyeDataDO.getlEyeAxis()==null?"":userEyeDataDO.getlEyeAxis());
+        LinshiUrlDO linshiUrlDO = linshiUrlService.get(Integer.parseInt(id));
+        params.put("DDtu",linshiUrlDO.getDanduantu());
+        params.put("JTtu",linshiUrlDO.getJiaotitu());
+        JinggongAdjustDO jinggongAdjustDO = jinggongAdjustService.get(Integer.parseInt(id));
+        params.put("DDAb",jinggongAdjustDO.getMicrowaveParagraphA());
+        params.put("DDAx",jinggongAdjustDO.getLagParagraphA());
+        params.put("DDBb",jinggongAdjustDO.getMicrowaveParagraphB());
+        params.put("DDBx",jinggongAdjustDO.getLagParagraphB());
+        params.put("DDCb",jinggongAdjustDO.getMicrowaveParagraphC());
+        params.put("DDCx",jinggongAdjustDO.getLagParagraphC());
+        params.put("JTAb",jinggongAdjustDO.getMicrowaveFlashingA());
+        params.put("JTAx",jinggongAdjustDO.getLagFlashingA());
+        params.put("JTBb",jinggongAdjustDO.getMicrowaveFlashingB());
+        params.put("JTBx",jinggongAdjustDO.getLagFlashingB());
+        try {
+        createDoc(response,params, new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()), "脑视力报告.ftl");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void createDoc(HttpServletResponse response,Map<String, Object> dataMap, String fileName, String template) {
+        Configuration configuration = new Configuration();
+        configuration.setDefaultEncoding("utf-8");
+        configuration.setClassForTemplateLoading(this.getClass(), "/");
+        Template t = null;
+        //File outFile = new File(realPath + fileName);
+//		Writer out = null;
+        try {
+            //word.xml是要生成Word文件的模板文件
+            t = configuration.getTemplate(template,"utf-8");
+            //           out = new BufferedWriter(new OutputStreamWriter(
+            //                   new FileOutputStream(bootdoConfig.getPoiword()+new File(new String(fileName.getBytes(),"utf-8")))));                 //还有这里要设置编码
+            //         t.process(dataMap, out);
+            response.setContentType("multipart/form-data");
+            response.setHeader("Content-disposition", "attachment; filename=" + new String(fileName.getBytes(), "iso-8859-1")+".docx");
+
+            Cookie status = new Cookie("status","success");
+            status.setMaxAge(600);
+            response.addCookie(status);
+
+            Writer out = new BufferedWriter(new OutputStreamWriter(response.getOutputStream()));
+            t.process(dataMap, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void download(HttpServletRequest request,HttpServletResponse response, String fileUrl, String fileName) {
+        InputStream bis = null;
+        OutputStream bos = null;
+        try{
+            fileUrl = fileUrl + fileName;
+            response.setContentType("multipart/form-data");
+            response.setHeader("Content-disposition", "attachment; filename=" + new String(fileName.getBytes(), "iso-8859-1")+".docx");
+            bis = new BufferedInputStream(new FileInputStream((fileUrl)));
+            bos = new BufferedOutputStream(response.getOutputStream());
+            byte[] buff = new byte[1024];
+            int bytesRead;
+            int i = 0;
+
+            while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {
+                bos.write(buff, 0, bytesRead);
+                i++;
+            }
+            bos.flush();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }finally {
+            if (bis != null) {
+                try {
+                    bis.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                bis = null;
+            }
+            if (bos != null) {
+                try {
+                    bos.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                bos = null;
+            }
+        }
+
+    }
+
+    /**
+     * 标准差 调节微波动
+     * @param id
+     * @param externalTriggerMark
+     * @return
+     */
+    private Map<String,Object> biaozhuncha(String id,String externalTriggerMark,String name){
+        Map<String,Object> result = new HashMap<>();
+        result.put(name+externalTriggerMark+"b",0);
+        List<JinggongDataDO> jinggong = new ArrayList<>();
+        result.put(name+externalTriggerMark+"x",jinggong);
+        Map<String, Object> params = new HashMap<>();
+
+        params.put("dataId", id);
+        params.put("externalTriggerMark",externalTriggerMark);
+        List<JinggongDataDO> jinggongDataDOList = jinggongDataService.getList(params);
+        if (jinggongDataDOList.size()<15) return result;
+        double[] x = new double[jinggongDataDOList.size()-10];
+        for (int i = 5;i<jinggongDataDOList.size()-5;i++){//去除头尾5条数据
+            JinggongDataDO DO = jinggongDataDOList.get(i);
+            x[i-5] = DO.getDiopter();
+        }
+        double sum = 0;
+        for(int i=0;i<x.length;i++){//求和
+            sum+=x[i];
+        }
+        double dAve=sum/x.length;//求平均值
+        double c = Sqrt.StandardDiviation(x);//求标准差
+        ArrayList<Double> list = new ArrayList<>();
+        for (int i = 5;i<jinggongDataDOList.size()-5;i++){
+            JinggongDataDO DO = jinggongDataDOList.get(i);
+            if (!(DO.getDiopter()-dAve>3*c)){//x-a>3b为无效
+                list.add(DO.getDiopter());
+                jinggong.add(DO);  //剔除无效的X值
+            }
+        }
+        Double[] array = (Double[])list.toArray(new Double[list.size()]);//list转double集合
+        double b = Sqrt.StandardDiviation(array);//求标准差
+        result.put(name+externalTriggerMark+"b",df(b));//b——微波动值
+        result.put(name+externalTriggerMark+"x",jinggong);//x——屈光度数组
+
+        return result;//返回 b 和 有效的 X
+    }
+
+    private double DDA(List<JinggongDataDO> jinggong){
+        double[] array = new double[jinggong.size()];
+        int i = 0;
+        for (JinggongDataDO jinggongDataDO : jinggong){
+            array[i] = abs(1/-0.25-jinggongDataDO.getDiopter());//取绝对值
+            i++;
+        }
+        double sum = 0;
+        for(int j=0;j<array.length;j++){//求和
+            sum+=array[j];
+        }
+        return sum/array.length;//求均值
+    }
+    private double JTA(List<JinggongDataDO> jinggong){
+        double[] array = new double[jinggong.size()];
+        int i = 0;
+        for (JinggongDataDO jinggongDataDO : jinggong){
+            array[i] = abs(1/1.2-jinggongDataDO.getDiopter());//取绝对值
+            i++;
+        }
+        double sum = 0;
+        for(int j=0;j<array.length;j++){//求和
+            sum+=array[j];
+        }
+        return sum/array.length;//求平均值
+    }
+    private double DDC(List<JinggongDataDO> jinggong){
+        double[] array = new double[jinggong.size()];
+        int i = 0;
+        for (JinggongDataDO jinggongDataDO : jinggong){
+            array[i] = abs(1/2.5-jinggongDataDO.getDiopter());//取绝对值
+            i++;
+        }
+        double sum = 0;
+        for(int j=0;j<array.length;j++){//求和
+            sum+=array[j];
+        }
+        return sum/array.length;//求平均值
+    }
+    private double DDB(String id ,String externalTriggerMark ,List<JinggongDataDO> jinggong){
+        Map<String, Object> params = new HashMap<>();
+        params.put("dataId", id);
+        params.put("externalTriggerMark",externalTriggerMark);
+        List<JinggongDataDO> jinggongDataDOList = jinggongDataService.getList(params);
+        String[] stardstrs = jinggongDataDOList.get(0).getSamplingTime().split(":");//获取起始时间
+        double[] array = new double[jinggong.size()];
+        int i = 0;
+        for (JinggongDataDO jinggongDataDO : jinggong){
+            Double date = splitDate(stardstrs,jinggongDataDO.getSamplingTime().split(":"));
+            array[i] = abs(1/(0.2*date<1?-0.2*date:0.2*date)-jinggongDataDO.getDiopter());
+            i++;
+        }
+        double sum = 0;
+        for(int j=0;j<array.length;j++){//求和
+            sum+=array[j];
+        }
+        return sum/array.length;//求平均值
+    }
+    private double JTB(List<JinggongDataDO> jinggong){
+        double[] array = new double[jinggong.size()];
+        int i = 0;
+        for (JinggongDataDO jinggongDataDO : jinggong){
+            if (jinggongDataDO.getLocation()==0) continue;
+            double distance = ((double)jinggongDataDO.getLocation()/100)<1?-((double)jinggongDataDO.getLocation()/100):(double)jinggongDataDO.getLocation()/100;
+            array[i] = abs(1/distance-jinggongDataDO.getDiopter());
+            i++;
+        }
+        double sum = 0;
+        for(int j=0;j<array.length;j++){//求和
+            sum+=array[j];
+        }
+        return sum/array.length;//求平均值
+    }
+    /**
+     * 绝对值
+     * @param a
+     * @return
+     */
+    public static double abs(double a) {
+        return (a < 0) ? -a : a;
+    }
+
+    /**
+     * 截取Date的秒数   因为SimpleDateFormat无法parse出字符串的毫秒
+     * @param date
+     * @return
+     */
+    public static Double splitDate(String[] stardate,String[] date){
+        if (!date[1].equals(stardate[1])) {
+            double seconds = 60+Double.parseDouble(date[2]);
+            return seconds-Double.parseDouble(stardate[2]);
+        }
+        return Double.parseDouble(date[2])-Double.parseDouble(stardate[2]);
+    }
+
+    /**
+     * 保留两位小数
+     * @param value
+     * @return
+     */
+    public static String df(double value) {
+
+        DecimalFormat df = new DecimalFormat("0.00");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+        return df.format(value);
     }
 
 }
