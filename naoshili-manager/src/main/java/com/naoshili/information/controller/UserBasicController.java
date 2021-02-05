@@ -1138,7 +1138,7 @@ public class UserBasicController {
         int i = 0;
         for (JinggongDataDO jinggongDataDO : jinggong){
             Double date = splitDate(stardstrs,jinggongDataDO.getSamplingTime().split(":"));
-            array[i] = abs(1/(0.2*date<1?-0.2*date:0.2*date)-jinggongDataDO.getDiopter());
+            array[i] = abs(1/((0.25+0.2*date)<1?-(0.25+0.2*date):(0.25+0.2*date))-jinggongDataDO.getDiopter());
             i++;
         }
         double sum = 0;
