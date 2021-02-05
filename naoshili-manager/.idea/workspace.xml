@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f40d1bb7-b0f6-4404-bbac-77357c1ad72e" name="Default Changelist" comment="" />
+    <list default="true" id="f40d1bb7-b0f6-4404-bbac-77357c1ad72e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/information/dataReport/dengdajiaoyuju.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/information/dataReport/dengdajiaoyuju.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,24 +17,25 @@
     <session id="-1049887790">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.45" value="1" />
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.60" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="ftl" value="6" />
-          <entry key="html" value="6" />
-          <entry key="java" value="52" />
+          <entry key="ftl" value="7" />
+          <entry key="html" value="7" />
+          <entry key="java" value="53" />
           <entry key="js" value="10" />
           <entry key="rnc" value="1" />
-          <entry key="ts" value="1" />
+          <entry key="ts" value="2" />
           <entry key="xml" value="13" />
           <entry key="yml" value="2" />
         </counts>
@@ -38,30 +43,30 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="FTL" value="6" />
-          <entry key="HTML" value="6" />
-          <entry key="JAVA" value="52" />
+          <entry key="FTL" value="7" />
+          <entry key="HTML" value="7" />
+          <entry key="JAVA" value="53" />
           <entry key="JavaScript" value="10" />
           <entry key="RNG Compact" value="1" />
-          <entry key="TypeScript" value="1" />
+          <entry key="TypeScript" value="2" />
           <entry key="XML" value="13" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="ftl" value="239" />
-          <entry key="html" value="584" />
-          <entry key="java" value="2737" />
+          <entry key="ftl" value="250" />
+          <entry key="html" value="593" />
+          <entry key="java" value="2799" />
           <entry key="js" value="3" />
           <entry key="xml" value="112" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="FTL" value="239" />
-          <entry key="HTML" value="584" />
-          <entry key="JAVA" value="2737" />
+          <entry key="FTL" value="250" />
+          <entry key="HTML" value="593" />
+          <entry key="JAVA" value="2799" />
           <entry key="JavaScript" value="3" />
           <entry key="SQL" value="1" />
           <entry key="XML" value="111" />
@@ -72,55 +77,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="922" column="42" selection-start-line="922" selection-start-column="42" selection-end-line="922" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#getAllJinggong#0;class#UserBasicController#0" />
-                <element signature="e#37556#38043#0" />
-                <element signature="e#37906#37922#0" expanded="true" />
-                <element signature="e#38861#40260#0" />
-                <element signature="e#40265#41780#0" />
-                <element signature="method#biaozhuncha#0;class#UserBasicController#0" />
-                <element signature="method#DDA#0;class#UserBasicController#0" />
-                <element signature="method#JTA#0;class#UserBasicController#0" />
-                <element signature="method#DDC#0;class#UserBasicController#0" />
-                <element signature="method#DDB#0;class#UserBasicController#0" />
-                <element signature="method#JTB#0;class#UserBasicController#0" />
-                <element signature="e#46542#46543#0" expanded="true" />
-                <element signature="e#46581#46582#0" expanded="true" />
-                <element signature="method#splitDate#0;class#UserBasicController#0" />
-                <element signature="method#df#0;class#UserBasicController#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/脑视力报告.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="777" column="29" selection-start-line="777" selection-start-column="29" selection-end-line="777" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/service/JinggongDataService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1288">
-              <caret line="2326" column="32" lean-forward="true" selection-start-line="2326" selection-start-column="32" selection-end-line="2326" selection-end-column="32" />
+            <state relative-caret-position="507">
+              <caret line="2518" column="48" lean-forward="true" selection-start-line="2518" selection-start-column="48" selection-end-line="2518" selection-end-column="48" />
               <folding>
                 <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -190,9 +150,38 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="773">
+              <caret line="967" column="105" selection-start-line="967" selection-start-column="105" selection-end-line="967" selection-end-column="105" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#44986#46784#0" />
+                <element signature="e#46790#47217#0" />
+                <element signature="e#47222#47648#0" />
+                <element signature="e#47653#48079#0" />
+                <element signature="e#48084#48994#0" />
+                <element signature="e#48999#49644#0" />
+                <element signature="e#49788#50211#0" />
+                <element signature="e#50217#50465#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/脑视力报告.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="1714" column="37" lean-forward="true" selection-start-line="1714" selection-start-column="37" selection-end-line="1714" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/JinggongDataServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
+            <state relative-caret-position="440">
               <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
               <folding>
                 <element signature="e#742#743#0" expanded="true" />
@@ -200,59 +189,8 @@
                 <element signature="e#872#873#0" expanded="true" />
                 <element signature="e#923#924#0" expanded="true" />
                 <element signature="e#982#983#0" expanded="true" />
-                <element signature="e#1009#1010#0" expanded="true" />
+                <element signature="e#1037#1038#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/JinggongDataDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
-              <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongDataMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="111" column="28" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/UserEyeDataServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-              <folding>
-                <element signature="e#550#551#0" expanded="true" />
-                <element signature="e#586#587#0" expanded="true" />
-                <element signature="e#644#645#0" expanded="true" />
-                <element signature="e#671#672#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/information/jinggongData/jinggongData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="661">
-              <caret line="184" column="61" selection-start-line="184" selection-start-column="55" selection-end-line="184" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/JinggongDataController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="294" column="50" selection-start-line="294" selection-start-column="50" selection-end-line="294" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -305,16 +243,16 @@
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongAdjustMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/appjs/information/jinggongData/jinggongreport.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/information/dengdajiaoyuju.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/information/dataReport/dengdajiaoyuju.html" />
         <option value="$PROJECT_DIR$/src/main/resources/das.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/脑视力测试报告.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongDataMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/JinggongDataService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/JinggongDataServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/JinggongDataDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/information/dataReport/dengdajiaoyuju.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/脑视力报告.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html" />
       </list>
     </option>
   </component>
@@ -350,7 +288,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -400,54 +337,11 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="naoshili-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naoshili-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="naoshili-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naoshili-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-              <item name="information" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="naoshili-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naoshili-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="naoshili-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naoshili-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="information" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="naoshili-manager" type="b2602c69:ProjectViewProjectNode" />
-              <item name="naoshili-manager" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="information" type="462c0819:PsiDirectoryNode" />
-              <item name="userBasic" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -522,16 +416,19 @@
       <workItem from="1612142190061" duration="23530000" />
       <workItem from="1612227546610" duration="26763000" />
       <workItem from="1612314257318" duration="26994000" />
+      <workItem from="1612400575293" duration="2820000" />
+      <workItem from="1612508769362" duration="1435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95019000" />
+    <option name="totallyTimeSpent" value="99274000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25772098" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2603834" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -572,13 +469,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/ZhiHouDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/domain/ChartDO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -714,10 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="24" column="18" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="18" />
-          <folding>
-            <element signature="e#946#947#0" expanded="true" />
-            <element signature="e#976#977#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -725,9 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="968">
           <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,65 +697,13 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/information/jinggongData/jinggongList.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/information/jinggongData/jinggongData.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/information/jinggongData/jinggongreport.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/das.ftl" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/脑视力测试报告.ftl" />
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="184" column="61" selection-start-line="184" selection-start-column="55" selection-end-line="184" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/JinggongDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="294" column="50" selection-start-line="294" selection-start-column="50" selection-end-line="294" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/information/jinggongData/jinggongreport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/das.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2706">
-          <caret line="1464" column="44" selection-start-line="1464" selection-start-column="44" selection-end-line="1464" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/脑视力测试报告.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="795" column="84" selection-start-line="795" selection-start-column="84" selection-end-line="795" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/information/dataReport/dengdajiaoyuju.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/UserEyeDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-          <folding>
-            <element signature="e#550#551#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="e#644#645#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongDataMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="111" column="28" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="28" />
+        <state relative-caret-position="286">
+          <caret line="94" column="17" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -883,64 +714,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/JinggongDataServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/JinggongDataController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
-          <folding>
-            <element signature="e#742#743#0" expanded="true" />
-            <element signature="e#790#791#0" expanded="true" />
-            <element signature="e#872#873#0" expanded="true" />
-            <element signature="e#923#924#0" expanded="true" />
-            <element signature="e#982#983#0" expanded="true" />
-            <element signature="e#1009#1010#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="815">
+          <caret line="294" column="50" selection-start-line="294" selection-start-column="50" selection-end-line="294" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/JinggongDataDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/脑视力报告.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/information/dataReport/dengdajiaoyuju.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="777" column="29" selection-start-line="777" selection-start-column="29" selection-end-line="777" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="922" column="42" selection-start-line="922" selection-start-column="42" selection-end-line="922" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getAllJinggong#0;class#UserBasicController#0" />
-            <element signature="e#37556#38043#0" />
-            <element signature="e#37906#37922#0" expanded="true" />
-            <element signature="e#38861#40260#0" />
-            <element signature="e#40265#41780#0" />
-            <element signature="method#biaozhuncha#0;class#UserBasicController#0" />
-            <element signature="method#DDA#0;class#UserBasicController#0" />
-            <element signature="method#JTA#0;class#UserBasicController#0" />
-            <element signature="method#DDC#0;class#UserBasicController#0" />
-            <element signature="method#DDB#0;class#UserBasicController#0" />
-            <element signature="method#JTB#0;class#UserBasicController#0" />
-            <element signature="e#46542#46543#0" expanded="true" />
-            <element signature="e#46581#46582#0" expanded="true" />
-            <element signature="method#splitDate#0;class#UserBasicController#0" />
-            <element signature="method#df#0;class#UserBasicController#0" />
-          </folding>
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/information/userBasic/allData.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1288">
-          <caret line="2326" column="32" lean-forward="true" selection-start-line="2326" selection-start-column="32" selection-end-line="2326" selection-end-column="32" />
+        <state relative-caret-position="507">
+          <caret line="2518" column="48" lean-forward="true" selection-start-line="2518" selection-start-column="48" selection-end-line="2518" selection-end-column="48" />
           <folding>
             <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -1005,6 +796,80 @@
             <element signature="n#style#0;n#div#1;n#div#2;n#div#2;n#div#9;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#9;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/dao/JinggongDataDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="815">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/information/JinggongDataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="815">
+          <caret line="111" column="28" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/UserEyeDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding>
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#692#693#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/appjs/information/jinggongData/jinggongData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="184" column="61" selection-start-line="184" selection-start-column="55" selection-end-line="184" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/service/impl/JinggongDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="35" column="36" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+          <folding>
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/naoshili/information/controller/UserBasicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="967" column="105" selection-start-line="967" selection-start-column="105" selection-end-line="967" selection-end-column="105" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#44986#46784#0" />
+            <element signature="e#46790#47217#0" />
+            <element signature="e#47222#47648#0" />
+            <element signature="e#47653#48079#0" />
+            <element signature="e#48084#48994#0" />
+            <element signature="e#48999#49644#0" />
+            <element signature="e#49788#50211#0" />
+            <element signature="e#50217#50465#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/脑视力报告.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1714" column="37" lean-forward="true" selection-start-line="1714" selection-start-column="37" selection-end-line="1714" selection-end-column="37" />
         </state>
       </provider>
     </entry>

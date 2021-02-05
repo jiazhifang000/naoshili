@@ -51,9 +51,7 @@
 		 if(getCookie("status")=="success"){
 			  clearInterval(timer1);//每隔一秒的判断操作停止
 			  delCookie("status");//删除cookie
-			  //window.location.href="/studentReport/jiaoyuju"
-			  var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
-			  parent.layer.close(index);
+             window.close()
 		 }
 	 }
 
@@ -86,7 +84,7 @@
 		  var cval = getCookie(name);
 		  if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 		}
-	 
+
 	 
 	</script>
 </body>

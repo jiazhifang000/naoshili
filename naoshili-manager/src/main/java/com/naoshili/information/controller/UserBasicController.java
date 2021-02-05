@@ -806,6 +806,20 @@ public class UserBasicController {
         result.put("xr", null);
         result.put("indexl", new ArrayList<>());
         result.put("indexr", new ArrayList<>());
+        result.put("JTAx", 0);
+        result.put("JTAb", 0);
+        result.put("JTBx", 0);
+        result.put("JTBb", 0);
+        result.put("JTid", "");
+        result.put("DDAx", 0);
+        result.put("DDAb", 0);
+        result.put("DDBx", 0);
+        result.put("DDBb", 0);
+        result.put("DDCx", 0);
+        result.put("DDCb", 0);
+        result.put("DDid", "");
+
+
         Integer userId = collectionInfoService.getUserId(Long.parseLong(id));
         List<CollectionInfoDO> allCollection = collectionInfoService.getAllCollection(Long.parseLong(id));
         for (CollectionInfoDO collectionInfoDO : allCollection){
@@ -942,16 +956,16 @@ public class UserBasicController {
         params.put("DDtu",linshiUrlDO.getDanduantu());
         params.put("JTtu",linshiUrlDO.getJiaotitu());
         JinggongAdjustDO jinggongAdjustDO = jinggongAdjustService.get(Integer.parseInt(id));
-        params.put("DDAb",jinggongAdjustDO.getMicrowaveParagraphA());
-        params.put("DDAx",jinggongAdjustDO.getLagParagraphA());
-        params.put("DDBb",jinggongAdjustDO.getMicrowaveParagraphB());
-        params.put("DDBx",jinggongAdjustDO.getLagParagraphB());
-        params.put("DDCb",jinggongAdjustDO.getMicrowaveParagraphC());
-        params.put("DDCx",jinggongAdjustDO.getLagParagraphC());
-        params.put("JTAb",jinggongAdjustDO.getMicrowaveFlashingA());
-        params.put("JTAx",jinggongAdjustDO.getLagFlashingA());
-        params.put("JTBb",jinggongAdjustDO.getMicrowaveFlashingB());
-        params.put("JTBx",jinggongAdjustDO.getLagFlashingB());
+        params.put("DDAb",jinggongAdjustDO.getMicrowaveParagraphA()==0?"":jinggongAdjustDO.getMicrowaveParagraphA()+"D");
+        params.put("DDAx",jinggongAdjustDO.getLagParagraphA()==0?"":jinggongAdjustDO.getLagParagraphA()+"D");
+        params.put("DDBb",jinggongAdjustDO.getMicrowaveParagraphB()==0?"":jinggongAdjustDO.getMicrowaveParagraphB()+"D");
+        params.put("DDBx",jinggongAdjustDO.getLagParagraphB()==0?"":jinggongAdjustDO.getLagParagraphB()+"D");
+        params.put("DDCb",jinggongAdjustDO.getMicrowaveParagraphC()==0?"":jinggongAdjustDO.getMicrowaveParagraphC()+"D");
+        params.put("DDCx",jinggongAdjustDO.getLagParagraphC()==0?"":jinggongAdjustDO.getLagParagraphC()+"D");
+        params.put("JTAb",jinggongAdjustDO.getMicrowaveFlashingA()==0?"":jinggongAdjustDO.getMicrowaveFlashingA()+"D");
+        params.put("JTAx",jinggongAdjustDO.getLagFlashingA()==0?"":jinggongAdjustDO.getLagFlashingA()+"D");
+        params.put("JTBb",jinggongAdjustDO.getMicrowaveFlashingB()==0?"":jinggongAdjustDO.getMicrowaveFlashingB()+"D");
+        params.put("JTBx",jinggongAdjustDO.getLagFlashingB()==0?"":jinggongAdjustDO.getLagFlashingB()+"D");
         try {
         createDoc(response,params, new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()), "脑视力报告.ftl");
         } catch (Exception e) {
